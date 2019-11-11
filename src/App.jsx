@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react'
+import { Route } from 'react-router-dom'
+import LandingPage from './Components/LandingPage'
 
-class App extends Component {
-  render() {
-    return (
-      <>
-      </>
-    )
-  }
+const App = () => {
+  return (
+    <>
+      <Route exact path='/' component={LandingPage} />
+    </>
+  )
 }
+
 
 export default App;
