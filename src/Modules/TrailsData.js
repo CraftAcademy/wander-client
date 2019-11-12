@@ -11,4 +11,14 @@ const getTrails = async () => {
   }
 }
 
-export { getTrails }
+const getSpecificTrail = async (chosenTrail) => {
+  try {
+    debugger
+    let response = await axios.get(apiUrl + `trails/${chosenTrail}`)
+    return response
+  } catch(error) {
+    return error.response.data
+  }
+}
+
+export { getTrails, getSpecificTrail }
