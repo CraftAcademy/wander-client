@@ -43,6 +43,6 @@ describe('User can create a trail', () => {
       cy.get('#rating').should('contain', 'Rating: 4')
       cy.get('#submit-trail').click()
     })
-    cy.get('#response-message').should('contain', 'Description is too short (minimum is 15 characters)')
+    cy.get('#error-message').should('contain', 'Please add more content')
   })
 })

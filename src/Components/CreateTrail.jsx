@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import CreateTrailForm from './CreateTrailForm'
-import { submitTrail } from '../Modules/TrailsData'
+import { submitTrail } from '../Modules/trailsData'
 
 class CreateTrail extends Component {
   state = {
@@ -10,7 +10,8 @@ class CreateTrail extends Component {
     location: '',
     duration: '',
     intensity: 1,
-    responseMessage: ''
+    responseMessage: '',
+    errorMessage: ''
   }
 
   inputHandler = (e) => {
@@ -23,9 +24,9 @@ class CreateTrail extends Component {
     const { title, description, extra, location, duration, intensity } = this.state
     let response = await submitTrail(title, description, extra, location, duration, intensity)
 
-    if (response.status === 200) {
+    if (response.error_message) {
       this.setState({
-        responseMessage: response.data.message
+        errorMessage: response.error_message
       })
     } else {
       this.setState({
@@ -37,9 +38,14 @@ class CreateTrail extends Component {
   render() {
     let trailForm
     let responseMessage
+    let errorMessage
 
     if (this.state.responseMessage) {
       responseMessage = <p id='response-message'>{this.state.responseMessage}</p>
+    } 
+    
+    if (this.state.errorMessage) {
+      errorMessage = <p id='error-message'>{this.state.errorMessage}</p>
     }
 
     trailForm = (
@@ -54,6 +60,7 @@ class CreateTrail extends Component {
       <>
         {trailForm} 
         {responseMessage}
+        {errorMessage}
       </>
     )
   }

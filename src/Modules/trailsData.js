@@ -24,9 +24,9 @@ const submitTrail = async (title, description, extra, location, duration, intens
       duration: duration,
       intensity: intensity
     })
-    return response
+    return response.data.message
   } catch(error) {
-    return error.response.data.error_message
+    return error.response.data
   }
 }
 
