@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { getTrails } from '../Modules/TrailsData'
 import { Card, Container } from 'semantic-ui-react'
+import Sarek from '../Images/sarek.jpg'
 
 class LandingPage extends Component {
   state = {
@@ -58,6 +59,7 @@ class LandingPage extends Component {
 
     return (
       <>
+          <img src={Sarek} alt='Sarek national park' width='1920' height='1080'/>
         <Container id='trail-list'>
           {trailsList}
           {errorMessage}
