@@ -13,7 +13,7 @@ const getTrails = async () => {
   }
 }
 
-const submitTrail = async (title, description, extra, location, duration, intensity) => {
+const submitTrail = async (title, description, extra, location, duration, intensity, image) => {
   try {
     let response = await axios.post(apiUrl + 'trails',
     {
@@ -22,7 +22,8 @@ const submitTrail = async (title, description, extra, location, duration, intens
       extra: extra,
       location: location,
       duration: duration,
-      intensity: intensity
+      intensity: intensity,
+      image: image
     })
     return response.data.message
   } catch(error) {

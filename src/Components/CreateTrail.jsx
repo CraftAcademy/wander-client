@@ -10,6 +10,7 @@ class CreateTrail extends Component {
     location: '',
     duration: '',
     intensity: 1,
+    image: '',
     responseMessage: '',
     errorMessage: ''
   }
@@ -20,9 +21,15 @@ class CreateTrail extends Component {
     })
   }
 
+  onAvatarDropHandler = (pictureFiles, pictureDataURLs) => {
+    this.setState({
+      image: pictureDataURLs
+    })
+  }
+
   submitTrailHandler = async () => {
-    const { title, description, extra, location, duration, intensity } = this.state
-    let response = await submitTrail(title, description, extra, location, duration, intensity)
+    const { title, description, extra, location, duration, intensity, image } = this.state
+    let response = await submitTrail(title, description, extra, location, duration, intensity, image)
 
     if (response.error_message) {
       this.setState({
@@ -53,6 +60,7 @@ class CreateTrail extends Component {
         intensity={this.state.intensity}
         inputHandler={this.inputHandler}
         submitTrailHandler={this.submitTrailHandler}
+        onAvatarDropHandler={this.onAvatarDropHandler}
       />
     )
 
