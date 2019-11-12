@@ -11,6 +11,7 @@ class LandingPage extends Component {
   }
 
   async componentDidMount() {
+    debugger
     let response = await getTrails()
     if (response.error_message) {
       this.setState({
