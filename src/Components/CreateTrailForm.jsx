@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Input, TextArea, Form, Rating } from 'semantic-ui-react'
+import ImageUploader from 'react-images-upload'
 
 const CreateTrailForm = (props) => {
   let { intensity } = props
@@ -36,6 +37,19 @@ const CreateTrailForm = (props) => {
           />
           <br />
           <Rating name='intensity' rating={intensity} maxRating={5}/>
+        </div>
+        <div>
+          <ImageUploader
+            className='file-input'
+            buttonText={'Upload your snapshots'}
+            withPreview
+            withIcon
+            withLabel={false}
+            onChange={props.onAvatarDropHandler}
+            imgExtension={[".jpg", ".png"]}
+            maxFileSize={5242880}
+            singleImage={true}
+          />
         </div>
         <div>
           <Button id='submit-trail' onClick={props.submitTrailHandler}>Submit Trail</Button>
