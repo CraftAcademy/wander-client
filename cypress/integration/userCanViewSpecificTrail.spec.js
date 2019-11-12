@@ -44,6 +44,5 @@ describe('User can view a specific trail', () => {
         cy.get('#card_1').click()
       })
     cy.get('#error-message').should('contain', 'There is no trail here go back.')
-    
-  });
+  })
 })
