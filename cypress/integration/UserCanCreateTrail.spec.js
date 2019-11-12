@@ -1,7 +1,7 @@
 describe('User can create a trail', () => {
   beforeEach(() => {
     cy.server()
-    cy.visit('http://localhost:3001')
+    cy.visit('http://localhost:3001/create')
   })
 
   it('successully creates a trail', () => {
@@ -14,11 +14,12 @@ describe('User can create a trail', () => {
 
     cy.get('#trail-form').within(() => {
       cy.get('#title-input').type('Höga Kusten trail')
-      cy.get('#description-input').type('Sweden’s only long-distance coastal trail passes through a land that is still rising: getting higher by nearly one centimetre per year – the land here has risen some 300 metres since the ice age.')
+      cy.get('#description-input').type('Sweden’s only long-distance coastal trail passes through a land that is still rising.')
       cy.get('#extra-input').type('Located close to the E4 highway, it’s also easy to access by car.')
       cy.get('#location-input').type('Hornöberget')
       cy.get('#duration-input').type('600')
-      cy.get('#intensity-rating').select('4')
+      cy.get('input[type=range]').invoke('val', 4).trigger('input')
+      cy.get('#rating').should('contain', 'Rating: 4')
       cy.get('#submit-trail').click()
     })
     cy.get('#response-message').should('contain', 'Trail was successfully created')
@@ -38,7 +39,8 @@ describe('User can create a trail', () => {
       cy.get('#extra-input').type('Located close to the E4 highway, it’s also easy to access by car.')
       cy.get('#location-input').type('Hornöberget')
       cy.get('#duration-input').type('600')
-      cy.get('#intensity-rating').type('4')
+      cy.get('input[type=range]').invoke('val', 4).trigger('input')
+      cy.get('#rating').should('contain', 'Rating: 4')
       cy.get('#submit-trail').click()
     })
     cy.get('#response-message').should('contain', 'Description is too short (minimum is 15 characters)')
