@@ -7,9 +7,7 @@ const getTrails = async () => {
     let response = await axios.get(apiUrl + 'trails')
     return response.data.trails
   } catch(error) {
-    return {
-      error: error.response.data.error
-    }
+    return error.response.data
   }
 }
 

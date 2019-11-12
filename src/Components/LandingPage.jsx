@@ -9,23 +9,15 @@ class LandingPage extends Component {
     errorMessage: null
   }
 
-  componentDidMount() {
-    this.getTrailsData()
-  }
-
-  setErrorMessage = (error) => {
-    this.setState({
-      errorMessage: error
-    })
-  }
-
-  async getTrailsData() {
-    let fetch = await getTrails()
-    if (fetch.error) {
-      this.setErrorMessage(fetch.error)
+  async componentDidMount() {
+    let response = await getTrails()
+    if (response.error_message) {
+      this.setState({
+        errorMessage: response.error_message
+      })
     } else {
       this.setState({
-        trails: fetch
+        trails: response
       })
     }
   }
