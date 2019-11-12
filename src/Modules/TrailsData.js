@@ -4,8 +4,9 @@ const apiUrl = 'http://localhost:3000/v1/'
 
 const getTrails = async () => {
   try {
+    debugger
     let response = await axios.get(apiUrl + 'trails')
-    return response.data
+    return response.data.trails
   } catch(error) {
     return {
       error: error.response
@@ -13,4 +14,4 @@ const getTrails = async () => {
   }
 }
 
-export default { getTrails }
+export { getTrails }
