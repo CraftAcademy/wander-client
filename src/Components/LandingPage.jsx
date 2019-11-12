@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getTrails } from '../Modules/TrailsData'
+import { getTrails } from '../Modules/trailsData'
 import { Card, Container } from 'semantic-ui-react'
 import Sarek from '../Images/sarek.jpg'
 
