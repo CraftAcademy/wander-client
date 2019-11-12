@@ -10,7 +10,7 @@ const CreateTrailForm = (props) => {
       <h2>Share your adventure</h2>
       <Form id='trail-form' size='small'>
         <div>
-          <input name='title' id='title-input' placeholder='Title' onChange={props.inputHandler} />
+          <Input name='title' id='title-input' placeholder='Title' onChange={props.inputHandler} />
         </div>
         <div>
           <TextArea style={{ minHeight: 200 }} id='description-input' name='description' placeholder='Description' onChange={props.inputHandler} />
@@ -55,7 +55,6 @@ const CreateTrailForm = (props) => {
           <Button id='submit-trail' onClick={props.submitTrailHandler}>Submit Trail</Button>
         </div>
       </Form>
-
     </>
   )
 }
