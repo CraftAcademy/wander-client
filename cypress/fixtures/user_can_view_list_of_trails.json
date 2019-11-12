@@ -1,0 +1,11 @@
+{
+  "trails": {
+    "id": 1,
+    "title": "Bollmora speed trail",
+    "description": "A fast trail for fast people",
+    "gtk": "You are not prepared for the speed",
+    "location": "Bollmora",
+    "duration": "10 minutes",
+    "intensity": "5"
+  }
+}
