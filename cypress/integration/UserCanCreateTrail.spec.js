@@ -21,12 +21,13 @@ describe('User can create a trail', () => {
         cy.get('#duration-input').type('600')
         cy.get('input[type=range]').invoke('val', 4).trigger('input')
         cy.get('#rating').should('contain', 'Rating: 4')
-        cy.get('.file-input').within(() => {
-          const fileName = 'love.jpg'
-          cy.fixture(fileName).then(fileContent => {
-            cy.get('input[type="file"]').upload({ fileContent, fileName, mimeType: 'application/jpg' })
+        cy.get('.file-input')
+          .within(() => {
+            const fileName = 'love.jpg'
+            cy.fixture(fileName).then(fileContent => {
+              cy.get('input[type="file"]').upload({ fileContent, fileName, mimeType: 'application/jpg' })
+            })
           })
-        })
         cy.get('#submit-trail').click()
       }
     )
@@ -50,12 +51,13 @@ describe('User can create a trail', () => {
         cy.get('#duration-input').type('600')
         cy.get('input[type=range]').invoke('val', 4).trigger('input')
         cy.get('#rating').should('contain', 'Rating: 4')
-        cy.get('.file-input').within(() => {
-          const fileName = 'love.jpg'
-          cy.fixture(fileName).then(fileContent => {
-            cy.get('input[type="file"]').upload({ fileContent, fileName, mimeType: 'application/jpg' })
+        cy.get('.file-input')
+          .within(() => {
+            const fileName = 'love.jpg'
+            cy.fixture(fileName).then(fileContent => {
+              cy.get('input[type="file"]').upload({ fileContent, fileName, mimeType: 'application/jpg' })
+            })
           })
-        })
         cy.get('#submit-trail').click()
       }
     )
