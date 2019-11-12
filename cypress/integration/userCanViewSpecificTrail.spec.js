@@ -19,16 +19,16 @@ describe('User can view a specific trail', () => {
   it('successfully', () => {
     cy.get('#trail-list')
       .within(() => {
-        cy.get('#trail_1').click()
+        cy.get('#card_1').click()
       })
     cy.get('#single-trail')
       .within(() => {
-        cy.get('#title_1').should('contain', 'Bollmora speed trail')
-        cy.get('#description_1').should('contain', 'A fast trail for fast people')
-        cy.get('#extra_1').should('contain', 'You are not prepared for the speed')
-        cy.get('#location_1').should('contain', 'Bollmora')
-        cy.get('#duration_1').should('contain', '10')
-        cy.get('#intensity_1').should('contain', '5')
+        cy.get('#title_1').should('contain', 'Åland lazy trail')
+        cy.get('#description_1').should('contain', 'A slow trail for fat people')
+        cy.get('#extra_1').should('contain', 'You seem prepared for the chill trail')
+        cy.get('#location_1').should('contain', 'Åland')
+        cy.get('#duration_1').should('contain', '5')
+        cy.get('#intensity_1').should('contain', '1')
       })
   })
 })
