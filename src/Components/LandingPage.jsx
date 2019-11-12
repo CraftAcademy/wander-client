@@ -59,7 +59,7 @@ class LandingPage extends Component {
 
     return (
       <>
-          <img src={Sarek} alt='Sarek national park' width='1920' height='1080'/>
+        <img src={Sarek} alt='Sarek national park' width='1920' height='1080'/>
         <Container id='trail-list'>
           {trailsList}
           {errorMessage}
