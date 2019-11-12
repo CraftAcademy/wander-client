@@ -1,0 +1,12 @@
+{
+  "trail":
+  {
+    "id": 1,
+    "title": "Åland lazy trail",
+    "description": "A slow trail for fat people",
+    "extra": "You seem prepared for the chill trail",
+    "location": "Åland",
+    "duration": "5",
+    "intensity": "1"
+  }
+}
