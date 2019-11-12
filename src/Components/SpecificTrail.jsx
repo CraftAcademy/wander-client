@@ -9,7 +9,6 @@ class SpecificTrail extends Component {
   }
 
   async componentDidMount() {
-    debugger
     let response = await getSpecificTrail(this.props.match.params.id)
     if (response.error_message) {
       this.setState({
@@ -47,7 +46,7 @@ class SpecificTrail extends Component {
       )
     } else {
       singleTrail = (
-        <h3>{this.state.errorMessage}</h3>
+        <h3 id='error-message'>{this.state.errorMessage}</h3>
       )
     }
 

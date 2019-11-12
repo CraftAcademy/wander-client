@@ -7,16 +7,16 @@ describe('User can view a specific trail', () => {
       response: 'fixture:user_can_view_list_of_trails.json',
       status: 200
     })
+    cy.visit('http://localhost:3001')
+  })
+  
+  it('successfully', () => {
     cy.route({
       method: 'GET',
       url: 'http://localhost:3000/v1/trails/1',
       response: 'fixture:user_can_view_specific_trail.json',
       status: 200
     })
-    cy.visit('http://localhost:3001')
-  })
-  
-  it('successfully', () => {
     cy.get('#trail-list')
       .within(() => {
         cy.get('#card_1').click()
@@ -31,4 +31,19 @@ describe('User can view a specific trail', () => {
         cy.get('#intensity_1').should('contain', '1')
       })
   })
+
+  it('unsuccessfully', () => {
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/v1/trails/1',
+      response: 'fixture:user_can_view_specific_trail_unsuccessfully.json',
+      status: 400
+    })
+    cy.get('#trail-list')
+      .within(() => {
+        cy.get('#card_1').click()
+      })
+    cy.get('#error-message').should('contain', 'There is no trail here go back.')
+    
+  });
 })
