@@ -1,6 +1,9 @@
 describe('User can view a list of trails', () => {
   beforeEach(() => {
     cy.server()
+  })
+
+  it('successfully', () => {
     cy.route({
       method: 'GET',
       url: 'http://localhost:3000/v1/trails',
@@ -8,9 +11,6 @@ describe('User can view a list of trails', () => {
       status: 200
     })
     cy.visit('http://localhost:3001')
-  })
-
-  it('successfully', () => {
     cy.get('#trail-list')
       .within(() => {
         cy.get('#trail_1')
@@ -23,5 +23,20 @@ describe('User can view a list of trails', () => {
             cy.get('#intensity_1').should('contain', '5')
           })
       })
+  })
+
+  it('unsuccessfully', () => {
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/v1/trails',
+      response: 'fixture:user_can_view_list_of_trails_unsuccessfully.json',
+      status: 400
+    })
+    cy.visit('http://localhost:3001')
+    cy.get('#trail-list')
+      .within(() => {
+        cy.get('#trail_1').should('not.exist')
+      })
+    cy.get('#error-message').should('contain', 'No trails here, turn around.')
   })
 })

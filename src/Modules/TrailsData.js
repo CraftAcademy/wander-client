@@ -8,7 +8,7 @@ const getTrails = async () => {
     return response.data.trails
   } catch(error) {
     return {
-      error: error.response
+      error: error.response.data.error
     }
   }
 }

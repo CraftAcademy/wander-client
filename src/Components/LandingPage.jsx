@@ -39,11 +39,9 @@ class LandingPage extends Component {
     }
 
     if (trailsData.length !== 0) {
-      debugger
       trailsList = (
         <>
           {trailsData.map(trail => {
-            debugger
             return  <Card id={`trail_${trail.id}`}>
                       <Card.Header id={`title_${trail.id}`}>{trail.title}</Card.Header>
                       <Card.Description id={`description_${trail.id}`}>{trail.description}</Card.Description>
