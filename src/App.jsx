@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import LandingPage from './Components/LandingPage'
 import SpecificTrail from './Components/SpecificTrail'
@@ -14,9 +14,7 @@ const App = ({ currentUser }) => {
       <Route exact path='/' component={LandingPage} />
       <Route exact path='/trails/:id' component={SpecificTrail} />
       <Route exact path='/create' component={CreateTrail} />
-      <Route exact path='/login' component={Login}>
-        {currentUser.isSignedIn ? <Redirect to='/' /> : <Login />}
-      </Route>
+      <Route exact path='/login' component={Login} />
     </>
   )
 }
