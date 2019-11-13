@@ -12,6 +12,10 @@ describe('User can create a trail', () => {
       status: 200
     })
 
+    cy.get('#navbar')
+    .within(() => {
+      cy.get('#nav-create').click()
+    })
     cy.get('#trail-form')
       .within(() => {
         cy.get('#title-input').type('Höga Kusten trail')
@@ -42,6 +46,10 @@ describe('User can create a trail', () => {
       status: 400
     })
 
+    cy.get('#navbar')
+    .within(() => {
+      cy.get('#nav-create').click()
+    })
     cy.get('#trail-form')
       .within(() => {
         cy.get('#title-input').type('Höga Kusten trail')
