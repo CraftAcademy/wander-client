@@ -10,10 +10,11 @@ describe('User can log in to application', () => {
       .within(() => {
         cy.get('#nav-login').click()
       })
-    cy.get('#login-form').within(() => {
-      cy.get('#email-input').type('user@mail.com')
-      cy.get('#password-input').type('password')
-    })
+    cy.get('#login-form')
+      .within(() => {
+        cy.get('#email-input').type('user@mail.com')
+        cy.get('#password-input').type('password')
+      })
     cy.get('#submit-login-form').click()
     cy.get('#welcome-message').should('contain', 'Hello name')
   })
@@ -28,13 +29,14 @@ describe('User can not log in to application', () => {
     status: 401
   })
   cy.get('#navbar')
-      .within(() => {
-        cy.get('#nav-login').click()
-      })
+    .within(() => {
+      cy.get('#nav-login').click()
+    })
   })
 
   it('with wrong password', () => {
-    cy.get('#login-form').within(() => {
+    cy.get('#login-form')
+    .within(() => {
       cy.get('#email-input').type('user@mail.com')
       cy.get('#password-input').type('wrongpassword')
     })
@@ -43,10 +45,11 @@ describe('User can not log in to application', () => {
   })
 
   it('with wrong email', () => {
-    cy.get('#login-form').within(() => {
-      cy.get('#email-input').type('wrong@mail.com')
-      cy.get('#password-input').type('password')
-    })
+    cy.get('#login-form')
+      .within(() => {
+        cy.get('#email-input').type('wrong@mail.com')
+        cy.get('#password-input').type('password')
+      })
     cy.get('#submit-login-form').click()
     cy.get('#error-message').should('contain', 'Invalid login credentials. Please try again')
   })
