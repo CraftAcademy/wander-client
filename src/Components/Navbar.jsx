@@ -1,17 +1,26 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { Menu } from 'semantic-ui-react'
+import logo from '../Images/logo.svg'
 
 const Navbar = () => {
   return (
     <>
       <Menu stackable id='navbar'>
-        <Menu.Item>
-          <NavLink id='nav-home' to='/'>Home</NavLink>
+        <Menu.Item
+          as={NavLink}
+          to='/'
+          id='nav-home'
+        >
+          <img src={logo} alt='Logo'/>
         </Menu.Item>
-        <Menu.Item position='right'>
-          <NavLink id='nav-create' to='/create'>Create Trail</NavLink>
-        </Menu.Item>
+        <Menu.Item 
+          position='right'
+          as={NavLink}
+          to='create'
+          id='nav-create'
+          name='Create Trail'
+        />
       </Menu>
     </>
   )
