@@ -14,9 +14,7 @@ const App = ({ currentUser }) => {
       <Route exact path='/' component={LandingPage} />
       <Route exact path='/trails/:id' component={SpecificTrail} />
       <Route exact path='/create' component={CreateTrail} />
-      <Route exact path='/login' component={Login}>
-        {currentUser.isSignedIn ? <Redirect to='/' /> : <Login />}
-      </Route>
+      <Route exact path='/login' component={Login} />
     </>
   )
 }
