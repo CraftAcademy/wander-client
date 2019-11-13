@@ -20,9 +20,10 @@ describe('User can log in to application', () => {
       })
     cy.get('#login-form').within(() => {
       cy.get('#email-input').type('user@mail.com')
+      cy.get('#user-name').type('username')
       cy.get('#password-input').type('password')
     })
     cy.get('#submit-login-form').click()
-    cy.get('#welcome-message').should('contain', 'Hello user@mail.com')
+    cy.get('#welcome-message').should('contain', 'Hello username')
   })
 })
