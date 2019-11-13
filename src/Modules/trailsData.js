@@ -7,9 +7,16 @@ const getTrails = async () => {
     let response = await axios.get(apiUrl + 'trails')
     return response.data.trails
   } catch(error) {
-    return {
-      error: error.response.data.error
-    }
+    return error.response.data
+  }
+}
+
+const getSpecificTrail = async (chosenTrail) => {
+  try {
+    let response = await axios.get(apiUrl + `trails/${chosenTrail}`)
+    return response
+  } catch(error) {
+    return error.response.data
   }
 }
 
@@ -31,4 +38,4 @@ const submitTrail = async (title, description, extra, location, duration, intens
   }
 }
 
-export { getTrails, submitTrail }
+export { getTrails, submitTrail, getSpecificTrail }
