@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
-import { Container, Grid, Header, Divider } from 'semantic-ui-react'
+import { Container, Grid, Header, Divider, Image } from 'semantic-ui-react'
 
 class SpecificTrail extends Component {
   state = {
@@ -16,7 +16,7 @@ class SpecificTrail extends Component {
       })
     } else {
       this.setState({
-        trail: response.data.trail
+        trail: response
       })
     }
   }
@@ -32,6 +32,10 @@ class SpecificTrail extends Component {
             <Grid centered columns={2}>
               <Grid.Column width={12}>
                 <Header as='h2' id={`title_${trail.id}`}>{trail.title}</Header>
+                <Image
+                  id={`image_${trail.id}`}
+                  src={trail.image}
+                />
                 <Divider />
                   <h4 id={`description_${trail.id}`}>{trail.description}</h4>
                   <h5 id={`extra_${trail.id}`}>{trail.extra}</h5>

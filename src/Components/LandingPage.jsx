@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getTrails } from '../Modules/trailsData'
-import { Card, Container } from 'semantic-ui-react'
+import { Card, Container, Image } from 'semantic-ui-react'
 import Sarek from '../Images/sarek.jpg'
 import { NavLink } from 'react-router-dom'
 
@@ -38,6 +38,10 @@ class LandingPage extends Component {
           {trailsData.map(trail => {
             return  <NavLink id={`trail_${trail.id}`} key={trail.id} to={`/trails/${trail.id}`}>
                       <Card id={`card_${trail.id}`}>
+                        <Image
+                          id={`image_${trail.id}`}
+                          src={trail.image}
+                        />
                         <Card.Header id={`title_${trail.id}`}>{trail.title}</Card.Header>
                         <Card.Description id={`description_${trail.id}`}>{trail.description}</Card.Description>
                         <Card.Description id={`extra_${trail.id}`}>{trail.extra}</Card.Description>
