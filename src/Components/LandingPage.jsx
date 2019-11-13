@@ -36,7 +36,6 @@ class LandingPage extends Component {
       trailsList = (
         <>
           {trailsData.map(trail => {
-            debugger
             return  <NavLink id={`trail_${trail.id}`} key={trail.id} to={`/trails/${trail.id}`}>
                       <Card id={`card_${trail.id}`}>
                         <Image
