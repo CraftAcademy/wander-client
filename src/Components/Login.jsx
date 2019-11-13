@@ -30,12 +30,7 @@ class Login extends Component {
   }
   
   render() {
-    let renderLogin, errorMessage, welcomeMessage
-    
-    if (this.props.currentUser.isSignedIn) {
-      debugger
-      welcomeMessage = <h3 id="welcome-message">Hello {this.props.currentUser.attributes.username}</h3>
-    }
+    let renderLogin, errorMessage
 
     if (this.state.errorMessage) {
       errorMessage = <p id="error-message">{this.state.errorMessage}</p>
@@ -54,7 +49,6 @@ class Login extends Component {
 
     return (
       <>
-        {welcomeMessage}
         {renderLogin}
         {errorMessage}
       </>

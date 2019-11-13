@@ -23,7 +23,7 @@ describe('User can log in to application', () => {
       cy.get('#password-input').type('password')
     })
     cy.get('#submit-login-form').click()
-    cy.get('#welcome-message').should('contain', 'Hello username')
+    cy.get('#welcome-message').should('contain', 'Hello name')
   })
 })
 

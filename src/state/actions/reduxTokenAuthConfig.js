@@ -5,7 +5,7 @@ const config = {
   userAttributes: {
     uid: 'uid',
     email: 'email',
-    username: 'username'
+    name: 'name'
   }
 }
 

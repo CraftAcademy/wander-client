@@ -3,6 +3,6 @@
     "id": 1,
     "uid": "user@mail.com",
     "email": "user@mail.com",
-    "username": "username"
+    "name": "name"
   } 
 }

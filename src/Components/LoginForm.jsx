@@ -9,9 +9,6 @@ const LoginForm = (props) => {
           <Input id='email-input' name='email' placeholder='Email' onChange={props.inputChangeHandler} />
         </div>
         <div>
-          <Input id='user-name' name='username' placeholder='Username' onChange={props.inputChangeHandler} />
-        </div>
-        <div>
           <Input id='password-input' name='password' placeholder='Password' onChange={props.inputChangeHandler} />
         </div>
         <div>
