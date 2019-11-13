@@ -1,8 +1,4 @@
 describe('User can create a trail', () => {
-  beforeEach(() => {
-    cy.visit('http://localhost:3001/create')
-  })
-
   it('successully creates a trail', () => {
     cy.route({
       method: 'POST',
