@@ -6,7 +6,6 @@ import LoginForm from './LoginForm'
 class Login extends Component {
   state = {
     email: '',
-    username: '',
     password: '',
     errorMessage: ''
   }
