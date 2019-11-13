@@ -28,7 +28,7 @@ describe('User can log in to application', () => {
 })
 
 describe('User can not log in to application', () => {
-  beforeEach(function() {
+  beforeEach(() => {
   cy.server()
   cy.route({
     method: 'POST',
