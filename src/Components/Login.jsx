@@ -21,7 +21,9 @@ class Login extends Component {
     const { email, password } = this.state;
       signInUser({ email, password })
         .then(
-          console.log('Wander on..')
+         () => {if (this.props.currentUser.isSignedIn) {
+            this.props.history.push('/')
+          }}
         )
         .catch(error => {
           this.setState({errorMessage: error.response.data.errors})
