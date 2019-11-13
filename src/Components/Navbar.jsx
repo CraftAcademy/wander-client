@@ -9,7 +9,7 @@ const Navbar = () => {
         <Menu.Item>
           <NavLink id='nav-home' to='/'>Home</NavLink>
         </Menu.Item>
-        <Menu.Item>
+        <Menu.Item position='right'>
           <NavLink id='nav-create' to='/create'>Create Trail</NavLink>
         </Menu.Item>
       </Menu>
