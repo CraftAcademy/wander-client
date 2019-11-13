@@ -1,6 +1,5 @@
 describe('User can create a trail', () => {
   beforeEach(() => {
-    cy.server()
     cy.visit('http://localhost:3001/create')
   })
 

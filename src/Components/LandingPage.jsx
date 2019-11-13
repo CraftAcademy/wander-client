@@ -26,15 +26,12 @@ class LandingPage extends Component {
 
   render() {
     let trailsData = this.state.trails
-    let errorMessage, trailsList, welcomeMessage
+    let trailsList, welcomeMessage
     let sarek = <img src={Sarek} alt='Sarek national park' width='1920' height='1080'/>
+    let errorMessage = <p id='error-message'>{this.state.errorMessage}</p>
 
     if (this.props.currentUser.isSignedIn) {
       welcomeMessage = <h3 id="welcome-message">Hello {this.props.currentUser.attributes.name}</h3>
-    }
-
-    if (this.state.errorMessage) {
-      errorMessage = <p id='error-message'>{this.state.errorMessage}</p>
     }
 
     if (trailsData.length !== 0) {

@@ -1,16 +1,5 @@
 describe('User can view a list of trails', () => {
-  beforeEach(() => {
-    cy.server()
-  })
-
   it('successfully', () => {
-    cy.route({
-      method: 'GET',
-      url: 'http://localhost:3000/v1/trails',
-      response: 'fixture:user_can_view_list_of_trails.json',
-      status: 200
-    })
-    cy.visit('http://localhost:3001')
     cy.get('#trail-list')
       .within(() => {
         cy.get('#trail_1')

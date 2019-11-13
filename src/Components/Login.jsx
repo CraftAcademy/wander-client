@@ -10,7 +10,7 @@ class Login extends Component {
     errorMessage: ''
   }
 
-  inputChangeHandler = (e) => {
+  inputChangeHandler = e => {
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -29,11 +29,9 @@ class Login extends Component {
   }
   
   render() {
-    let renderLogin, errorMessage
+    let renderLogin
 
-    if (this.state.errorMessage) {
-      errorMessage = <p id="error-message">{this.state.errorMessage}</p>
-    }
+    let errorMessage = <p id="error-message">{this.state.errorMessage}</p>
 
     if (!this.props.currentUser.isSignedIn) {
       renderLogin = (

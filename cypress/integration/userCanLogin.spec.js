@@ -1,19 +1,11 @@
 describe('User can log in to application', () => {
   it('successfully', () => {
-    cy.server()
     cy.route({
       method: 'POST',
       url: 'http://localhost:3000/auth/sign_in',
       response: 'fixture:successful_user_login.json',
       status: 200
     })
-    cy.route({
-      method: 'GET',
-      url: 'http://localhost:3000/v1/trails',
-      response: 'fixture:user_can_view_list_of_trails.json'
-    })
-
-    cy.visit('http://localhost:3001')
     cy.get('#navbar')
       .within(() => {
         cy.get('#nav-login').click()
@@ -29,19 +21,12 @@ describe('User can log in to application', () => {
 
 describe('User can not log in to application', () => {
   beforeEach(() => {
-  cy.server()
   cy.route({
     method: 'POST',
     url: 'http://localhost:3000/auth/sign_in',
     response: 'fixture:unsuccessful_user_login.json',
     status: 401
   })
-  cy.route({
-    method: 'GET',
-    url: 'http://localhost:3000/v1/trails',
-    response: 'fixture:user_can_view_list_of_trails.json'
-  })
-  cy.visit('http://localhost:3001'),
   cy.get('#navbar')
       .within(() => {
         cy.get('#nav-login').click()
