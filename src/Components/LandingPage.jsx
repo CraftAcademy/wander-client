@@ -3,6 +3,7 @@ import { getTrails } from '../Modules/trailsData'
 import { Card, Container, Image } from 'semantic-ui-react'
 import Sarek from '../Images/sarek.jpg'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 class LandingPage extends Component {
   state = {
@@ -25,11 +26,12 @@ class LandingPage extends Component {
 
   render() {
     let trailsData = this.state.trails
-    let errorMessage, trailsList
+    let trailsList, welcomeMessage
     let sarek = <img src={Sarek} alt='Sarek national park' width='1920' height='1080'/>
+    let errorMessage = <p id='error-message'>{this.state.errorMessage}</p>
 
-    if (this.state.errorMessage) {
-      errorMessage = <p id='error-message'>{this.state.errorMessage}</p>
+    if (this.props.currentUser.isSignedIn) {
+      welcomeMessage = <h3 id="welcome-message">Hello wanderer {this.props.currentUser.attributes.name}</h3>
     }
 
     if (trailsData.length !== 0) {
@@ -57,6 +59,7 @@ class LandingPage extends Component {
 
     return (
       <>
+        {welcomeMessage}
         {sarek}
         <Container id='trail-list'>
           {trailsList}
@@ -67,4 +70,12 @@ class LandingPage extends Component {
   }
 }
 
-export default LandingPage
+const mapStateToProps = state => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(LandingPage)
