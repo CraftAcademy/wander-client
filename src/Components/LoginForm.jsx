@@ -1,17 +1,20 @@
 import React from 'react'
+import { Container, Input, Button } from 'semantic-ui-react'
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   return (
     <>
-      <div>
-        <input id='email' name='email' placeholder='Email' onChange={} />
-      </div>
-      <div>
-        <input id='password' name='password' placeholder='Password' onChange={} />
-      </div>
-      <div>
-        <button id="submit-login-form" onClick={}>Submit</button>
-      </div>
+      <Container id='login-form'>
+        <div>
+          <Input id='email' name='email' placeholder='Email' onChange={props.inputChangeHandler} />
+        </div>
+        <div>
+          <Input id='password' name='password' placeholder='Password' onChange={props.inputChangeHandler} />
+        </div>
+        <div>
+          <Button id="submit-login-form" onClick={}>Submit</Button>
+        </div>
+      </Container>
     </>
   )
 }

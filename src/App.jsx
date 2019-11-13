@@ -4,6 +4,7 @@ import LandingPage from './Components/LandingPage'
 import SpecificTrail from './Components/SpecificTrail'
 import CreateTrail from './Components/CreateTrail'
 import Navbar from './Components/Navbar'
+import Login from './Components/Login'
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <Route exact path='/' component={LandingPage} />
       <Route exact path='/trails/:id' component={SpecificTrail} />
       <Route exact path='/create' component={CreateTrail} />
+      <Route exact path='/login' component={Login} />
     </>
   )
 }

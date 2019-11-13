@@ -14,13 +14,20 @@ const Navbar = () => {
         >
           <img src={logo} alt='Logo'/>
         </Menu.Item>
-        <Menu.Item 
-          position='right'
-          as={NavLink}
-          to='create'
-          id='nav-create'
-          name='Create Trail'
-        />
+        <Menu.Menu position='right'>
+          <Menu.Item 
+            as={NavLink}
+            to='/create'
+            id='nav-create'
+            name='Create Trail'
+          />
+          <Menu.Item
+            as={NavLink}
+            to='/login'
+            id='nav-login'
+            name='Login'
+          />
+        </Menu.Menu>
       </Menu>
     </>
   )
