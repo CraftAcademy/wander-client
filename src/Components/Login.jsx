@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
+import { signInUser } from '../state/actions/reduxTokenAuthConfig'
+import { connect } from 'react-redux'
 
 class Login extends Component {
   state = {
     email: '',
+    username: '',
     password: '',
     errorMessage: ''
   }
@@ -24,4 +27,17 @@ class Login extends Component {
   }
 }
 
-export default Login
+const mapStateToProps = state => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  }
+}
+
+const mapDispatchToProps = {
+  signInUser
+}
+
+export default connect (
+  mapStateToProps,
+  mapDispatchToProps
+)(Login)
