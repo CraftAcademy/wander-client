@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { signInUser } from '../state/actions/reduxTokenAuthConfig'
 import { connect } from 'react-redux'
 import LoginForm from './LoginForm'
+import { Container, Message } from 'semantic-ui-react'
 
 class Login extends Component {
   state = {
@@ -31,9 +32,11 @@ class Login extends Component {
   }
   
   render() {
-    let renderLogin
-
-    let errorMessage = <p id="error-message">{this.state.errorMessage}</p>
+    let renderLogin, errorMessage 
+    
+    if (this.state.errorMessage) {
+      errorMessage = <Message compact id="error-message">{this.state.errorMessage}</Message>
+    }
 
     if (!this.props.currentUser.isSignedIn) {
       renderLogin = (
@@ -47,10 +50,10 @@ class Login extends Component {
     }
 
     return (
-      <>
+      <Container>
         {renderLogin}
         {errorMessage}
-      </>
+      </Container>
     )
   }
 }

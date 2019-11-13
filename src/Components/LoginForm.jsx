@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { Container, Input, Button } from 'semantic-ui-react'
+import { Container, Input, Button, Message, Icon } from 'semantic-ui-react'
 
 const LoginForm = (props) => {
   return (
@@ -17,7 +17,10 @@ const LoginForm = (props) => {
         </div>
       </Container>
       <Container>
-        <p>Not a member? Register</p> <NavLink id='register' to='/signup'><a>here</a></NavLink>
+        <Message compact attached='bottom' positive>
+          <Icon name='help' />
+          Not a member? Register <NavLink id='register' to='/signup'><a href='#'>here</a></NavLink>
+        </Message>
       </Container>
     </>
   )

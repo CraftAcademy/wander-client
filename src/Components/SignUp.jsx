@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { registerUser } from '../state/actions/reduxTokenAuthConfig'
 import { connect } from 'react-redux'
 import SignUpForm from './SignUpForm'
+import { Container, Message } from 'semantic-ui-react'
 
 class SignUp extends Component {
   state = {
@@ -23,25 +24,30 @@ class SignUp extends Component {
     const { email, name, password, password_confirmation } = this.state;
     registerUser({ email, name, password, password_confirmation })
       .then(
-        console.log('register user works')
+        () => {if (this.props.currentUser.isSignedIn) {
+          this.props.history.push('/')
+        }}
       )
       .catch(error => {
-        debugger
         this.setState({errorMessage: error.response.data.errors})
       })
   }
 
   render() {
-    let errorMessage = <p id="error-message">{this.state.errorMessage}</p>
+    let errorMessage
+
+    if (this.state.errorMessage) {
+      errorMessage = <Message compact id="error-message">{this.state.errorMessage}</Message>
+    }
 
     return(
-      <>
+      <Container>
         <SignUpForm 
           handleSignup={this.handleSignup}
           inputChangeHandler={this.inputChangeHandler}
         />
         {errorMessage}
-      </>
+      </Container>
     )
   }
 }
