@@ -15,6 +15,7 @@ const App = ({ currentUser }) => {
       <Route exact path='/trails/:id' component={SpecificTrail} />
       <Route exact path='/create' component={CreateTrail} />
       <Route exact path='/login' component={Login} />
+      <Route exact path='/signup' component={SignUp} />
     </>
   )
 }

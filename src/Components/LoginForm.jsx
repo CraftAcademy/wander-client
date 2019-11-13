@@ -15,6 +15,9 @@ const LoginForm = (props) => {
           <Button id="submit-login-form" onClick={props.handleLogin}>Submit</Button>
         </div>
       </Container>
+      <Container>
+        <p>Not a member? Register</p> <Navlink id='register' to='/signup'><a>here</a></Navlink>
+      </Container>
     </>
   )
 }
