@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import LandingPage from './Components/LandingPage'
 import SpecificTrail from './Components/SpecificTrail'
