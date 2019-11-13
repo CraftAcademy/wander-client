@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import { Container, Input, Button } from 'semantic-ui-react'
 
 const LoginForm = (props) => {
@@ -16,7 +17,7 @@ const LoginForm = (props) => {
         </div>
       </Container>
       <Container>
-        <p>Not a member? Register</p> <Navlink id='register' to='/signup'><a>here</a></Navlink>
+        <p>Not a member? Register</p> <NavLink id='register' to='/signup'><a>here</a></NavLink>
       </Container>
     </>
   )
