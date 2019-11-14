@@ -2,6 +2,7 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 import React, { Component } from 'react'
 import { Container } from 'semantic-ui-react'
 import { getTrails } from '../Modules/trailsData'
+import { NavLink } from 'react-router-dom'
 
 class MapContainer extends Component {
   state = {
@@ -32,11 +33,13 @@ class MapContainer extends Component {
       >
       {trailsData.map(trail => {
         return(
-          <Marker 
-            id={`trail_${trail.id}`}
-            title={trail.title}
-            position={{lat: trail.latitude, lng: trail.longitude}}
-          />
+            <Marker 
+              id={`trail_${trail.id}`}
+              key={trail.id}
+              title={trail.title}
+              position={{lat: trail.latitude, lng: trail.longitude}}
+              onClick={() => this.props.history.push(`/trails/${trail.id}`)}
+            />
         )
       })}
       </Map>
