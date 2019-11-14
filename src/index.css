@@ -3,11 +3,25 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+#create-trail-wrapper {
+  padding: 25rem !important;
+  padding-top: 1rem !important;
+}
+
+.input-trail {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#rating {
+  font-family: Lato;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.fileContainer {
+  box-shadow: 0 0 0 !important;
 }

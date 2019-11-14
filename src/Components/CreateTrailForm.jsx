@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Input, TextArea, Form, Rating } from 'semantic-ui-react'
+import { Button, Input, TextArea, Form, Rating, Header } from 'semantic-ui-react'
 import ImageUploader from 'react-images-upload'
 
 const CreateTrailForm = (props) => {
@@ -7,22 +7,23 @@ const CreateTrailForm = (props) => {
 
   return (
     <>
-      <h2>Share your adventure</h2>
+    <Header as='h2' textAlign='center'>Share your adventure</Header>
+    <div id='create-trail-wrapper'>
       <Form id='trail-form' size='small'>
         <div>
-          <Input name='title' id='title-input' placeholder='Title' onChange={props.inputHandler} />
+          <Input fluid name='title' id='title-input' className='input-trail' placeholder='Title' onChange={props.inputHandler} />
         </div>
         <div>
-          <TextArea style={{ minHeight: 200 }} id='description-input' name='description' placeholder='Description' onChange={props.inputHandler} />
+          <TextArea style={{ minHeight: 200 }} id='description-input' className='input-trail' name='description' placeholder='Description' onChange={props.inputHandler} />
         </div>
         <div>
-          <Input fluid id='extra-input' name='extra' placeholder='Good to know' onChange={props.inputHandler} />
+          <Input fluid id='extra-input' className='input-trail' name='extra' placeholder='Good to know' onChange={props.inputHandler} />
         </div>
         <div>
-          <Input fluid id='location-input' name='location' placeholder='Location' onChange={props.inputHandler} />
+          <Input fluid id='location-input' className='input-trail' name='location' placeholder='Location' onChange={props.inputHandler} />
         </div>
         <div>
-          <Input fluid id='duration-input' name='duration' placeholder='Duration' onChange={props.inputHandler} />
+          <Input fluid id='duration-input' className='input-trail' name='duration' placeholder='Duration' onChange={props.inputHandler} />
         </div>
         <div>
           <div id='rating'>Rating: { intensity }</div>
@@ -55,6 +56,7 @@ const CreateTrailForm = (props) => {
           <Button id='submit-trail' onClick={props.submitTrailHandler}>Submit Trail</Button>
         </div>
       </Form>
+      </div>
     </>
   )
 }
