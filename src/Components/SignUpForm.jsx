@@ -6,7 +6,7 @@ const SignUpForm = (props) => {
     <>
       <Header as='h2' textAlign='center'>Sign up to share & save your favorite adventures</Header>
 
-      <Container id='signup-form'>
+      <Container id='signup-form' textAlign='center'>
         <div>
           <Input id='email-input' className='input' name='email' placeholder='Email' onChange={props.inputChangeHandler} />
         </div>
@@ -20,7 +20,7 @@ const SignUpForm = (props) => {
           <Input id='password-confirmation-input' className='input' name='password_confirmation' placeholder='Password Confirmation' onChange={props.inputChangeHandler} />
         </div>
         <div>
-          <Button id="submit-signup-form" onClick={props.handleSignup}>Submit</Button>
+          <Button id="submit-signup-form" className='submit' onClick={props.handleSignup}>Submit</Button>
         </div>
       </Container>
     </>

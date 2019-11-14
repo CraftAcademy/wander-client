@@ -5,7 +5,7 @@ import { Container, Input, Button, Message, Icon } from 'semantic-ui-react'
 const LoginForm = (props) => {
   return (
     <>
-      <Container id='login-form'>
+      <Container id='login-form' textAlign='center'>
         <div>
           <Input id='email-input' className='input' name='email' placeholder='Email' onChange={props.inputChangeHandler} />
         </div>
@@ -13,14 +13,14 @@ const LoginForm = (props) => {
           <Input id='password-input' className='input' name='password' placeholder='Password' onChange={props.inputChangeHandler} />
         </div>
         <div>
-          <Button id="submit-login-form" onClick={props.handleLogin}>Submit</Button>
+          <Button id="submit-login-form" className='submit' onClick={props.handleLogin}>Submit</Button>
         </div>
-      </Container>
-      <Container>
-        <Message compact attached='bottom' positive>
-          <Icon name='help' />
-          Not a member? Register <NavLink id='register' to='/signup'><a href='#'>here</a></NavLink>
-        </Message>
+        <div>
+          <Message compact attached='bottom' positive className='signup-message'>
+            <Icon name='help' />
+            Not a member? Register <NavLink id='register' to='/signup'><a href='#'>here</a></NavLink>
+          </Message>
+        </div>
       </Container>
     </>
   )
