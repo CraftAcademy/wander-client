@@ -7,10 +7,10 @@ const LoginForm = (props) => {
     <>
       <Container id='login-form'>
         <div>
-          <Input id='email-input' name='email' placeholder='Email' onChange={props.inputChangeHandler} />
+          <Input id='email-input' className='input' name='email' placeholder='Email' onChange={props.inputChangeHandler} />
         </div>
         <div>
-          <Input id='password-input' name='password' placeholder='Password' onChange={props.inputChangeHandler} />
+          <Input id='password-input' className='input' name='password' placeholder='Password' onChange={props.inputChangeHandler} />
         </div>
         <div>
           <Button id="submit-login-form" onClick={props.handleLogin}>Submit</Button>

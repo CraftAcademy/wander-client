@@ -25,3 +25,8 @@ body {
 .fileContainer {
   box-shadow: 0 0 0 !important;
 }
+
+.input {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
