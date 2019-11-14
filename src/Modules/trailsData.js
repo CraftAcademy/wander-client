@@ -38,4 +38,13 @@ const submitTrail = async (title, description, extra, location, duration, intens
   }
 }
 
-export { getTrails, submitTrail, getSpecificTrail }
+const searchTrail = async (query) => {
+  try {
+    let response = await axios.get(apiUrl + `/search/?search=${query}`)
+    return response
+  } catch(error) {
+    return error.response
+  }
+}
+
+export { getTrails, submitTrail, getSpecificTrail, searchTrail }
