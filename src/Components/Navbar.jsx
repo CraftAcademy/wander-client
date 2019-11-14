@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { Menu } from 'semantic-ui-react'
+import Search from './Search'
 import logo from '../Images/logo.svg'
 
 const Navbar = () => {
@@ -21,6 +22,7 @@ const Navbar = () => {
             id='nav-create'
             name='Create Trail'
           />
+          <Search />
           <Menu.Item
             as={NavLink}
             to='/login'

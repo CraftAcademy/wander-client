@@ -7,6 +7,7 @@ import CreateTrail from './Components/CreateTrail'
 import Navbar from './Components/Navbar'
 import Login from './Components/Login'
 import SignUp from './Components/SignUp'
+import { Search } from 'semantic-ui-react'
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Route exact path='/' component={LandingPage} />
       <Route exact path='/trails/:id' component={SpecificTrail} />
       <Route exact path='/create' component={CreateTrail} />
+      <Route exact path='/search' component={Search} />
       <Route exact path='/login' component={Login} />
       <Route exact path='/signup' component={SignUp}/>
     </>
