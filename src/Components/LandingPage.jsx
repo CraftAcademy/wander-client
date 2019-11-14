@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getTrails } from '../Modules/trailsData'
-import { Card, Container, Image } from 'semantic-ui-react'
+import { Card, Container, Image, Message } from 'semantic-ui-react'
 import Sarek from '../Images/sarek.jpg'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -28,10 +28,10 @@ class LandingPage extends Component {
     let trailsData = this.state.trails
     let trailsList, welcomeMessage
     let sarek = <img src={Sarek} alt='Sarek national park' width='1920' height='1080'/>
-    let errorMessage = <p id='error-message'>{this.state.errorMessage}</p>
+    let errorMessage = <Message compact id='error-message'>{this.state.errorMessage}</Message>
 
     if (this.props.currentUser.isSignedIn) {
-      welcomeMessage = <h3 id="welcome-message">Hello wanderer {this.props.currentUser.attributes.name}</h3>
+      welcomeMessage = <Message id="welcome-message">Hello wanderer {this.props.currentUser.attributes.name}</Message>
     }
 
     if (trailsData.length !== 0) {

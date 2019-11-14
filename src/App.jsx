@@ -6,8 +6,9 @@ import SpecificTrail from './Components/SpecificTrail'
 import CreateTrail from './Components/CreateTrail'
 import Navbar from './Components/Navbar'
 import Login from './Components/Login'
+import SignUp from './Components/SignUp'
 
-const App = ({ currentUser }) => {
+const App = () => {
   return (
     <>
       <Navbar />
@@ -15,6 +16,7 @@ const App = ({ currentUser }) => {
       <Route exact path='/trails/:id' component={SpecificTrail} />
       <Route exact path='/create' component={CreateTrail} />
       <Route exact path='/login' component={Login} />
+      <Route exact path='/signup' component={SignUp}/>
     </>
   )
 }

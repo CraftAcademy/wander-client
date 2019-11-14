@@ -6,6 +6,11 @@ const config = {
     uid: 'uid',
     email: 'email',
     name: 'name'
+  },
+  userRegistrationAttributes: {
+    uid: 'uid',
+    email: 'email',
+    name: 'name'
   }
 }
 
