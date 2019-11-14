@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Menu, Input } from 'semantic-ui-react'
-import { NavLink } from 'react-router-dom'
+import { Menu, Input, Icon } from 'semantic-ui-react'
+import { NavLink, withRouter } from 'react-router-dom'
 import { searchTrail } from '../Modules/trailsData'
 
-export default class Search extends Component {
+class Search extends Component {
   state = {
     query: '',
     errorMessage: '',
@@ -18,25 +18,30 @@ export default class Search extends Component {
 
   getSearchResults = async () => {
     const { query } = this.state
-    let response = await searchTrail(query)
+    this.props.location.state.searchQuery = query
+    this.props.history.push('/search')
+    // let response = await searchTrail(query)
 
-    if (response.error_message) {
-      this.setState({
-        errorMessage: response.error_message
-      })
-    } else {
-      this.setState({
-        searchResults: response
-      })
-    }
+    // if (response.error_message) {
+    //   this.setState({
+    //     errorMessage: response.error_message
+    //   })
+    // } else {
+    //   this.setState({
+    //     searchResults: response
+    //   })
+    // }
   }
 
   render() {
     let search
 
     search = (
-      <Menu.Item id='nav-search' to='/search' as={NavLink}>
-        <Input className='icon' icon='search' placeholder='Search...' name='query' onChange={this.inputChangeHandler} />
+      <Menu.Item id='nav-search' >
+        <Input placeholder='Search...' name='query' onChange={this.inputChangeHandler} />
+        <NavLink to='/search'>
+          <Icon name='search' onClick={this.getSearchResults} />
+        </NavLink>
       </Menu.Item>
     )
 
@@ -48,3 +53,4 @@ export default class Search extends Component {
   }
 }
 
+export default withRouter(Search)
