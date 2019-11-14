@@ -1,8 +1,7 @@
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 import React, { Component } from 'react'
-import { Container } from 'semantic-ui-react'
+import { Header } from 'semantic-ui-react'
 import { getTrails } from '../Modules/trailsData'
-import { NavLink } from 'react-router-dom'
 
 class MapContainer extends Component {
   state = {
@@ -25,25 +24,46 @@ class MapContainer extends Component {
 
   render() {
     let trailsData = this.state.trails
+    const style = {
+      width: '80%',
+      height: '80%',
+      left: '10%',
+    }
+
     return (
-      <Container>
-      <Map 
-        google={this.props.google} 
-        zoom={14}
-      >
-      {trailsData.map(trail => {
-        return(
-            <Marker 
-              id={`trail_${trail.id}`}
-              key={trail.id}
-              title={trail.title}
-              position={{lat: trail.latitude, lng: trail.longitude}}
-              onClick={() => this.props.history.push(`/trails/${trail.id}`)}
-            />
-        )
-      })}
-      </Map>
-      </Container>
+      <>
+      <center>
+        <Header id='map-header'>
+          Trails Around the World
+        </Header>
+      </center>
+      <br />
+        <Map 
+          google={this.props.google} 
+          zoom={14}
+          style={style}
+          center={{
+            lat: 59.3293,
+            lng: 18.0686
+          }}
+        >
+        {trailsData.map(trail => {
+          return(
+            
+              <Marker 
+                id={`trail_${trail.id}`}
+                key={trail.id}
+                title={trail.title}
+                position={{
+                  lat: trail.latitude, 
+                  lng: trail.longitude
+                }}
+                onClick={() => this.props.history.push(`/trails/${trail.id}`)}
+              /> 
+          )
+        })}
+        </Map>
+      </>
     )
   }
 }

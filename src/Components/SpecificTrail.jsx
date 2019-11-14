@@ -59,7 +59,7 @@ class SpecificTrail extends Component {
     }
 
     backButton = (
-      <Button onClick={this.goBack} />
+      <a id='back-button' onClick={this.goBack} href='#'>Go Back</a>
     )
 
     return (
