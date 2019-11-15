@@ -28,6 +28,7 @@ class MapContainer extends Component {
       width: '80%',
       height: '80%',
       left: '10%',
+      borderRadius: '8px'
     }
 
     return (
@@ -40,11 +41,11 @@ class MapContainer extends Component {
       <br />
         <Map 
           google={this.props.google} 
-          zoom={14}
+          zoom={3}
           style={style}
           center={{
-            lat: 59.3293,
-            lng: 18.0686
+            lat: 30.0131,
+            lng: 10.0686
           }}
         >
         {trailsData.map(trail => {
