@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Image, Header } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
 const SearchResults = props => {
@@ -36,8 +36,8 @@ const SearchResults = props => {
   }
   return (
     <div id='search-results'>
-      <h1>Found adventures</h1>
-      <div id='trail-list'>
+      <Header as='h2' textAlign='center'>Found adventures</Header>      
+    <div id='trail-list'>
         {trailsList}
       </div>
     </div>
