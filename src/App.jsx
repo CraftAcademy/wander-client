@@ -8,6 +8,7 @@ import Navbar from './Components/Navbar'
 import Login from './Components/Login'
 import SignUp from './Components/SignUp'
 import MapContainer from './Components/MapContainer';
+import SearchResults from './Components/SearchResults'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <Route exact path='/' component={LandingPage} />
       <Route exact path='/trails/:id' component={SpecificTrail} />
       <Route exact path='/create' component={CreateTrail} />
+      <Route exact path='/search' component={SearchResults} />
       <Route exact path='/login' component={Login} />
       <Route exact path='/signup' component={SignUp}/>
       <Route exact path='/map' component={MapContainer}/>
