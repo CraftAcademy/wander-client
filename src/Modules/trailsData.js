@@ -41,7 +41,7 @@ const submitTrail = async (title, description, extra, location, duration, intens
 const searchTrail = async (query) => {
   try {
     let response = await axios.get(apiUrl + `/search/?search=${query}`)
-    return response.data.search
+    return response.data
   } catch(error) {
     return error.response
   }
