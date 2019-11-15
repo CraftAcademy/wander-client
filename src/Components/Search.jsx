@@ -1,35 +1,35 @@
-import React, { Component } from "react";
-import { Menu, Input, Icon } from "semantic-ui-react";
-import { NavLink, withRouter } from "react-router-dom";
-import { searchTrail } from "../Modules/trailsData";
+import React, { Component } from "react"
+import { Menu, Input, Icon } from "semantic-ui-react"
+import { withRouter } from "react-router-dom"
+import { searchTrail } from "../Modules/trailsData"
 
 class Search extends Component {
   state = {
     query: "",
     errorMessage: "",
     searchResults: []
-  };
+  }
 
   inputChangeHandler = e => {
     this.setState({
       [e.target.name]: e.target.value
-    });
-  };
+    })
+  }
 
   getSearchResults = async () => {
-    const { query } = this.state;
-    let response = await searchTrail(query);
+    const { query } = this.state
+    let response = await searchTrail(query)
     if (response.error_message) {
       this.setState({
         errorMessage: response.error_message
-      });
+      })
     } else {
-      this.props.history.push("/search", { searchResults: response });
+      this.props.history.push("/search", { searchResults: response })
     }
-  };
+  }
 
   render() {
-    let search;
+    let search, errorMessage
 
     search = (
       <Menu.Item id="nav-search">
@@ -45,10 +45,17 @@ class Search extends Component {
           onClick={this.getSearchResults}
         />
       </Menu.Item>
-    );
+    )
 
-    return <>{search}</>;
+    return (
+      <>
+        {search}
+        <p id='search-error'>
+          {errorMessage}
+        </p>
+      </>
+    )
   }
 }
 
-export default withRouter(Search);
+export default withRouter(Search)

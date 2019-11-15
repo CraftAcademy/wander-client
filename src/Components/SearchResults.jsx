@@ -4,11 +4,11 @@ import { NavLink } from 'react-router-dom'
 
 const SearchResults = props => {
 
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState([])
 
   useEffect(() => {
     setResults(props.location.state.searchResults)
-  }, []);
+  }, [])
   
   let trailsList
 
@@ -41,7 +41,7 @@ const SearchResults = props => {
         {trailsList}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SearchResults;
+export default SearchResults

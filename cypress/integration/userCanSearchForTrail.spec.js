@@ -37,4 +37,22 @@ describe('User can search for trail', () => {
         })
     })
   })
+
+  it('unsuccessfull', () => {
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/v1//search/?search=Bo',
+      response: 'fixture:unsuccessful_search.json',
+      status: 400
+    })
+    cy.get('#navbar')
+    .within(() => {
+      cy.get('#nav-search')
+        .within(() => {
+          cy.get('#search-input').type('Bo')
+          cy.get('#search-submit').click()
+        })
+      cy.get('search-error').should('contain', 'Please input more than two characters.')    
+    })
+  })
 })
