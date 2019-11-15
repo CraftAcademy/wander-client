@@ -7,7 +7,7 @@ const CreateTrailForm = (props) => {
 
   return (
     <>
-    <Header as='h2' textAlign='center'>Share your adventure</Header>
+    <Header as='h2' textAlign='center'>Share your adventure with the world!</Header>
     <div id='create-trail-wrapper'>
       <Form id='trail-form' size='small'>
         <div>

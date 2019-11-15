@@ -102,3 +102,16 @@ body {
   width: 100%;
   object-position: -20% 1;
 }
+
+.single-trail {
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.single-description {
+  font-size: 20px;
+}
+
+.single-context {
+  font-size: 16px;
+}
