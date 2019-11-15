@@ -15,6 +15,12 @@ const Navbar = () => {
           <img src={logo} alt='Logo'/>
         </Menu.Item>
         <Menu.Menu position='right'>
+          <Menu.Item
+            as={NavLink}
+            to='/map'
+            id='nav-map'
+            name='Map'
+          />
           <Menu.Item 
             as={NavLink}
             to='/create'

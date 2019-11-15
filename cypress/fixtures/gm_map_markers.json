@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "orgrimmar",
+    "latitude": 53.0032,
+    "longitude": 14.3435
+  },
+  {
+    "id": 2,
+    "title": "stormwind",
+    "latitude": 36.0032,
+    "longitude": 24.3213
+  },
+  {
+    "id": 3,
+    "title": "barrens",
+    "latitude": 12.0032,
+    "longitude": 25.7423
+  },
+  {
+    "id": 4,
+    "title": "booty bay",
+    "latitude": 36.0032,
+    "longitude": 13.3435
+  },
+  {
+    "id": 5,
+    "title": "lordaeron",
+    "latitude": 42.0032,
+    "longitude": 19.8342
+  }
+]
