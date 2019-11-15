@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
-import { Container, Grid, Header, Divider, Image } from 'semantic-ui-react'
+import { Container, Grid, Header, Divider, Image, Button } from 'semantic-ui-react'
 
 class SpecificTrail extends Component {
   state = {
@@ -21,8 +21,12 @@ class SpecificTrail extends Component {
     }
   }
 
+  goBack = () => {
+    this.props.history.goBack()
+  }
+
   render() {
-    let singleTrail
+    let singleTrail, backButton
     const trail = this.state.trail
 
     if (trail) {
@@ -54,9 +58,14 @@ class SpecificTrail extends Component {
       )
     }
 
+    backButton = (
+      <a id='back-button' onClick={this.goBack} href='#'>Go Back</a>
+    )
+
     return (
       <>
         {singleTrail}
+        {backButton}
       </>
     )
   }
