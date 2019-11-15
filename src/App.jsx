@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Router } from 'react-router-dom'
+import { Route, Router, Redirect } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import { connect } from 'react-redux'
 import LandingPage from './Components/LandingPage'
@@ -14,19 +14,23 @@ import ProfilePage from './Components/ProfilePage'
 
 const history = createBrowserHistory({})
 
-const App = () => {
+const App = ({ currentUser }) => {
   return (
     <Router history={history}>
       <>
         <Navbar />
         <Route exact path='/' component={LandingPage}/>
         <Route exact path='/trails/:id' component={SpecificTrail}/>
-        <Route exact path='/create' component={CreateTrail}/>
+        <Route exact path='/create' component={CreateTrail}>
+          {currentUser.isSignedIn ? <Redirect to='/create' /> : <Login />}
+        </Route>
         <Route exact path='/search' component={SearchResults}/>
         <Route exact path='/login' component={Login} />
         <Route exact path='/signup' component={SignUp}/>
-        <Route exact path='/map' component={MapContainer}/>
-        <Route exact path='/user/:name' component={ProfilePage}/>
+        <Route exact path='/map' component={MapContainer} />
+        <Route exact path='/user/:name' component={ProfilePage}>
+          {currentUser.isSignedIn ? <Redirect to='/user/:name' /> : <Login />}
+        </Route>
       </>
     </Router>
   )

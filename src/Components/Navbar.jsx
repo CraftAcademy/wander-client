@@ -23,25 +23,31 @@ const Navbar = ({ currentUser }) => {
             id='nav-map'
             name='adventure map'
           />
+          {currentUser.isSignedIn && (
           <Menu.Item 
             as={NavLink}
             to='/create'
             id='nav-create'
             name='create your adventure'
           />
-          <Menu.Item 
-            as={NavLink}
-            to={`/user/${currentUser.attributes.name}`}
-            id='nav-profile'
-            name='profile'
-          />
+          )}
+          {currentUser.isSignedIn && (
+            <Menu.Item 
+              as={NavLink}
+              to={`/user/${currentUser.attributes.name}`}
+              id='nav-profile'
+              name='profile'
+            />
+          )}
           <Search />
-          <Menu.Item
-            as={NavLink}
-            to='/login'
-            id='nav-login'
-            name='login'
-          />
+          {!currentUser.isSignedIn && (
+            <Menu.Item
+              as={NavLink}
+              to='/login'
+              id='nav-login'
+              name='login'
+            />
+          )}
         </Menu.Menu>
       </Menu>
     </>
