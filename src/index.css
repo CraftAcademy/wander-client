@@ -25,7 +25,7 @@ body {
 
 .content {
   position: absolute;
-  top: 670px;
+  top: 75%;
   left: 10rem;
   color: white;
   font-size: 30px;
@@ -95,4 +95,10 @@ body {
   left: 20%;
   top: 50%;
   position: absolute;
+}
+
+#image-jungle {
+  object-fit: cover;
+  width: 100%;
+  object-position: -20% 1;
 }
