@@ -7,7 +7,9 @@ function ProfilePage({ currentUser }) {
     <>
       <Container>
         <h1 id='user-name'>{currentUser.attributes.name}</h1>
-        <h3 id='user-email'>{currentUser.attributes.uid}</h3>
+        <div>
+          <h3 id='user-email'>{currentUser.attributes.uid}</h3>
+        </div>
       </Container>
     </>
   )
