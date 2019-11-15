@@ -35,11 +35,11 @@ const SearchResults = props => {
     )
   }
   return (
-    <div>
-      {/* {results.map(result => (
-        <h1>{result.title}</h1>
-      ))} */}
-      {trailsList}
+    <div id='search-results'>
+      <h1>Found adventures</h1>
+      <div id='trail-list'>
+        {trailsList}
+      </div>
     </div>
   );
 };

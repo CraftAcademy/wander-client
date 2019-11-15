@@ -16,7 +16,6 @@ describe('User can search for trail', () => {
     })
     cy.get('#search-results').should('contain', 'Found adventures')
     cy.get('#trail-list')
-    cy.get('#trail-list')
     .within(() => {
       cy.get('#trail_1')
         .within(() => {
