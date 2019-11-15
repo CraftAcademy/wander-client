@@ -3,8 +3,9 @@ import { NavLink } from 'react-router-dom'
 import { Menu } from 'semantic-ui-react'
 import Search from './Search'
 import logo from '../Images/logo.svg'
+import { connect } from 'react-redux'
 
-const Navbar = () => {
+const Navbar = ({ currentUser }) => {
   return (
     <>
       <Menu stackable id='navbar'>
@@ -28,6 +29,12 @@ const Navbar = () => {
             id='nav-create'
             name='Create Trail'
           />
+          <Menu.Item 
+            as={NavLink}
+            to={`/user/${currentUser.attributes.name}`}
+            id='nav-profile'
+            name='Profile'
+          />
           <Search />
           <Menu.Item
             as={NavLink}
@@ -41,4 +48,12 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+const mapStateToProps = state => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(Navbar)

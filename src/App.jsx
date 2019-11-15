@@ -9,18 +9,20 @@ import Login from './Components/Login'
 import SignUp from './Components/SignUp'
 import MapContainer from './Components/MapContainer';
 import SearchResults from './Components/SearchResults'
+import ProfilePage from './Components/ProfilePage'
 
 const App = () => {
   return (
     <>
       <Navbar />
-      <Route exact path='/' component={LandingPage} />
-      <Route exact path='/trails/:id' component={SpecificTrail} />
-      <Route exact path='/create' component={CreateTrail} />
-      <Route exact path='/search' component={SearchResults} />
+      <Route exact path='/' component={LandingPage}/>
+      <Route exact path='/trails/:id' component={SpecificTrail}/>
+      <Route exact path='/create' component={CreateTrail}/>
+      <Route exact path='/search' component={SearchResults}/>
       <Route exact path='/login' component={Login} />
       <Route exact path='/signup' component={SignUp}/>
       <Route exact path='/map' component={MapContainer}/>
+      <Route exact path='/user/:name' component={ProfilePage}/>
     </>
   )
 }
