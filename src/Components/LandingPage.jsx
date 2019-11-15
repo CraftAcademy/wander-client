@@ -31,7 +31,7 @@ class LandingPage extends Component {
     let errorMessage = <Message compact id='error-message'>{this.state.errorMessage}</Message>
 
     if (this.props.currentUser.isSignedIn) {
-      welcomeMessage = <Message id="welcome-message">Hello wanderer {this.props.currentUser.attributes.name}</Message>
+      welcomeMessage = <div id="welcome-message">Hello wanderer {this.props.currentUser.attributes.name}</div>
     }
 
     if (trailsData.length !== 0) {
