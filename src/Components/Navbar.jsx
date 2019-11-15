@@ -21,26 +21,26 @@ const Navbar = ({ currentUser }) => {
             as={NavLink}
             to='/map'
             id='nav-map'
-            name='Map'
+            name='adventure map'
           />
           <Menu.Item 
             as={NavLink}
             to='/create'
             id='nav-create'
-            name='Create Trail'
+            name='create your adventure'
           />
           <Menu.Item 
             as={NavLink}
             to={`/user/${currentUser.attributes.name}`}
             id='nav-profile'
-            name='Profile'
+            name='profile'
           />
           <Search />
           <Menu.Item
             as={NavLink}
             to='/login'
             id='nav-login'
-            name='Login'
+            name='login'
           />
         </Menu.Menu>
       </Menu>
