@@ -12,7 +12,8 @@ class CreateTrail extends Component {
     intensity: 1,
     image: '',
     responseMessage: '',
-    errorMessage: ''
+    errorMessage: '',
+    coordinates: []
   }
 
   inputHandler = (e) => {
@@ -27,9 +28,16 @@ class CreateTrail extends Component {
     })
   }
 
+  dropMarkerHandler = e => {
+    debugger
+    this.setState({
+      coordinates: e.target.value
+    })
+  }
+
   submitTrailHandler = async () => {
-    const { title, description, extra, location, duration, intensity, image } = this.state
-    let response = await submitTrail(title, description, extra, location, duration, intensity, image)
+    const { title, description, extra, location, duration, intensity, image, coordinates } = this.state
+    let response = await submitTrail(title, description, extra, location, duration, intensity, image, coordinates)
 
     if (response.error_message) {
       this.setState({
@@ -61,6 +69,7 @@ class CreateTrail extends Component {
         inputHandler={this.inputHandler}
         submitTrailHandler={this.submitTrailHandler}
         onAvatarDropHandler={this.onAvatarDropHandler}
+        dropMarkerHandler={this.dropMarkerHandler}
       />
     )
 

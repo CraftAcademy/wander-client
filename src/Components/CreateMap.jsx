@@ -3,7 +3,7 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 
 class CreateMap extends Component {
   state = {
-    trails: [],
+    coordinates: [],
     errorMessage: ''
   }
 
@@ -11,13 +11,13 @@ class CreateMap extends Component {
     debugger
     const lat = clickEvent.latLng.lat()
     const lng = clickEvent.latLng.lng()
-    const trailsCopy = [...this.state.trails]
-    trailsCopy.push({title: '', latitude: lat, longitude: lng})
-    this.setState({trails: trailsCopy})
+    const trailsCopy = [...this.state.coordinates]
+    trailsCopy.push({latitude: lat, longitude: lng})
+    this.setState({coordinates: trailsCopy})
   }
 
   render() {
-    let trailsData = this.state.trails
+    let trailsData = this.state.coordinates
 
     const style = {
       width: '80%',
@@ -37,13 +37,13 @@ class CreateMap extends Component {
             lng: 10.0686
           }}
           onClick={this.mapClicked}
+          onChange={this.props.dropMarkerHandler}
         >
           {trailsData.map(trail => {
           return(
             <Marker 
               id={`trail_${trail.id}`}
               key={trail.id}
-              title={trail.title}
               position={{
                 lat: trail.latitude, 
                 lng: trail.longitude

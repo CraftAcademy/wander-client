@@ -52,7 +52,9 @@ const CreateTrailForm = (props) => {
             singleImage={true}
           />
         </div>
-        <CreateMap />
+        <CreateMap 
+          dropMarkerHandler={props.dropMarkerHandler}
+        />
         <div>
           <Button id='submit-trail' onClick={props.submitTrailHandler}>Submit Trail</Button>
         </div>
