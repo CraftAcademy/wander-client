@@ -1,11 +1,26 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { Container } from 'semantic-ui-react'
 
-function ProfilePage() {
+function ProfilePage({ currentUser }) {
   return (
     <>
-      <p>Hello</p>
+      <Container>
+        <h1 id='user-name'>{currentUser.attributes.name}</h1>
+        <h3 id='user-email'>{currentUser.attributes.uid}</h3>
+      </Container>
     </>
   )
 }
 
-export default ProfilePage
+
+
+const mapStateToProps = state => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(ProfilePage)
