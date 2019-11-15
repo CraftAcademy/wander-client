@@ -65,10 +65,11 @@ class LandingPage extends Component {
             {sarek}
             <div className='content-image'>
               <div className='content'>
-                <h2>Welcome...</h2>
+                <h1>Welcome...</h1>
               </div>
               <div className='content2'>
-                <p>North of Sweden</p>
+                <p>Sarek National Park, Sweden</p>
+                <p>Taken by Arto Marttinen</p>
               </div>
             </div>
           </div>
