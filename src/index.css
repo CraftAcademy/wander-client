@@ -86,3 +86,12 @@ body {
 .signup-message {
   margin: 17px !important;
 }
+
+#image-jungle {
+  object-fit: cover;
+  width: 100%;
+  object-position: -20% 1;
+}
+
+.pic-text {
+}
