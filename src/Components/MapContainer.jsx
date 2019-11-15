@@ -50,17 +50,16 @@ class MapContainer extends Component {
         >
         {trailsData.map(trail => {
           return(
-            
-              <Marker 
-                id={`trail_${trail.id}`}
-                key={trail.id}
-                title={trail.title}
-                position={{
-                  lat: trail.latitude, 
-                  lng: trail.longitude
-                }}
-                onClick={() => this.props.history.push(`/trails/${trail.id}`)}
-              /> 
+            <Marker 
+              id={`trail_${trail.id}`}
+              key={trail.id}
+              title={trail.title}
+              position={{
+                lat: trail.latitude, 
+                lng: trail.longitude
+              }}
+              onClick={() => this.props.history.push(`/trails/${trail.id}`)}
+            /> 
           )
         })}
         </Map>

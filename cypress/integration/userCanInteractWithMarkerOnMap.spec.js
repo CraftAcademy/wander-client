@@ -10,9 +10,6 @@ describe('User can interact with marker on map', () => {
       .within(() => {
         cy.get('#nav-map').click()
       })
-    for(let n = 0; n < 11; n++){
-      cy.get('.gm-style > .gmnoprint > .gmnoprint > div > .gm-control-active:nth-child(3)').click()
-    }
   })
 
   it('and see title', () => {
