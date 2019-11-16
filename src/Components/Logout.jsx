@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react'
 import { signOutUser } from '../state/actions/reduxTokenAuthConfig'
 import { connect } from 'react-redux'
