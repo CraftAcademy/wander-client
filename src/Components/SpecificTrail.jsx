@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
-import { Container, Grid, Header, Divider, Image, Button } from 'semantic-ui-react'
+import { Container, Grid, Header, Divider, Image } from 'semantic-ui-react'
 
 class SpecificTrail extends Component {
   state = {
