@@ -4,7 +4,7 @@ import { Menu } from 'semantic-ui-react'
 import Search from './Search'
 import logo from '../Images/logo.svg'
 import { connect } from 'react-redux'
-
+import Logout from './Logout'
 const Navbar = ({ currentUser }) => {
   return (
     <>
@@ -40,7 +40,10 @@ const Navbar = ({ currentUser }) => {
             />
           )}
           <Search />
-          {!currentUser.isSignedIn && (
+
+          {currentUser.isSignedIn ? (
+            <Logout />
+          ) : (
             <Menu.Item
               as={NavLink}
               to='/login'
