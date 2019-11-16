@@ -23,6 +23,7 @@ describe('User can search for trail', () => {
           cy.get('#description_1').should('contain', 'A fast trail for fast people')
           cy.get('#extra_1').should('contain', 'You are not prepared for the speed')
           cy.get('#location_1').should('contain', 'Bollmora')
+          cy.get('#continent_1').should('contain', 'Europe')
           cy.get('#duration_1').should('contain', '10 minutes')
           cy.get('#intensity_1').should('contain', '5')
         })
