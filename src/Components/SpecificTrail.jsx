@@ -45,6 +45,7 @@ class SpecificTrail extends Component {
                   <h5 id={`extra_${trail.id}`}>{trail.extra}</h5>
                 <Divider />
                   <h6 id={`location_${trail.id}`}>{trail.location}</h6>
+                  <h6 id={`continent_${trail.id}`}>{trail.continent}</h6>
                   <h6 id={`duration_${trail.id}`}>{trail.duration}</h6>
                   <h6 id={`intensity_${trail.id}`}>{trail.intensity}</h6>
               </Grid.Column>
