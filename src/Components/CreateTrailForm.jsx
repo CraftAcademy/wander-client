@@ -11,19 +11,19 @@ const CreateTrailForm = (props) => {
     <div id='create-trail-wrapper'>
       <Form id='trail-form' size='small'>
         <div>
-          <Input fluid name='title' id='title-input' className='input-trail' placeholder='Title' onChange={props.inputHandler} />
+          <Form.Input fluid name='title' id='title-input' className='input-trail' placeholder='Title' onChange={props.inputHandler} />
         </div>
         <div>
           <TextArea style={{ minHeight: 200 }} id='description-input' className='input-trail' name='description' placeholder='Description' onChange={props.inputHandler} />
         </div>
         <div>
-          <Input fluid id='extra-input' className='input-trail' name='extra' placeholder='Good to know' onChange={props.inputHandler} />
+          <Form.Input fluid id='extra-input' className='input-trail' name='extra' placeholder='Good to know' onChange={props.inputHandler} />
         </div>
         <div>
-          <Input fluid id='location-input' className='input-trail' name='location' placeholder='Location' onChange={props.inputHandler} />
+          <Form.Input fluid id='location-input' className='input-trail' name='location' placeholder='Location' onChange={props.inputHandler} />
         </div>
         <div>
-          <Input fluid id='duration-input' className='input-trail' name='duration' placeholder='Duration' onChange={props.inputHandler} />
+          <Form.Input fluid id='duration-input' className='input-trail' name='duration' placeholder='Duration' onChange={props.inputHandler} />
         </div>
         <div>
           <div id='rating'>Rating: { intensity }</div>

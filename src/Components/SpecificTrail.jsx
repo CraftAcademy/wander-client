@@ -32,7 +32,7 @@ class SpecificTrail extends Component {
     if (trail) {
       singleTrail = (
         <>
-          <Container textAlign='justified' id='single-trail'>
+          <Container textAlign='justified' id='specific-trail'>
             <Grid columns={2}>
               <Grid.Row>
                 <Grid.Column width={5}>
@@ -47,19 +47,19 @@ class SpecificTrail extends Component {
                   <p className='single-description' id={`description_${trail.id}`}>{trail.description}</p>
                   <div className='single-trail'>
                     <h3>Good to know:</h3>
-                    <p className='single-context' id={`extra_${trail.id}`}>{trail.extra}</p>
+                    <p className='single-content' id={`extra_${trail.id}`}>{trail.extra}</p>
                   </div>
                   <div className='single-trail'>
                     <h3>Location:</h3>
-                    <p className='single-context' id={`location_${trail.id}`}>{trail.location}</p>
+                    <p className='single-content' id={`location_${trail.id}`}>{trail.location}</p>
                   </div>
                   <div className='single-trail'>
                     <h3>Duration:</h3>
-                    <p className='single-context' id={`duration_${trail.id}`}>{trail.duration} min</p>
+                    <p className='single-content' id={`duration_${trail.id}`}>{trail.duration} min</p>
                   </div>
                   <div className='single-trail'>
                     <h3>Intensity Level:</h3>
-                    <p className='single-context' id={`intensity_${trail.id}`}>{trail.intensity}</p>
+                    <p className='single-content' id={`intensity_${trail.id}`}>{trail.intensity}</p>
                   </div>
               </Grid.Column>
               </Grid.Row>
