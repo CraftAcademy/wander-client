@@ -32,7 +32,7 @@ class Logout extends Component {
     if (this.props.currentUser.isSignedIn) {
       logoutButton = (
         <Menu.Item
-          id='logout'
+          id='nav-logout'
           as={NavLink}
           to='/'
           onClick={signOut}
