@@ -16,7 +16,8 @@ describe('User can create a trail', () => {
         cy.get('#title-input').type('Höga Kusten trail')
         cy.get('#description-input').type('Sweden’s only long-distance coastal trail passes through a land that is still rising.')
         cy.get('#extra-input').type('Located close to the E4 highway, it’s also easy to access by car.')
-        cy.get('#location-input').type('Hornöberget')
+        cy.get('#location-input').type('Hornöberget'),
+        cy.get('#continent-input').select('Europe')
         cy.get('#duration-input').type('600')
         cy.get('input[type=range]').invoke('val', 4).trigger('input')
         cy.get('#rating').should('contain', 'Rating: 4')
@@ -51,6 +52,7 @@ describe('User can create a trail', () => {
         cy.get('#description-input').type('Sweden')
         cy.get('#extra-input').type('Located close to the E4 highway, it’s also easy to access by car.')
         cy.get('#location-input').type('Hornöberget')
+        cy.get('#continent-input').select('Europe')
         cy.get('#duration-input').type('600')
         cy.get('input[type=range]').invoke('val', 4).trigger('input')
         cy.get('#rating').should('contain', 'Rating: 4')

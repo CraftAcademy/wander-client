@@ -22,6 +22,16 @@ const CreateTrailForm = (props) => {
           <Input fluid id='location-input' name='location' placeholder='Location' onChange={props.inputHandler} />
         </div>
         <div>
+          <select id='continent-input' type='input' placeholder='Select Continent' name='continents' onChange={props.inputHandler}>
+            <option value='Asia'>Asia</option>
+            <option value='North America'>North America</option>
+            <option value='Europe'>Europe</option>
+            <option value='South America'>South America</option>
+            <option value='Africa'>Africa</option>
+            <option value='Australia'>Australia</option>
+          </select>
+        </div>
+        <div>
           <Input fluid id='duration-input' name='duration' placeholder='Duration' onChange={props.inputHandler} />
         </div>
         <div>
