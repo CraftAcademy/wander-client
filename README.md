@@ -3,6 +3,10 @@
 Desktop application which based on what local you choose shows you possible trails, information about them, photos and maps.
 Through the application you can choose your next place to wander and explore.
 
+## Deployment URL
+[Frontend Deployment](https://wanderproject.netlify.com/)
+[Backend Deployment](https://c-wander-api.herokuapp.com/)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
