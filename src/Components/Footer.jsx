@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-function Footer() {
+const Footer = () => {
   return (
     <>
       <footer id='footer'>
