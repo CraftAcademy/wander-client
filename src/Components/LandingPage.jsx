@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { getTrails } from '../Modules/trailsData'
 import { Card, Container, Image, Message } from 'semantic-ui-react'
 import Sarek from '../Images/sarek.jpg'
+import AsiaJungle from '../Images/asia-jungle.jpg'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -27,11 +28,12 @@ class LandingPage extends Component {
   render() {
     let trailsData = this.state.trails
     let trailsList, welcomeMessage
-    let sarek = <img src={Sarek} alt='Sarek national park' width='1920' height='1080'/>
-    let errorMessage = <Message compact id='error-message'>{this.state.errorMessage}</Message>
+    let sarek = <img src={Sarek} id='image' alt='Sarek national park' width='1800' height='800'/>
+    let asiaJungle = <img src={AsiaJungle} id='image-jungle' alt='Asia Jungle' width='1800' height='700'/>
+    let errorMessage = <div compact id='error-message'>{this.state.errorMessage}</div>
 
     if (this.props.currentUser.isSignedIn) {
-      welcomeMessage = <Message id="welcome-message">Hello wanderer {this.props.currentUser.attributes.name}</Message>
+      welcomeMessage = <div id="welcome-message">Hello wanderer {this.props.currentUser.attributes.name}</div>
     }
 
     if (trailsData.length !== 0) {
@@ -59,12 +61,29 @@ class LandingPage extends Component {
 
     return (
       <>
-        {welcomeMessage}
-        {sarek}
+        <div className='page'>
+          <div className='image-page'>
+            {sarek}
+            <div className='content-image'>
+              <div className='content'>
+                <h1>{welcomeMessage}</h1>
+              </div>
+              <div className='content2'>
+                <p>Sarek National Park, Sweden</p>
+              </div>
+            </div>
+          </div>
+        </div>
         <Container id='trail-list'>
           {trailsList}
           {errorMessage}
         </Container>
+        <div>
+          {asiaJungle}
+          <div className='pic-text'>
+            <p>Asian Jungle</p>
+          </div>
+        </div>
       </>
     )
   }
