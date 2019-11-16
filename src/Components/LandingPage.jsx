@@ -4,6 +4,7 @@ import { Card, Container, Image, Message } from 'semantic-ui-react'
 import Sarek from '../Images/sarek.jpg'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Footer from './Footer'
 
 class LandingPage extends Component {
   state = {
@@ -65,6 +66,7 @@ class LandingPage extends Component {
           {trailsList}
           {errorMessage}
         </Container>
+        <Footer />
       </>
     )
   }
