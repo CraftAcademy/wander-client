@@ -1,4 +1,29 @@
 describe('User can create a trail', () => {
+  beforeEach(() => {
+    cy.route({
+      method: 'POST',
+      url: 'http://localhost:3000/auth/sign_in',
+      response: 'fixture:successful_user_login.json',
+      status: 200
+    })
+    cy.get('#navbar')
+      .within(() => {
+        cy.get('#nav-login').click()
+      })
+    cy.get('#login-form')
+      .within(() => {
+        cy.get('#email-input').type('user@mail.com')
+        cy.get('#password-input').type('password')
+      })
+    cy.get('#submit-login-form').click()
+    cy.get('#welcome-message').should('contain', 'Hello wanderer name')
+
+    cy.get('#navbar')
+    .within(() => {
+      cy.get('#nav-create').click()
+    })
+  });
+  
   it('successully creates a trail', () => {
     cy.route({
       method: 'POST',
@@ -6,11 +31,7 @@ describe('User can create a trail', () => {
       response: 'fixture:successfully_created_trail.json',
       status: 200
     })
-
-    cy.get('#navbar')
-    .within(() => {
-      cy.get('#nav-create').click()
-    })
+    
     cy.get('#trail-form')
       .within(() => {
         cy.get('#title-input').type('Höga Kusten trail')
@@ -41,10 +62,6 @@ describe('User can create a trail', () => {
       status: 400
     })
 
-    cy.get('#navbar')
-    .within(() => {
-      cy.get('#nav-create').click()
-    })
     cy.get('#trail-form')
       .within(() => {
         cy.get('#title-input').type('Höga Kusten trail')
