@@ -8,6 +8,7 @@ class CreateTrail extends Component {
     description: '',
     extra: '',
     location: '',
+    continent: '',
     duration: '',
     intensity: 1,
     image: '',
@@ -28,8 +29,8 @@ class CreateTrail extends Component {
   }
 
   submitTrailHandler = async () => {
-    const { title, description, extra, location, duration, intensity, image } = this.state
-    let response = await submitTrail(title, description, extra, location, duration, intensity, image)
+    const { title, description, extra, location, continent, duration, intensity, image } = this.state
+    let response = await submitTrail(title, description, extra, location, continent, duration, intensity, image)
 
     if (response.error_message) {
       this.setState({
