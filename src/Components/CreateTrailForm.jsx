@@ -24,11 +24,11 @@ const CreateTrailForm = (props) => {
         <div>
           <select id='continent-input' type='input' placeholder='Select Continent' name='continents' onChange={props.inputHandler}>
             <option value='Asia'>Asia</option>
-            <option value='North America'>North America</option>
-            <option value='Europe'>Europe</option>
-            <option value='South America'>South America</option>
             <option value='Africa'>Africa</option>
             <option value='Australia'>Australia</option>
+            <option value='Europe'>Europe</option>
+            <option value='North America'>North America</option>
+            <option value='South America'>South America</option>
           </select>
         </div>
         <div>
