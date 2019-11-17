@@ -5,12 +5,14 @@ const config = {
   userAttributes: {
     uid: 'uid',
     email: 'email',
-    name: 'name'
+    name: 'name',
+    image: 'image'
   },
   userRegistrationAttributes: {
     uid: 'uid',
     email: 'email',
-    name: 'name'
+    name: 'name',
+    image: 'image'
   }
 }
 

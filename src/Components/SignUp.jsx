@@ -10,7 +10,8 @@ class SignUp extends Component {
     name: '',
     password: '',
     password_confirmation: '',
-    errorMessage: ''
+    errorMessage: '',
+    image: ''
   }
 
   inputChangeHandler = e => {
@@ -19,10 +20,16 @@ class SignUp extends Component {
     })
   }
 
+  onAvatarDropHandler = (pictureFiles, pictureDataURLs) => {
+    this.setState({
+      image: pictureDataURLs
+    })
+  }
+
   handleSignup = () => {
     const { registerUser } = this.props;
-    const { email, name, password, password_confirmation } = this.state;
-    registerUser({ email, name, password, password_confirmation })
+    const { email, name, password, password_confirmation, image } = this.state;
+    registerUser({ email, name, password, password_confirmation, image })
       .then(
         () => {if (this.props.currentUser.isSignedIn) {
           this.props.history.push('/')
@@ -45,6 +52,7 @@ class SignUp extends Component {
         <SignUpForm 
           handleSignup={this.handleSignup}
           inputChangeHandler={this.inputChangeHandler}
+          onAvatarDropHandler={this.onAvatarDropHandler}
         />
         {errorMessage}
       </Container>
