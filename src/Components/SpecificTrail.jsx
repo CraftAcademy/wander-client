@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
 import { Container, Grid, Header, Divider, Image } from 'semantic-ui-react'
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 
 class SpecificTrail extends Component {
   state = {
@@ -26,8 +27,40 @@ class SpecificTrail extends Component {
   }
 
   render() {
-    let singleTrail, backButton
+    let singleTrail, backButton, trailMap
     const trail = this.state.trail
+    const style = {
+      width: '80%',
+      height: '80%',
+      left: '10%',
+      borderRadius: '8px'
+    }
+
+    if (trail) {
+      trailMap = (
+        <>
+          <Map 
+            google={this.props.google} 
+            zoom={5}
+            style={style}
+            center={{
+              lat: trail.latitude,
+              lng: trail.longitude
+            }}
+          >
+            <Marker
+              id={`trail_${trail.id}`}
+              key={trail.id}
+              title={trail.title}
+              position={{
+                lat: trail.latitude, 
+                lng: trail.longitude
+              }}
+            />
+          </Map>
+        </>
+      )
+    }
 
     if (trail) {
       singleTrail = (
@@ -83,6 +116,7 @@ class SpecificTrail extends Component {
 
     return (
       <>
+        {trailMap}
         {singleTrail}
         {backButton}
       </>
@@ -90,4 +124,6 @@ class SpecificTrail extends Component {
   }
 }
 
-export default SpecificTrail
+export default GoogleApiWrapper({
+  apiKey:(process.env.REACT_APP_API_KEY)
+})(SpecificTrail)
