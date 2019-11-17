@@ -108,6 +108,32 @@ class LandingPage extends Component {
         </div>
       </div>
 
+      <Container>
+        <div id='content-blurb'>
+          <label id='content-label'>Explore Jeff</label>
+          <br />
+          <br />
+          <p>Hello My Name Jeff I like Hello My Name Jeff I like 
+          Hello My Name Jeff I like 
+          Hello My Name Jeff I like 
+          Hello My Name Jeff I like 
+          Hello My Name Jeff I like 
+          Hello My Name Jeff I like 
+          Hello My Name Jeff I like 
+          Hello My Name Jeff I like 
+          Hello My Name Jeff I like 
+          Hello My Name Jeff I like 
+          Hello My Name Jeff I like 
+          Hello My Name Jeff I like 
+          Hello My Name Jeff I like 
+          Hello My Name Jeff I like 
+          Hello My Name Jeff I like 
+          Hello My Name Jeff I like 
+          Hello My Name Jeff I like 
+          </p>
+        </div>
+      </Container>
+
       <div className='na-page'>
         <div className='na-image'>
           {yellowstone}
@@ -126,6 +152,15 @@ class LandingPage extends Component {
         </div>
       </div>
 
+      <Container>
+        <div id='content-blurb'>
+          <label id='content-label'>Explore Jeff</label>
+          <br />
+          <br />
+          <p>Hello My Name Jeff I like </p>
+        </div>
+      </Container>
+
       <div className='eu-page'>
         <div className='eu-image'>
           {basteiBridge}
@@ -143,6 +178,15 @@ class LandingPage extends Component {
             </div>
         </div>
       </div>
+
+      <Container>
+        <div id='content-blurb'>
+          <label id='content-label'>Explore Jeff</label>
+          <br />
+          <br />
+          <p>Hello My Name Jeff I like </p>
+        </div>
+      </Container>
       </>
     )
   }
