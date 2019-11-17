@@ -5,7 +5,7 @@ describe('User can view a list of trails', () => {
         cy.get('#trail_1')
           .within(() => {
             cy.get('#title_1').should('contain', 'Bollmora speed trail')
-            cy.get('#description_1').should('contain', 'A fast trail for fast people')
+            cy.get('#description_1').should('contain', 'A fast trail for fast')
             cy.get('#extra_1').should('contain', 'You are not prepared for the speed')
             cy.get('#location_1').should('contain', 'Bollmora')
             cy.get('#continent_1').should('contain', 'Asia')
