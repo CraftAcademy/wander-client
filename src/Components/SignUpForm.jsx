@@ -23,7 +23,7 @@ const SignUpForm = (props) => {
         <div>
           <ImageUploader
             className='image-input'
-            buttonText={'Upload your snapshots'}
+            buttonText={'Upload your profile picture'}
             withPreview
             withIcon
             withLabel={false}
