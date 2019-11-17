@@ -100,6 +100,10 @@ body {
   height: 400px;
 }
 
+#map-header {
+  font-size: 30px!important;
+}
+
 .asia-page {
   position: relative;
 }
@@ -301,4 +305,32 @@ footer {
   margin-top: 0;
   margin-bottom: 0;
   text-align: center;
+}
+
+.single-trail {
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.single-description {
+  font-size: 20px;
+}
+
+.single-content {
+  font-size: 16px;
+}
+
+#search-input {
+  margin-right: 15px;
+}
+
+.ui.menu {
+  border-radius: 0 !important;
+  margin-bottom: 0 !important;
+  height: 4rem !important;
+  font-size: 18px !important;
+}
+
+#specific-trail {
+  margin-top: 4rem;
 }
