@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Input, Button, Header } from 'semantic-ui-react'
+import ImageUploader from 'react-images-upload'
 
 const SignUpForm = (props) => {
   return (
@@ -18,6 +19,19 @@ const SignUpForm = (props) => {
         </div>
         <div>
           <Input id='password-confirmation-input' className='input' name='password_confirmation' placeholder='Password Confirmation' onChange={props.inputChangeHandler} />
+        </div>
+        <div>
+          <ImageUploader
+            className='image-input'
+            buttonText={'Upload your snapshots'}
+            withPreview
+            withIcon
+            withLabel={false}
+            onChange={props.onAvatarDropHandler}
+            imgExtension={[".jpg", ".png"]}
+            maxFileSize={5242880}
+            singleImage={true}
+          />
         </div>
         <div>
           <Button id="submit-signup-form" className='submit' onClick={props.handleSignup}>Submit</Button>

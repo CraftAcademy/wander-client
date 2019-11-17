@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Input, TextArea, Form, Rating, Header } from 'semantic-ui-react'
+import { Button, TextArea, Form, Rating, Header } from 'semantic-ui-react'
 import ImageUploader from 'react-images-upload'
 
 const CreateTrailForm = (props) => {
