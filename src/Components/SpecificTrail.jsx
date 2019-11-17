@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
-import { Container, Grid, Header, Divider, Image, Button } from 'semantic-ui-react'
+import { Container, Grid, Header, Divider, Image } from 'semantic-ui-react'
 
 class SpecificTrail extends Component {
   state = {
@@ -32,23 +32,41 @@ class SpecificTrail extends Component {
     if (trail) {
       singleTrail = (
         <>
-          <Container id='single-trail'>
-            <Grid centered columns={2}>
-              <Grid.Column width={12}>
-                <Header as='h2' id={`title_${trail.id}`}>{trail.title}</Header>
+          <Container textAlign='justified' id='specific-trail'>
+            <Grid columns={2}>
+              <Grid.Row>
+                <Grid.Column width={5}>
                 <Image
                   id={`image_${trail.id}`}
                   src={trail.image}
                 />
+                </Grid.Column>
+              <Grid.Column>
+                <Header as='h2' id={`title_${trail.id}`}>{trail.title}</Header>
                 <Divider />
-                  <h4 id={`description_${trail.id}`}>{trail.description}</h4>
-                  <h5 id={`extra_${trail.id}`}>{trail.extra}</h5>
-                <Divider />
-                  <h6 id={`location_${trail.id}`}>{trail.location}</h6>
-                  <h6 id={`continent_${trail.id}`}>{trail.continent}</h6>
-                  <h6 id={`duration_${trail.id}`}>{trail.duration}</h6>
-                  <h6 id={`intensity_${trail.id}`}>{trail.intensity}</h6>
+                  <p className='single-description' id={`description_${trail.id}`}>{trail.description}</p>
+                  <div className='single-trail'>
+                    <h3>Good to know:</h3>
+                    <p className='single-content' id={`extra_${trail.id}`}>{trail.extra}</p>
+                  </div>
+                  <div className='single-trail'>
+                    <h3>Location:</h3>
+                    <p className='single-content' id={`location_${trail.id}`}>{trail.location}</p>
+                  </div>
+                  <div className='single-trail'>
+                    <h3>Continent:</h3>
+                    <p className='single-content' id={`continent_${trail.id}`}>{trail.continent}</p>
+                  </div> 
+                  <div className='single-trail'>
+                    <h3>Duration:</h3>
+                    <p className='single-content' id={`duration_${trail.id}`}>{trail.duration} min</p>
+                  </div>
+                  <div className='single-trail'>
+                    <h3>Intensity Level:</h3>
+                    <p className='single-content' id={`intensity_${trail.id}`}>{trail.intensity}</p>
+                  </div>
               </Grid.Column>
+              </Grid.Row>
             </Grid>
           </Container>
         </>

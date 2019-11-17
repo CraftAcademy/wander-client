@@ -10,7 +10,7 @@ describe('User can view a specific trail', () => {
       .within(() => {
         cy.get('#card_1').click()
       })
-    cy.get('#single-trail')
+    cy.get('#specific-trail')
       .within(() => {
         cy.get('#title_1').should('contain', 'Åland lazy trail')
         cy.get('#description_1').should('contain', 'A slow trail for fat people')
