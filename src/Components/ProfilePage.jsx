@@ -6,13 +6,13 @@ import { NavLink } from 'react-router-dom'
 
 const ProfilePage = ({ currentUser }) => {
   const [bookmarks, setBookmarks] = useState([])
-  const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
     const getBookmarks = async () => {
       try {
+        debugger
         let response = await axios.get('http://localhost:3000/v1/bookmarks')
-        setBookmarks(response.data)
+        setBookmarks(response.data.data)
       } catch(error) {
         console.log(error)
       }
@@ -50,7 +50,6 @@ const ProfilePage = ({ currentUser }) => {
                   </NavLink>
           
         })}
-      {errorMessage}
     </Container>
   )
 }

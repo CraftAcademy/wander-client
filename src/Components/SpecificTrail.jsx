@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
-import { Container, Grid, Header, Divider, Image } from 'semantic-ui-react'
+import { Container, Grid, Header, Divider, Image, Icon } from 'semantic-ui-react'
+import axios from 'axios'
+import { connect } from 'react-redux'
 
 class SpecificTrail extends Component {
   state = {
@@ -25,6 +27,18 @@ class SpecificTrail extends Component {
     this.props.history.goBack()
   }
 
+  bookMark = async () => {
+    debugger
+    try {
+      await axios.post('http://localhost:3000/v1/bookmarks', {
+        trail_id: this.state.trail.id
+      })
+      this.props.history.push(`/user/${this.props.currentUser.attributes.name}`)
+    } catch (error) {
+      return error.response.data.error_message
+    }
+  }
+
   render() {
     let singleTrail, backButton
     const trail = this.state.trail
@@ -32,18 +46,19 @@ class SpecificTrail extends Component {
     if (trail) {
       singleTrail = (
         <>
+          <Icon  size='large' name='bookmark' onClick={this.bookMark}/>
           <Container textAlign='justified' id='specific-trail'>
             <Grid columns={2}>
               <Grid.Row>
                 <Grid.Column width={5}>
-                <Image
-                  id={`image_${trail.id}`}
-                  src={trail.image}
-                />
+                  <Image
+                    id={`image_${trail.id}`}
+                    src={trail.image}
+                  />
                 </Grid.Column>
-              <Grid.Column>
-                <Header as='h2' id={`title_${trail.id}`}>{trail.title}</Header>
-                <Divider />
+                <Grid.Column>
+                  <Header as='h2' id={`title_${trail.id}`}>{trail.title}</Header>
+                  <Divider />
                   <p className='single-description' id={`description_${trail.id}`}>{trail.description}</p>
                   <div className='single-trail'>
                     <h3>Good to know:</h3>
@@ -65,7 +80,7 @@ class SpecificTrail extends Component {
                     <h3>Intensity Level:</h3>
                     <p className='single-content' id={`intensity_${trail.id}`}>{trail.intensity}</p>
                   </div>
-              </Grid.Column>
+                </Grid.Column>
               </Grid.Row>
             </Grid>
           </Container>
@@ -90,4 +105,12 @@ class SpecificTrail extends Component {
   }
 }
 
-export default SpecificTrail
+const mapStateToProps = state => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(SpecificTrail)
