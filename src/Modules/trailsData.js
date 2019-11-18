@@ -28,6 +28,7 @@ const submitTrail = async (title, description, extra, location, duration, intens
       description: description,
       extra: extra,
       location: location,
+      continent: continent,
       duration: duration,
       intensity: intensity,
       image: image,

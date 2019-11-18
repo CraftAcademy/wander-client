@@ -8,6 +8,7 @@ class CreateTrail extends Component {
     description: '',
     extra: '',
     location: '',
+    continent: '',
     duration: '',
     intensity: 1,
     image: '',

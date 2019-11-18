@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Input, TextArea, Form, Rating, Container } from 'semantic-ui-react'
+import { Button, Header, TextArea, Form, Rating, Container } from 'semantic-ui-react'
 import ImageUploader from 'react-images-upload'
 import CreateMap from './CreateMap'
 
@@ -8,22 +8,33 @@ const CreateTrailForm = props => {
 
   return (
     <>
-      <h2>Share your adventure</h2>
+    <Header as='h2' textAlign='center'>Share your adventure with the world!</Header>
+    <div id='create-trail-wrapper'>
       <Form id='trail-form' size='small'>
         <div>
-          <Input name='title' id='title-input' placeholder='Title' onChange={props.inputHandler} />
+          <Form.Input fluid name='title' id='title-input' className='input-trail' placeholder='Title' onChange={props.inputHandler} />
         </div>
         <div>
-          <TextArea style={{ minHeight: 200 }} id='description-input' name='description' placeholder='Description' onChange={props.inputHandler} />
+          <TextArea style={{ minHeight: 200 }} id='description-input' className='input-trail' name='description' placeholder='Description' onChange={props.inputHandler} />
         </div>
         <div>
-          <Input fluid id='extra-input' name='extra' placeholder='Good to know' onChange={props.inputHandler} />
+          <Form.Input fluid id='extra-input' className='input-trail' name='extra' placeholder='Good to know' onChange={props.inputHandler} />
         </div>
         <div>
-          <Input fluid id='location-input' name='location' placeholder='Location' onChange={props.inputHandler} />
+          <Form.Input fluid id='location-input' className='input-trail' name='location' placeholder='Location' onChange={props.inputHandler} />
         </div>
         <div>
-          <Input fluid id='duration-input' name='duration' placeholder='Duration' onChange={props.inputHandler} />
+          <select id='continent-input' type='input' placeholder='Select Continent' name='continents' onChange={props.inputHandler}>
+            <option value='Asia'>Asia</option>
+            <option value='Africa'>Africa</option>
+            <option value='Australia'>Australia</option>
+            <option value='Europe'>Europe</option>
+            <option value='North America'>North America</option>
+            <option value='South America'>South America</option>
+          </select>
+        </div>
+        <div>
+          <Form.Input fluid id='duration-input' className='input-trail' name='duration' placeholder='Duration' onChange={props.inputHandler} />
         </div>
         <div>
           <div id='rating'>Rating: { intensity }</div>
@@ -63,6 +74,7 @@ const CreateTrailForm = props => {
           mapClicked={mapClicked}
         />
       </Form>
+      </div>
     </>
   )
 }
