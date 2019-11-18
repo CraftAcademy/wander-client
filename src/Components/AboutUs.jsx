@@ -12,7 +12,7 @@ const AboutUs = () => {
         <p>Developed in November 2019, Wander is a platform built for nature and hiking lovers across the globe that share
           a passion for adventure.</p>
           <p>Wander let's you share your favorite trails with others but also let's you discover new ones!
-          Bookmark your favorie trails, like the ones you enjoyed, and comment what you thought about that specific trail you so
+          Bookmark your favorite trails, like the ones you enjoyed, and comment what you thought about that specific trail you so
           bravely conquered!
         </p>
         <h3>Who are we?</h3>
