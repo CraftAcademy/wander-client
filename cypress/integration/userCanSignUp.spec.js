@@ -19,13 +19,12 @@ describe('User can sign up to application', () => {
         cy.get('#password-input').type('password')
         cy.get('#password-confirmation-input').type('password')
         cy.get('.image-input')
-        .within(() => {
-          const fileName = 'love.jpg'
-          cy.fixture(fileName).then(fileContent => {
-            cy.get('input[type="file"]').upload({ fileContent, fileName, mimeType: 'application/jpg' })
+          .within(() => {
+            const fileName = 'love.jpg'
+            cy.fixture(fileName).then(fileContent => {
+              cy.get('input[type="file"]').upload({ fileContent, fileName, mimeType: 'application/jpg' })
+            })
           })
-        })
-
       })
     cy.get('#submit-signup-form').click()
     cy.get('#welcome-message').should('contain', 'Hello wanderer new name')
@@ -53,12 +52,12 @@ describe('User can not sign up to application', () => {
         cy.get('#password-input').type('wrongpassword')
         cy.get('#password-confirmation-input').type('password')
         cy.get('.image-input')
-        .within(() => {
-          const fileName = 'love.jpg'
-          cy.fixture(fileName).then(fileContent => {
-            cy.get('input[type="file"]').upload({ fileContent, fileName, mimeType: 'application/jpg' })
+          .within(() => {
+            const fileName = 'love.jpg'
+            cy.fixture(fileName).then(fileContent => {
+              cy.get('input[type="file"]').upload({ fileContent, fileName, mimeType: 'application/jpg' })
+            })
           })
-        })
     })
     cy.get('#submit-signup-form').click()
     cy.get('#error-message').should('contain', "Password confirmation doesn't match Password")
