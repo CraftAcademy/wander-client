@@ -1,21 +1,13 @@
-describe('User can search for trail', () => {
+describe('User can see trails listed by continent', () => {
   it('successfully', () => {
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/v1//search/?search=Bollmora',
-      response: 'fixture:successful_search.json',
+      url: 'http://localhost:3000/v1//search/?search=asia',
+      response: 'fixture:user_can_see _trails_listed_by_continent',
       status: 200
     })
-    cy.get('#navbar')
-    .within(() => {
-      cy.get('#nav-search')
-        .within(() => {
-          cy.get('#search-input').type('Bollmora')
-          cy.get('#search-submit').click()
-        })
-    })
-    cy.get('#search-results').should('contain', 'Found adventures')
-    cy.get('#trail-list')
+    cy.get('#asian-button').click()
+    cy.get('#continent-list')
     .within(() => {
       cy.get('#trail_1')
         .within(() => {
@@ -23,7 +15,7 @@ describe('User can search for trail', () => {
           cy.get('#description_1').should('contain', 'A fast trail for fast people')
           cy.get('#extra_1').should('contain', 'You are not prepared for the speed')
           cy.get('#location_1').should('contain', 'Bollmora')
-          cy.get('#continent_1').should('contain', 'Europe')
+          cy.get('#continent_1').should('contain', 'Asia')
           cy.get('#duration_1').should('contain', '10 minutes')
           cy.get('#intensity_1').should('contain', '5')
         })
@@ -33,22 +25,26 @@ describe('User can search for trail', () => {
           cy.get('#description_5').should('contain', 'A short trail for everyone')
           cy.get('#extra_5').should('contain', 'You are not prepared for the speed')
           cy.get('#location_5').should('contain', 'Bollmora')
-          cy.get('#continent_5').should('contain', 'Europe')
+          cy.get('#continent_5').should('contain', 'Asia')
           cy.get('#duration_5').should('contain', '5 minutes')
           cy.get('#intensity_5').should('contain', '2')
         })
     })
   })
 
-  it('unsuccessfull', () => {
-    cy.get('#navbar')
-    .within(() => {
-      cy.get('#nav-search')
-        .within(() => {
-          cy.get('#search-input').type('Bo')
-          cy.get('#search-submit').click()
-        })
-      cy.get('#search-error').should('contain', 'Please input more than two characters.')    
+  it('unsuccessfully', () => {
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/v1//search/?search=asia',
+      response: 'fixture:user_can_view_list_of_trails_unsuccessfully.json',
+      status: 400
     })
+    cy.visit('http://localhost:3001')
+    cy.get('#asian-button').click()
+    cy.get('#continent-list')
+      .within(() => {
+        cy.get('#trail_1').should('not.exist')
+      })
+    cy.get('#error-message').should('contain', 'No trails here, turn around.')
   })
 })

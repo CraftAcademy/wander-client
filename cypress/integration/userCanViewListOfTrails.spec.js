@@ -12,7 +12,7 @@ describe('User can view a list of trails', () => {
             cy.get('#duration_1').should('contain', '10 minutes')
             cy.get('#intensity_1').should('contain', '5')
           })
-      })
+    })
   })
 
   it('unsuccessfully', () => {

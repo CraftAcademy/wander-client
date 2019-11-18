@@ -103,7 +103,7 @@ class LandingPage extends Component {
                   <div className='asian-button-text'>
                     Explore Asia
                   </div>
-            </button>
+                </button>
               </div>
             </div>
         </div>
