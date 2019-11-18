@@ -14,10 +14,10 @@ const SignUpForm = (props) => {
           <Input id='name-input' className='input' name='name' placeholder='Username' onChange={props.inputChangeHandler} />
         </div>
         <div>
-          <Input id='password-input' className='input' name='password' placeholder='Password' onChange={props.inputChangeHandler} />
+          <Input id='password-input' className='input' name='password' type='password' placeholder='Password' onChange={props.inputChangeHandler} />
         </div>
         <div>
-          <Input id='password-confirmation-input' className='input' name='password_confirmation' placeholder='Password Confirmation' onChange={props.inputChangeHandler} />
+          <Input id='password-confirmation-input' className='input' name='password_confirmation' type='password' placeholder='Password Confirmation' onChange={props.inputChangeHandler} />
         </div>
         <div>
           <Button id="submit-signup-form" className='submit' onClick={props.handleSignup}>Submit</Button>
