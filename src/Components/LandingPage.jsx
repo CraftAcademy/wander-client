@@ -12,7 +12,8 @@ import Footer from './Footer'
 class LandingPage extends Component {
   state = {
     trails: [],
-    errorMessage: null
+    errorMessage: null,
+    query: ''
   }
 
   async componentDidMount() {
@@ -27,6 +28,19 @@ class LandingPage extends Component {
       })
     }
   }
+
+  getSearchResults = async () => {
+    const { query } = this.state
+    let response = await searchTrail(query)
+    if (response.error_message) {
+      this.setState({
+        errorMessage: response.error_message
+      })
+    } else {
+      this.props.history.push("/continent", { searchResults: response })
+    }
+  }
+
 
   render() {
     let trailsData = this.state.trails
@@ -99,7 +113,7 @@ class LandingPage extends Component {
                 <p>Asian Jungle</p>
               </div>
               <div className='asia-content-button'>
-                <button id='asian-button'>
+                <button id='asian-button' onClick={this.setState({query: 'asia'})}>
                   <div className='asian-button-text'>
                     Explore Asia
                   </div>
@@ -143,7 +157,7 @@ class LandingPage extends Component {
                 <p>Yellowstone National Park, U.S.A</p>
               </div>
               <div className='na-content-button'>
-                <button id='na-button'>
+                <button id='na-button' onClick={this.setState({query: 'north america'})}>
                   <div className='na-button-text'>
                     Explore North America
                   </div>
@@ -170,7 +184,7 @@ class LandingPage extends Component {
                 <p>Bastei Bridge, Switzerland / Germany</p>
               </div>
               <div className='eu-content-button'>
-                <button id='eu-button'>
+                <button id='eu-button' onClick={this.setState({query: 'europe'})}>
                   <div className='eu-button-text'>
                     Explore Europe
                   </div>
