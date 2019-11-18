@@ -30,9 +30,9 @@ class LandingPage extends Component {
     }
   }
 
-  onClickHandler = (e) => {
+  onClickHandler = (continent) => {
     this.setState({
-      query: e.target.value
+      query: continent
     })
     this.getContinentResults()
   }
@@ -121,7 +121,7 @@ class LandingPage extends Component {
                 <p>Asian Jungle</p>
               </div>
               <div className='asia-content-button'>
-                <button id='asian-button' value='asia' onClick={this.onClickHandler}>
+                <button id='asian-button' onClick={() => this.onClickHandler('asia')}>
                   <div className='asian-button-text'>
                     Explore Asia
                   </div>
@@ -165,7 +165,7 @@ class LandingPage extends Component {
                 <p>Yellowstone National Park, U.S.A</p>
               </div>
               <div className='na-content-button'>
-                <button id='na-button' name='north america' onClick={this.onClickHandler}>
+                <button id='na-button' onClick={() => this.onClickHandler('north america')}>
                   <div className='na-button-text'>
                     Explore North America
                   </div>
@@ -192,7 +192,7 @@ class LandingPage extends Component {
                 <p>Bastei Bridge, Switzerland / Germany</p>
               </div>
               <div className='eu-content-button'>
-                <button id='eu-button' name='europe' onClick={this.onClickHandler}>
+                <button id='eu-button' onClick={() => this.onClickHandler('europe')}>
                   <div className='eu-button-text'>
                     Explore Europe
                   </div>
