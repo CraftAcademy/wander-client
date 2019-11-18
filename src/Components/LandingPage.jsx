@@ -29,7 +29,16 @@ class LandingPage extends Component {
     }
   }
 
-  getSearchResults = async () => {
+  onClickHandler = e => {
+    this.setState({
+      query: e.target.name
+    })
+      .then(
+        this.getContinentResults()
+      )
+  }
+
+  getContinentResults = async () => {
     const { query } = this.state
     let response = await searchTrail(query)
     if (response.error_message) {
@@ -113,7 +122,7 @@ class LandingPage extends Component {
                 <p>Asian Jungle</p>
               </div>
               <div className='asia-content-button'>
-                <button id='asian-button' onClick={this.setState({query: 'asia'})}>
+                <button id='asian-button' name='asia' onClick={this.onClickHandler}>
                   <div className='asian-button-text'>
                     Explore Asia
                   </div>
@@ -157,7 +166,7 @@ class LandingPage extends Component {
                 <p>Yellowstone National Park, U.S.A</p>
               </div>
               <div className='na-content-button'>
-                <button id='na-button' onClick={this.setState({query: 'north america'})}>
+                <button id='na-button' name='north america' onClick={this.onClickHandler}>
                   <div className='na-button-text'>
                     Explore North America
                   </div>
@@ -184,7 +193,7 @@ class LandingPage extends Component {
                 <p>Bastei Bridge, Switzerland / Germany</p>
               </div>
               <div className='eu-content-button'>
-                <button id='eu-button' onClick={this.setState({query: 'europe'})}>
+                <button id='eu-button' name='europe' onClick={this.onClickHandler}>
                   <div className='eu-button-text'>
                     Explore Europe
                   </div>
