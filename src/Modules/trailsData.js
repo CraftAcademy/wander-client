@@ -20,7 +20,7 @@ const getSpecificTrail = async (chosenTrail) => {
   }
 }
 
-const submitTrail = async (title, description, extra, location, duration, intensity, image, coordinates) => {
+const submitTrail = async (title, description, extra, location, continent, duration, intensity, image, coordinates) => {
   try {
     let response = await axios.post(apiUrl + 'trails',
     {
