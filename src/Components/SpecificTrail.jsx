@@ -31,9 +31,9 @@ class SpecificTrail extends Component {
     const trail = this.state.trail
     const style = {
       width: '80%',
-      height: '80%',
+      height: '50%',
       left: '10%',
-      borderRadius: '8px'
+      borderRadius: '8px'    
     }
 
     if (trail) {
@@ -41,9 +41,9 @@ class SpecificTrail extends Component {
         <>
           <Map 
             google={this.props.google} 
-            zoom={5}
+            zoom={13}
             style={style}
-            center={{
+            initialCenter={{
               lat: trail.latitude,
               lng: trail.longitude
             }}
@@ -69,14 +69,14 @@ class SpecificTrail extends Component {
             <Grid columns={2}>
               <Grid.Row>
                 <Grid.Column width={5}>
-                <Image
-                  id={`image_${trail.id}`}
-                  src={trail.image}
-                />
+                  <Image
+                    id={`image_${trail.id}`}
+                    src={trail.image}
+                  />
                 </Grid.Column>
-              <Grid.Column>
-                <Header as='h2' id={`title_${trail.id}`}>{trail.title}</Header>
-                <Divider />
+                <Grid.Column>
+                  <Header as='h2' id={`title_${trail.id}`}>{trail.title}</Header>
+                  <Divider />
                   <p className='single-description' id={`description_${trail.id}`}>{trail.description}</p>
                   <div className='single-trail'>
                     <h3>Good to know:</h3>
@@ -98,7 +98,7 @@ class SpecificTrail extends Component {
                     <h3>Intensity Level:</h3>
                     <p className='single-content' id={`intensity_${trail.id}`}>{trail.intensity}</p>
                   </div>
-              </Grid.Column>
+                </Grid.Column>
               </Grid.Row>
             </Grid>
           </Container>
@@ -116,9 +116,9 @@ class SpecificTrail extends Component {
 
     return (
       <>
-        {trailMap}
         {singleTrail}
         {backButton}
+        {trailMap}
       </>
     )
   }
