@@ -7,7 +7,7 @@ describe('User can see trails listed by continent', () => {
       status: 200
     })
     cy.get('#asian-button').click()
-    cy.get('#continent-list')
+    cy.get('#trail-list')
     .within(() => {
       cy.get('#trail_1')
         .within(() => {
@@ -41,7 +41,7 @@ describe('User can see trails listed by continent', () => {
     })
     cy.visit('http://localhost:3001')
     cy.get('#asian-button').click()
-    cy.get('#continent-list')
+    cy.get('#trail-list')
       .within(() => {
         cy.get('#trail_1').should('not.exist')
       })

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getTrails } from '../Modules/trailsData'
+import { getTrails, searchTrail } from '../Modules/trailsData'
 import { Card, Container, Image, Grid } from 'semantic-ui-react'
 import Sarek from '../Images/sarek.jpg'
 import AsiaJungle from '../Images/asia-jungle.jpg'
@@ -13,7 +13,8 @@ class LandingPage extends Component {
   state = {
     trails: [],
     errorMessage: null,
-    query: ''
+    query: '',
+    searchResults: []
   }
 
   async componentDidMount() {
@@ -29,13 +30,11 @@ class LandingPage extends Component {
     }
   }
 
-  onClickHandler = e => {
+  onClickHandler = (e) => {
     this.setState({
-      query: e.target.name
+      query: e.target.value
     })
-      .then(
-        this.getContinentResults()
-      )
+    this.getContinentResults()
   }
 
   getContinentResults = async () => {
@@ -46,7 +45,7 @@ class LandingPage extends Component {
         errorMessage: response.error_message
       })
     } else {
-      this.props.history.push("/continent", { searchResults: response })
+      this.props.history.push("/search", { searchResults: response })
     }
   }
 
@@ -122,7 +121,7 @@ class LandingPage extends Component {
                 <p>Asian Jungle</p>
               </div>
               <div className='asia-content-button'>
-                <button id='asian-button' name='asia' onClick={this.onClickHandler}>
+                <button id='asian-button' value='asia' onClick={this.onClickHandler}>
                   <div className='asian-button-text'>
                     Explore Asia
                   </div>

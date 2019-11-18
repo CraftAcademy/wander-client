@@ -12,7 +12,6 @@ import SignUp from './Components/SignUp'
 import MapContainer from './Components/MapContainer'
 import SearchResults from './Components/SearchResults'
 import ProfilePage from './Components/ProfilePage'
-import ContinentList from './Components/ContinentList'
 
 const requireSignIn = generateRequireSignInWrapper({
   redirectPathIfNotSignedIn: '/login',
@@ -33,7 +32,6 @@ const App = () => {
         <Route exact path='/signup' component={SignUp}/>
         <Route exact path='/map' component={MapContainer}/>
         <Route exact path='/user/:name' component={requireSignIn(ProfilePage)}/>
-        <Route exact path='/continent' component={ContinentList} />
       </>
     </Router>
   )
