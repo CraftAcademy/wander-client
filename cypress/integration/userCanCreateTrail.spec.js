@@ -27,6 +27,7 @@ describe('User can create a trail', () => {
               cy.get('input[type="file"]').upload({ fileContent, fileName, mimeType: 'application/jpg' })
             })
           })
+        cy.get('.gm-style').click(800, 600)
         cy.get('#submit-trail').click()
       }
     )
@@ -61,6 +62,7 @@ describe('User can create a trail', () => {
               cy.get('input[type="file"]').upload({ fileContent, fileName, mimeType: 'application/jpg' })
             })
           })
+        cy.get('.gm-style').click(800, 600)
         cy.get('#submit-trail').click()
       }
     )

@@ -2,22 +2,8 @@ import React, { Component } from 'react'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 
 class CreateMap extends Component {
-  state = {
-    coordinates: [],
-    errorMessage: ''
-  }
-
-  mapClicked = (mapProps, map, clickEvent) => {
-    debugger
-    const lat = clickEvent.latLng.lat()
-    const lng = clickEvent.latLng.lng()
-    const trailsCopy = [...this.state.coordinates]
-    trailsCopy.push({latitude: lat, longitude: lng})
-    this.setState({coordinates: trailsCopy})
-  }
-
   render() {
-    let trailsData = this.state.coordinates
+    let trailsData = this.props.coordinates
 
     const style = {
       width: '80%',
@@ -36,8 +22,7 @@ class CreateMap extends Component {
             lat: 30.0131,
             lng: 10.0686
           }}
-          onClick={this.mapClicked}
-          onChange={this.props.dropMarkerHandler}
+          onClick={this.props.mapClicked}
         >
           {trailsData.map(trail => {
           return(

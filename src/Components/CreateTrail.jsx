@@ -28,11 +28,13 @@ class CreateTrail extends Component {
     })
   }
 
-  dropMarkerHandler = e => {
+  mapClicked = (mapProps, map, clickEvent) => {
     debugger
-    this.setState({
-      coordinates: e.target.value
-    })
+    const lat = clickEvent.latLng.lat()
+    const lng = clickEvent.latLng.lng()
+    const trailsCopy = [...this.state.coordinates]
+    trailsCopy.push({latitude: lat, longitude: lng})
+    this.setState({coordinates: trailsCopy})
   }
 
   submitTrailHandler = async () => {
@@ -69,7 +71,8 @@ class CreateTrail extends Component {
         inputHandler={this.inputHandler}
         submitTrailHandler={this.submitTrailHandler}
         onAvatarDropHandler={this.onAvatarDropHandler}
-        dropMarkerHandler={this.dropMarkerHandler}
+        mapClicked={this.mapClicked}
+        coordinates={this.state.coordinates}
       />
     )
 

@@ -1,10 +1,10 @@
 import React from 'react'
-import { Button, Input, TextArea, Form, Rating } from 'semantic-ui-react'
+import { Button, Input, TextArea, Form, Rating, Container } from 'semantic-ui-react'
 import ImageUploader from 'react-images-upload'
 import CreateMap from './CreateMap'
 
-const CreateTrailForm = (props) => {
-  let { intensity } = props
+const CreateTrailForm = props => {
+  let { intensity, mapClicked, coordinates } = props
 
   return (
     <>
@@ -52,12 +52,16 @@ const CreateTrailForm = (props) => {
             singleImage={true}
           />
         </div>
-        <CreateMap 
-          dropMarkerHandler={props.dropMarkerHandler}
-        />
+        <Container textAlign='center'>
         <div>
           <Button id='submit-trail' onClick={props.submitTrailHandler}>Submit Trail</Button>
         </div>
+        </Container>
+        <br />
+        <CreateMap 
+          coordinates={coordinates}
+          mapClicked={mapClicked}
+        />
       </Form>
     </>
   )
