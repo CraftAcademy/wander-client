@@ -6,6 +6,7 @@ describe('User can view a specific trail', () => {
       response: 'fixture:user_can_view_specific_trail.json',
       status: 200
     })
+    
     cy.get('#trail-list')
       .within(() => {
         cy.get('#card_1').click()
@@ -20,6 +21,7 @@ describe('User can view a specific trail', () => {
         cy.get('#duration_1').should('contain', '5')
         cy.get('#intensity_1').should('contain', '1')
       })
+    cy.get('[title="Åland lazy trail"]').should('exist')
   })
 
   it('unsuccessfully', () => {
