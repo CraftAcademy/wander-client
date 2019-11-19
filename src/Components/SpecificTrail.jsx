@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
 import { Container, Grid, Header, Divider, Image } from 'semantic-ui-react'
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
+import { Map, GoogleApiWrapper, Marker, Polyline } from 'google-maps-react'
 
 class SpecificTrail extends Component {
   state = {
@@ -29,6 +29,7 @@ class SpecificTrail extends Component {
   render() {
     let singleTrail, backButton, trailMap
     const trail = this.state.trail
+    // const triangleCoords = trail.map(trail => ({lat: trail.latitude, lng: trail.longitude}))
     const style = {
       width: '80%',
       height: '50%',
@@ -37,26 +38,36 @@ class SpecificTrail extends Component {
     }
 
     if (trail) {
+      debugger
       trailMap = (
         <>
           <Map 
             google={this.props.google} 
-            zoom={13}
+            zoom={8}
             style={style}
             initialCenter={{
-              lat: trail.latitude,
-              lng: trail.longitude
+              lat: trail.coordinates[0].latitude,
+              lng: trail.coordinates[0].longitude
             }}
-          >
-            <Marker
-              id={`trail_${trail.id}`}
-              key={trail.id}
-              title={trail.title}
-              position={{
-                lat: trail.latitude, 
-                lng: trail.longitude
-              }}
-            />
+          > 
+              {trail.map(trail => {
+          return(
+                <Marker 
+                  id={`trail_${trail.id}`}
+                  key={trail.id}
+                  position={{
+                    lat: trail.coordinates.latitude, 
+                    lng: trail.coordinates.longitude
+                  }}
+                /> 
+          )
+                })}
+            {/* <Polyline
+              path={triangleCoords}
+              strokeColor="#0000FF"
+              strokeOpacity={0.8}
+              strokeWeight={2} 
+            /> */}
           </Map>
         </>
       )
