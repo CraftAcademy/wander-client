@@ -6,13 +6,15 @@ import { NavLink } from 'react-router-dom'
 
 const ProfilePage = ({ currentUser }) => {
   const [bookmarks, setBookmarks] = useState([])
+  const [errorMessage, setErrorMessage] = useState(null)
 
   const getBookmarks = async () => {
     try {
       let response = await axios.get('http://localhost:3000/v1/bookmarks')
       setBookmarks(response.data.data)
     } catch(error) {
-      console.log(error)
+      debugger
+      setErrorMessage(error.response.data.error_message)
     }
   }
 
@@ -22,6 +24,7 @@ const ProfilePage = ({ currentUser }) => {
   
   const deleteBookmark = async id => {
     try{
+      debugger
       const response = await axios.delete(`http://localhost:3000/v1/bookmarks/${id}`)
       setBookmarks(response.data.data)
     } catch (error) {
@@ -40,7 +43,9 @@ const ProfilePage = ({ currentUser }) => {
         <h3 id='user-email'>{currentUser.attributes.uid}</h3>
       </div>
     </Container>
+    <Container>
 
+    </Container>
     <Container>
       <h2>Your Bookmarked Adventures</h2>
       <Grid centered container columns={3} id='bookmark-list'>
@@ -50,7 +55,7 @@ const ProfilePage = ({ currentUser }) => {
               let trim_ingress = bookmark.description.substr(0, 75)
               let ingress = trim_ingress.substr(0, Math.min(trim_ingress.length, trim_ingress.lastIndexOf(" "))) + ' ...'
               return    <Card id={`card_${bookmark.id}`}>
-                          <Button name='hello' onClick={() => deleteBookmark(bookmark.id)}>Remove Bookmark</Button>
+                          <Button id='delete-button' name='hello' onClick={() => deleteBookmark(bookmark.id)}>Remove Bookmark</Button>
                           <Image
                             id={`image_${bookmark.id}`}
                             src={bookmark.image}
