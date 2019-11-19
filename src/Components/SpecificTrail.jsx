@@ -30,7 +30,7 @@ class SpecificTrail extends Component {
   bookMark = async () => {
     try {
       await axios.post('http://localhost:3000/v1/bookmarks', {
-        trail_id: this.state.trail.id
+        id: this.state.trail.id
       })
       this.props.history.push(`/user/${this.props.currentUser.attributes.name}`)
     } catch (error) {
