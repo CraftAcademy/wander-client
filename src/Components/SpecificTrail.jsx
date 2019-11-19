@@ -45,7 +45,7 @@ class SpecificTrail extends Component {
     if (trail) {
       singleTrail = (
         <>
-          <Icon  size='large' name='bookmark' onClick={this.bookMark}/>
+          <Icon size='large' name='bookmark' onClick={this.bookMark}/>
           <Container textAlign='justified' id='specific-trail'>
             <Grid columns={2}>
               <Grid.Row>

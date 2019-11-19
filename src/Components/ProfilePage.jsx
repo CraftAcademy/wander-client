@@ -42,7 +42,8 @@ const ProfilePage = ({ currentUser }) => {
     </Container>
 
     <Container>
-      <Grid centered container columns={3}>
+      <h2>Your Bookmarked Adventures</h2>
+      <Grid centered container columns={3} id='bookmark-list'>
         <Grid.Row>
           {bookmarks.length > 0 && 
             bookmarks.map(bookmark => {
