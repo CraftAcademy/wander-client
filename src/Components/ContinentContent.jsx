@@ -5,32 +5,17 @@ import BasteiBridge from '../Images/bastei-bridge.jpg'
 import { searchTrail } from '../Modules/trailsData'
 import { Container } from 'semantic-ui-react'
 
-
-
-export default class SearchTest extends Component {
-
+class ContinentContent extends Component {
   state={
     query: '',
     searchResults: [],
     errorMessage: null
   }
 
-  onClickHandler = continent => {
-    debugger
-      this.setState({
-        query: continent
-      })
-    this.getContinentResults()
-  }
-
-  getContinentResults = async () => {
-    debugger
-    const { query } = this.state
-    let response = await searchTrail(query)
+  getContinentResults = async continent => {  
+    let response = await searchTrail(continent)
     if (response.error_message) {
-      this.setState({
-        errorMessage: response.error_message
-      })
+      this.props.history.push("/continent", { errorMessage: response.error_message })
     } else {
       this.props.history.push("/continent", { searchResults: response })
     }
@@ -40,8 +25,6 @@ export default class SearchTest extends Component {
     let yellowstone = <img src={YellowStone} id='image' alt='Yellowstone' width='1950' height='800'/>
     let basteiBridge = <img src={BasteiBridge} id='image' alt='Bastei Bridge' width='1950' height='800' />
     let errorMessage = <div compact id='error-message'>{this.state.errorMessage}</div>
-    let asiaButton
-
     return (
       <>
       {errorMessage}
@@ -53,7 +36,7 @@ export default class SearchTest extends Component {
                 <p>Asian Jungle</p>
               </div>
               <div className='asia-content-button'>
-                <button id='asian-button' onClick={() => this.onClickHandler('asia')}>
+                <button id='asian-button' onClick={() => this.getContinentResults('Asia')}>
                   <div className='asian-button-text'>
                     Explore Asia
                   </div>
@@ -97,7 +80,7 @@ export default class SearchTest extends Component {
                 <p>Yellowstone National Park, U.S.A</p>
               </div>
               <div className='na-content-button'>
-                <button id='na-button' onClick={() => this.onClickHandler('north america')}>
+                <button id='na-button' onClick={() => this.getContinentResults('North America')}>
                   <div className='na-button-text'>
                     Explore North America
                   </div>
@@ -124,7 +107,7 @@ export default class SearchTest extends Component {
                 <p>Bastei Bridge, Switzerland / Germany</p>
               </div>
               <div className='eu-content-button'>
-                <button id='eu-button' onClick={() => this.onClickHandler('europe')}>
+                <button id='eu-button' onClick={() => this.getContinentResults('Europe')}>
                   <div className='eu-button-text'>
                     Explore Europe
                   </div>
@@ -146,3 +129,5 @@ export default class SearchTest extends Component {
     )
   }
 }
+
+export default ContinentContent

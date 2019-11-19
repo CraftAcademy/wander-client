@@ -85,7 +85,7 @@ class LandingPage extends Component {
             </Grid.Row>
           </Grid>
         </Container>
-        <ContinentContent />
+        <ContinentContent history={this.props.history}/>
         <Footer />
       </>
     )

@@ -44,7 +44,8 @@ const searchTrail = async (query) => {
     let response = await axios.get(apiUrl + `/search/?search=${query}`)
     return response.data.search
   } catch(error) {
-    return error.response
+    debugger
+    return error.response.data
   }
 }
 

@@ -4,14 +4,25 @@ import { NavLink } from 'react-router-dom'
 
 const ContinentResults = (props) => {
   const [results, setResults] = useState([])
+  const [errorMessage, setErrorMessage] = useState(null)
 
   useEffect(() => {
     setResults(props.location.state.searchResults)
   }, [])
-  
-  let trailsList
 
-  if (results.length !== 0) {
+  useEffect(() => {
+    setErrorMessage(props.location.state.errorMessage)
+  }, [])
+  
+  let trailsList, errorStatement
+
+  if (errorMessage) {
+    errorStatement = (
+      <p id='error-message'>{errorMessage}</p>
+    )
+  }
+
+  if (results) {
     trailsList = (
       <>
         {results.map(trail => {
@@ -41,6 +52,7 @@ const ContinentResults = (props) => {
       <div id='trail-list'>
         {trailsList}
       </div>
+      {errorStatement}
     </div>
   )
 }
