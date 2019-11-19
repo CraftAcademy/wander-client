@@ -7,5 +7,7 @@
   "location": "Åland",
   "continent": "Europe",
   "duration": "5",
-  "intensity": "1"
+  "intensity": "1",
+  "latitude": 53.0032,
+  "longitude": 14.3435
 }
