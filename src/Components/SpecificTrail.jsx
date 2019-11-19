@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
-import { Container, Grid, Header, Divider, Image } from 'semantic-ui-react'
+import { Container, Grid, Header, Divider, Image, Message } from 'semantic-ui-react'
 
 class SpecificTrail extends Component {
   state = {
@@ -27,11 +27,15 @@ class SpecificTrail extends Component {
 
   render() {
     let singleTrail, backButton
+    let errorMessage = <Message negative compact><div compact id='error-message'>{this.state.errorMessage}</div></Message>
     const trail = this.state.trail
 
     if (trail) {
       singleTrail = (
         <>
+        <center>
+         {errorMessage}
+        </center>
           <Container textAlign='justified' id='specific-trail'>
             <Grid columns={2}>
               <Grid.Row>

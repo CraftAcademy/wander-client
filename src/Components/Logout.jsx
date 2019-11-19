@@ -41,7 +41,7 @@ class Logout extends Component {
     }
 
     if (this.state.errorMessage) {
-      errorMessage = <Message compact id="error-message">{this.state.errorMessage}</Message>
+      errorMessage = <Message negative compact id="error-message">{this.state.errorMessage}</Message>
     }
 
     return (

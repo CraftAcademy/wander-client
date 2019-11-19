@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getTrails } from '../Modules/trailsData'
-import { Card, Container, Image, Grid } from 'semantic-ui-react'
+import { Card, Container, Image, Grid, Message } from 'semantic-ui-react'
 import Sarek from '../Images/sarek.jpg'
 import AsiaJungle from '../Images/asia-jungle.jpg'
 import YellowStone from '../Images/yellowstone.jpg'
@@ -35,7 +35,7 @@ class LandingPage extends Component {
     let asiaJungle = <img src={AsiaJungle} id='image' alt='Asia Jungle' width='1800' height='750'/>
     let yellowstone = <img src={YellowStone} id='image' alt='Yellowstone' width='1950' height='800'/>
     let basteiBridge = <img src={BasteiBridge} id='image' alt='Bastei Bridge' width='1950' height='800' />
-    let errorMessage = <div compact id='error-message'>{this.state.errorMessage}</div>
+    let errorMessage = <Message negative compact><div compact id='error-message'>{this.state.errorMessage}</div></Message>
 
     if (this.props.currentUser.isSignedIn) {
       welcomeMessage = <div id="welcome-message">Hello wanderer {this.props.currentUser.attributes.name}</div>

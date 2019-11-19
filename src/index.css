@@ -335,3 +335,9 @@ footer {
 #specific-trail {
   margin-top: 4rem;
 }
+
+#error-message {
+  text-align: center;
+  margin: 0% !important;
+}
+

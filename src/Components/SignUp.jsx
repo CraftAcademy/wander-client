@@ -20,6 +20,7 @@ class SignUp extends Component {
   }
 
   handleSignup = () => {
+    debugger
     const { registerUser } = this.props;
     const { email, name, password, password_confirmation } = this.state;
     registerUser({ email, name, password, password_confirmation })
@@ -37,7 +38,7 @@ class SignUp extends Component {
     let errorMessage
 
     if (this.state.errorMessage) {
-      errorMessage = <Message compact id="error-message">{this.state.errorMessage}</Message>
+      errorMessage = <Message negative compact id="error-message">{this.state.errorMessage}</Message>
     }
 
     return(
@@ -46,7 +47,9 @@ class SignUp extends Component {
           handleSignup={this.handleSignup}
           inputChangeHandler={this.inputChangeHandler}
         />
-        {errorMessage}
+        <center>
+         {errorMessage}
+        </center>
       </Container>
     )
   }

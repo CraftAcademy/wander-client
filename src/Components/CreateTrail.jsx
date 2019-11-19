@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import CreateTrailForm from './CreateTrailForm'
 import { submitTrail } from '../Modules/trailsData'
+import { Message, Container } from 'semantic-ui-react'
 
 class CreateTrail extends Component {
   state = {
@@ -47,13 +48,19 @@ class CreateTrail extends Component {
     let trailForm
     let responseMessage
     let errorMessage
+    const styleObj = {
+      position: 'center'
+    }
 
     if (this.state.responseMessage) {
       responseMessage = <p id='response-message'>{this.state.responseMessage}</p>
     } 
     
     if (this.state.errorMessage) {
-      errorMessage = <p id='error-message'>{this.state.errorMessage}</p>
+      errorMessage = 
+      <Message negative compact style={styleObj}>
+       <p id='error-message'>{this.state.errorMessage}</p>
+      </Message>
     }
 
     trailForm = (
@@ -67,9 +74,11 @@ class CreateTrail extends Component {
 
     return (
       <>
+      <center>
+        {errorMessage}
+      </center>
         {trailForm} 
         {responseMessage}
-        {errorMessage}
       </>
     )
   }

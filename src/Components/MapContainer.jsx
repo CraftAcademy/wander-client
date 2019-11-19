@@ -1,6 +1,6 @@
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 import React, { Component } from 'react'
-import { Header } from 'semantic-ui-react'
+import { Header, Message } from 'semantic-ui-react'
 import { getTrails } from '../Modules/trailsData'
 
 class MapContainer extends Component {
@@ -24,6 +24,7 @@ class MapContainer extends Component {
 
   render() {
     let trailsData = this.state.trails
+    let errorMessage = <Message negative compact id="error-message">{this.state.errorMessage}</Message>
     const style = {
       width: '80%',
       height: '80%',
@@ -37,6 +38,7 @@ class MapContainer extends Component {
         <Header id='map-header'>
           Trails Around the World
         </Header>
+        {errorMessage}
       </center>
       <br />
         <Map 

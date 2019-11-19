@@ -33,9 +33,12 @@ class Login extends Component {
   
   render() {
     let renderLogin, errorMessage 
+    const styleObj = {
+      textAlign: 'center',
+    }
     
     if (this.state.errorMessage) {
-      errorMessage = <Message compact id="error-message">{this.state.errorMessage}</Message>
+      errorMessage = <Message negative compact style={styleObj} id="error-message">{this.state.errorMessage}</Message>
     }
 
     if (!this.props.currentUser.isSignedIn) {
@@ -52,7 +55,9 @@ class Login extends Component {
     return (
       <Container>
         {renderLogin}
-        {errorMessage}
+        <center>
+         {errorMessage}
+        </center>
       </Container>
     )
   }
