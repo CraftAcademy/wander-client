@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from 'react'
 import { Card, Image, Header } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
-const SearchResults = props => {
-
+const ContinentResults = (props) => {
   const [results, setResults] = useState([])
 
   useEffect(() => {
@@ -35,9 +34,10 @@ const SearchResults = props => {
       </>
     )
   }
+
   return (
     <div id='search-results'>
-      <Header as='h2' textAlign='center'>Found adventures</Header>      
+      <Header as='h2' textAlign='center'>Adventures</Header>      
       <div id='trail-list'>
         {trailsList}
       </div>
@@ -45,4 +45,4 @@ const SearchResults = props => {
   )
 }
 
-export default SearchResults
+export default ContinentResults

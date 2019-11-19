@@ -45,7 +45,7 @@ class LandingPage extends Component {
         errorMessage: response.error_message
       })
     } else {
-      this.props.history.push("/search", { searchResults: response })
+      this.props.history.push("/continent", { searchResults: response })
     }
   }
 
