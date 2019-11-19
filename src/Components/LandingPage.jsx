@@ -1,20 +1,16 @@
 import React, { Component } from 'react'
 import { getTrails, searchTrail } from '../Modules/trailsData'
-import { Card, Container, Image, Grid } from 'semantic-ui-react'
+import { Card, Container, Image, Grid, Button } from 'semantic-ui-react'
 import Sarek from '../Images/sarek.jpg'
-import AsiaJungle from '../Images/asia-jungle.jpg'
-import YellowStone from '../Images/yellowstone.jpg'
-import BasteiBridge from '../Images/bastei-bridge.jpg'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Footer from './Footer'
+import ContinentContent from './ContinentContent'
 
 class LandingPage extends Component {
   state = {
     trails: [],
-    errorMessage: null,
-    query: '',
-    searchResults: []
+    errorMessage: null
   }
 
   async componentDidMount() {
@@ -30,33 +26,10 @@ class LandingPage extends Component {
     }
   }
 
-  onClickHandler = (continent) => {
-    this.setState({
-      query: continent
-    })
-    this.getContinentResults()
-  }
-
-  getContinentResults = async () => {
-    const { query } = this.state
-    let response = await searchTrail(query)
-    if (response.error_message) {
-      this.setState({
-        errorMessage: response.error_message
-      })
-    } else {
-      this.props.history.push("/continent", { searchResults: response })
-    }
-  }
-
-
   render() {
     let trailsData = this.state.trails
     let trailsList, welcomeMessage
     let sarek = <img src={Sarek} id='image' alt='Sarek national park' width='1800' height='800'/>
-    let asiaJungle = <img src={AsiaJungle} id='image' alt='Asia Jungle' width='1800' height='750'/>
-    let yellowstone = <img src={YellowStone} id='image' alt='Yellowstone' width='1950' height='800'/>
-    let basteiBridge = <img src={BasteiBridge} id='image' alt='Bastei Bridge' width='1950' height='800' />
     let errorMessage = <div compact id='error-message'>{this.state.errorMessage}</div>
 
     if (this.props.currentUser.isSignedIn) {
@@ -111,105 +84,8 @@ class LandingPage extends Component {
               {errorMessage}
             </Grid.Row>
           </Grid>
-          
         </Container>
-      <div className='asia-page'>
-        <div className='asia-image'>
-          {asiaJungle}
-            <div className='asia-image-content'>
-              <div className='asia-content-name'>
-                <p>Asian Jungle</p>
-              </div>
-              <div className='asia-content-button'>
-                <button id='asian-button' onClick={() => this.onClickHandler('asia')}>
-                  <div className='asian-button-text'>
-                    Explore Asia
-                  </div>
-                </button>
-              </div>
-            </div>
-        </div>
-      </div>
-
-      <Container>
-        <div id='content-blurb'>
-          <label id='content-label'>Explore Jeff</label>
-          <br />
-          <br />
-          <p>Hello My Name Jeff I like Hello My Name Jeff I like 
-          Hello My Name Jeff I like 
-          Hello My Name Jeff I like 
-          Hello My Name Jeff I like 
-          Hello My Name Jeff I like 
-          Hello My Name Jeff I like 
-          Hello My Name Jeff I like 
-          Hello My Name Jeff I like 
-          Hello My Name Jeff I like 
-          Hello My Name Jeff I like 
-          Hello My Name Jeff I like 
-          Hello My Name Jeff I like 
-          Hello My Name Jeff I like 
-          Hello My Name Jeff I like 
-          Hello My Name Jeff I like 
-          Hello My Name Jeff I like 
-          Hello My Name Jeff I like 
-          </p>
-        </div>
-      </Container>
-
-      <div className='na-page'>
-        <div className='na-image'>
-          {yellowstone}
-            <div className='na-image-content'>
-              <div className='na-content-name'>
-                <p>Yellowstone National Park, U.S.A</p>
-              </div>
-              <div className='na-content-button'>
-                <button id='na-button' onClick={() => this.onClickHandler('north america')}>
-                  <div className='na-button-text'>
-                    Explore North America
-                  </div>
-                </button>
-              </div>
-            </div>
-        </div>
-      </div>
-
-      <Container>
-        <div id='content-blurb'>
-          <label id='content-label'>Explore Jeff</label>
-          <br />
-          <br />
-          <p>Hello My Name Jeff I like </p>
-        </div>
-      </Container>
-
-      <div className='eu-page'>
-        <div className='eu-image'>
-          {basteiBridge}
-            <div className='eu-image-content'>
-              <div className='eu-content-name'>
-                <p>Bastei Bridge, Switzerland / Germany</p>
-              </div>
-              <div className='eu-content-button'>
-                <button id='eu-button' onClick={() => this.onClickHandler('europe')}>
-                  <div className='eu-button-text'>
-                    Explore Europe
-                  </div>
-                </button>
-              </div>
-            </div>
-        </div>
-      </div>
-
-      <Container>
-        <div id='content-blurb'>
-          <label id='content-label'>Explore Jeff</label>
-          <br />
-          <br />
-          <p>Hello My Name Jeff I like </p>
-        </div>
-      </Container>
+        <ContinentContent />
         <Footer />
       </>
     )
