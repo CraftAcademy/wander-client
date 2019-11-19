@@ -24,12 +24,16 @@ class MapContainer extends Component {
 
   render() {
     let trailsData = this.state.trails
-    let errorMessage = <Message negative compact id="error-message">{this.state.errorMessage}</Message>
+    let errorMessage
     const style = {
       width: '80%',
       height: '80%',
       left: '10%',
       borderRadius: '8px'
+    }
+
+    if (this.state.errorMessage) {
+      errorMessage = <Message negative compact id="error-message">{this.state.errorMessage}</Message>
     }
 
     return (

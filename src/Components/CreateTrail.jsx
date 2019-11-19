@@ -45,22 +45,14 @@ class CreateTrail extends Component {
   }
 
   render() {
-    let trailForm
-    let responseMessage
-    let errorMessage
-    const styleObj = {
-      position: 'center'
-    }
+    let trailForm, responseMessage, errorMessage
 
     if (this.state.responseMessage) {
       responseMessage = <p id='response-message'>{this.state.responseMessage}</p>
     } 
     
     if (this.state.errorMessage) {
-      errorMessage = 
-      <Message negative compact style={styleObj}>
-       <p id='error-message'>{this.state.errorMessage}</p>
-      </Message>
+      errorMessage = <Message negative compact id="error-message">{this.state.errorMessage}</Message>
     }
 
     trailForm = (
