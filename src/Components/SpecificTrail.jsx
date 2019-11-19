@@ -50,8 +50,12 @@ class SpecificTrail extends Component {
                     <p className='single-content' id={`extra_${trail.id}`}>{trail.extra}</p>
                   </div>
                   <div className='single-trail'>
-                    <h3>Location:</h3>
-                    <p className='single-content' id={`location_${trail.id}`}>{trail.location}</p>
+                    <h3>City:</h3>
+                    <p className='single-content' id={`city_${trail.id}`}>{trail.city}</p>
+                  </div>
+                  <div className='single-trail'>
+                    <h3>Country:</h3>
+                    <p className='single-content' id={`country_${trail.id}`}>{trail.country}</p>
                   </div>
                   <div className='single-trail'>
                     <h3>Continent:</h3>
