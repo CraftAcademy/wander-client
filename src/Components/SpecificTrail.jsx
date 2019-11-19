@@ -28,7 +28,6 @@ class SpecificTrail extends Component {
   }
 
   bookMark = async () => {
-    debugger
     try {
       await axios.post('http://localhost:3000/v1/bookmarks', {
         trail_id: this.state.trail.id
