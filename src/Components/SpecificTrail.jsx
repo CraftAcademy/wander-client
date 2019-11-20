@@ -95,6 +95,9 @@ class SpecificTrail extends Component {
                   </Grid.Column>
                   <Grid.Column width='2'>
                     <Table basic='very' celled collapsing>
+                      <Table.Header>
+                          <Table.HeaderCell colSpan='3'><h3>Trail Facts</h3></Table.HeaderCell>
+                      </Table.Header>
                     <Table.Body>
                       <Table.Row>
                         <Table.Cell>
