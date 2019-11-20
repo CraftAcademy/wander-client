@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
+import { Map, GoogleApiWrapper, Marker, Polyline } from 'google-maps-react'
 import { Container, Grid, Header, Divider, Image, Icon, Message } from 'semantic-ui-react'
 import axios from 'axios'
 import { connect } from 'react-redux'
@@ -7,7 +8,9 @@ import { connect } from 'react-redux'
 class SpecificTrail extends Component {
   state = {
     trail: null,
-    errorMessage: null
+    errorMessage: null,
+    responseMessage: null,
+    userBookmarks: []
   }
 
   async componentDidMount() {
@@ -21,6 +24,9 @@ class SpecificTrail extends Component {
         trail: response
       })
     }
+    const bookmarks = await axios.get('http://localhost:3000/v1/bookmarks')
+    const mappedBookmarks = bookmarks.data.data.map(bookmark => bookmark.id)
+    this.setState({ userBookmarks: mappedBookmarks })
   }
 
   goBack = () => {
@@ -29,23 +35,76 @@ class SpecificTrail extends Component {
 
   bookMark = async () => {
     try {
-      await axios.post('http://localhost:3000/v1/bookmarks', {
+     let response = await axios.post('http://localhost:3000/v1/bookmarks', {
         id: this.state.trail.id
       })
-      this.props.history.push(`/user/${this.props.currentUser.attributes.name}`)
+      this.setState({
+        responseMessage: response.data.message 
+      })
     } catch (error) {
       return error.response.data.error_message
     }
   }
 
   render() {
-    let singleTrail, backButton
+    let singleTrail, backButton, responseMessage, trailMap
     const trail = this.state.trail
+    const style = {
+      width: '80%',
+      height: '50%',
+      left: '10%',
+      borderRadius: '8px'    
+    }
+
+    if (trail) {
+      const trailCoords = this.state.trail.coordinates.map(trail => ({lat: trail.latitude, lng: trail.longitude}))  
+      trailMap = (
+        <>
+          <Map 
+            google={this.props.google} 
+            zoom={8}
+            style={style}
+            initialCenter={{
+              lat: trail.coordinates[0].latitude,
+              lng: trail.coordinates[0].longitude
+            }}
+          > 
+              {trailCoords.map((trail, index) => {
+                if (index === 0 || index === trailCoords.length-1) {
+                  return(
+                    <Marker 
+                      id={`trail_${trail.lat}`}
+                      key={trail.lat}
+                      position={{
+                        lat: trail.lat, 
+                        lng: trail.lng
+                      }}
+                    /> 
+                  )
+                }
+                })}
+            <Polyline
+              path={trailCoords}
+              strokeColor='#45512b'
+              strokeOpacity={0.8}
+              strokeWeight={6} 
+            />
+          </Map>
+        </>
+      )
+    }
+
+    if (this.state.responseMessage) {
+      responseMessage = <Message positive compact id='response-message'>{this.state.responseMessage}</Message>
+    } 
 
     if (trail) {
       singleTrail = (
         <>
-          <Icon size='large' name='bookmark' onClick={this.bookMark}/>
+          {this.state.userBookmarks.includes(trail.id) || <Icon id='bookmark' size='large' name='bookmark' onClick={this.bookMark}/>}
+          <center>
+            {responseMessage}
+          </center>
           <Container textAlign='justified' id='specific-trail'>
             <Grid columns={2}>
               <Grid.Row>
@@ -64,8 +123,12 @@ class SpecificTrail extends Component {
                     <p className='single-content' id={`extra_${trail.id}`}>{trail.extra}</p>
                   </div>
                   <div className='single-trail'>
-                    <h3>Location:</h3>
-                    <p className='single-content' id={`location_${trail.id}`}>{trail.location}</p>
+                    <h3>City:</h3>
+                    <p className='single-content' id={`city_${trail.id}`}>{trail.city}</p>
+                  </div>
+                  <div className='single-trail'>
+                    <h3>Country:</h3>
+                    <p className='single-content' id={`country_${trail.id}`}>{trail.country}</p>
                   </div>
                   <div className='single-trail'>
                     <h3>Continent:</h3>
@@ -99,6 +162,7 @@ class SpecificTrail extends Component {
       <>
         {singleTrail}
         {backButton}
+        {trailMap}
       </>
     )
   }
@@ -112,4 +176,6 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps
-)(SpecificTrail)
+)(GoogleApiWrapper({
+  apiKey:(process.env.REACT_APP_API_KEY)
+})(SpecificTrail))

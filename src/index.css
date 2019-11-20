@@ -336,3 +336,6 @@ footer {
   margin-top: 4rem;
 }
 
+i.bookmark.large.icon {
+  cursor: pointer;
+}

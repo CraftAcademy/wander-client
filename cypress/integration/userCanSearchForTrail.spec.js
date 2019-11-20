@@ -2,7 +2,7 @@ describe('User can search for trail', () => {
   it('successfully', () => {
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/v1//search/?search=Bollmora',
+      url: 'http://localhost:3000/v1/trails/?search=Bollmora',
       response: 'fixture:successful_search.json',
       status: 200
     })
@@ -22,7 +22,8 @@ describe('User can search for trail', () => {
           cy.get('#title_1').should('contain', 'Bollmora speed trail')
           cy.get('#description_1').should('contain', 'A fast trail for fast people')
           cy.get('#extra_1').should('contain', 'You are not prepared for the speed')
-          cy.get('#location_1').should('contain', 'Bollmora')
+          cy.get('#city_1').should('contain', 'Bollmora')
+          cy.get('#country_1').should('contain', 'Sweden')
           cy.get('#continent_1').should('contain', 'Europe')
           cy.get('#duration_1').should('contain', '10 minutes')
           cy.get('#intensity_1').should('contain', '5')
@@ -32,7 +33,9 @@ describe('User can search for trail', () => {
           cy.get('#title_5').should('contain', 'Tyresö Flaten to Gammelström')
           cy.get('#description_5').should('contain', 'A short trail for everyone')
           cy.get('#extra_5').should('contain', 'You are not prepared for the speed')
-          cy.get('#location_5').should('contain', 'Bollmora')
+          cy.get('#city_5').should('contain', 'Bollmora')
+          cy.get('#country_5').should('contain', 'Sweden')
+          cy.get('#continent_5').should('contain', 'Europe')
           cy.get('#duration_5').should('contain', '5 minutes')
           cy.get('#intensity_5').should('contain', '2')
         })
