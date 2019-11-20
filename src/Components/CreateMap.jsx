@@ -27,7 +27,7 @@ class CreateMap extends Component {
         >
         <Polyline
           path={triangleCoords}
-          strokeColor="#0000FF"
+          strokeColor='#45512b'
           strokeOpacity={0.8}
           strokeWeight={2} />  
           {trailsData.map(trail => {

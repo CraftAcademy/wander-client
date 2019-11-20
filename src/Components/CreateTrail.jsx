@@ -39,7 +39,6 @@ class CreateTrail extends Component {
   }
 
   submitTrailHandler = async () => {
-    debugger
     const { title, description, extra, country, city, continent, duration, intensity, image, coordinates } = this.state
     let response = await submitTrail(title, description, extra, country, city, continent, duration, intensity, image, coordinates)
 
