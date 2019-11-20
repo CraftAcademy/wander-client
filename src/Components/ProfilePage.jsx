@@ -24,13 +24,16 @@ const ProfilePage = ({ currentUser }) => {
   
   const deleteBookmark = async id => {
     try{
-      debugger
       const response = await axios.delete(`http://localhost:3000/v1/bookmarks/${id}`)
       setBookmarks(response.data.data)
     } catch (error) {
       console.log(error)
     }
   }
+
+  // if (errorMessage) {
+  //   errorMessage = <p id='error-message'>{errorMessage}</p>
+  // }
 
   return (
     <>
@@ -48,6 +51,7 @@ const ProfilePage = ({ currentUser }) => {
     </Container>
     <Container>
       <h2>Your Bookmarked Adventures</h2>
+      {errorMessage && <div>{errorMessage}</div>}
       <Grid centered container columns={3} id='bookmark-list'>
         <Grid.Row>
           {bookmarks.length > 0 && 
