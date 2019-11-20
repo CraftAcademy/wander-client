@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getTrails, searchTrail } from '../Modules/trailsData'
+import { getTrails, searchContinent } from '../Modules/trailsData'
 import { Card, Container, Image, Grid, Button } from 'semantic-ui-react'
 import Sarek from '../Images/sarek.jpg'
 import { NavLink } from 'react-router-dom'
@@ -50,11 +50,8 @@ class LandingPage extends Component {
                         />
                         <Card.Header id={`title_${trail.id}`}>{trail.title}</Card.Header>
                         <Card.Description id={`description_${trail.id}`}>Description:  {ingress}</Card.Description>
-                        <Card.Description id={`extra_${trail.id}`}>Good to Know:  {trail.extra}</Card.Description>
-                        <Card.Meta id={`city_${trail.id}`}>City:  {trail.city}</Card.Meta>
                         <Card.Meta id={`country_${trail.id}`}>Country:  {trail.country}</Card.Meta>
                         <Card.Meta id={`continent_${trail.id}`}>Continent:  {trail.continent}</Card.Meta>
-                        <Card.Meta id={`duration_${trail.id}`}>Duration:  {trail.duration} min</Card.Meta>
                         <Card.Meta id={`intensity_${trail.id}`}>Intensity Level:  {trail.intensity}</Card.Meta>
                       </Card>
                     </NavLink>

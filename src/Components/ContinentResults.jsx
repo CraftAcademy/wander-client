@@ -26,20 +26,19 @@ const ContinentResults = (props) => {
     trailsList = (
       <>
         {results.map(trail => {
+          let trim_ingress = trail.description.substr(0, 75)
+          let ingress = trim_ingress.substr(0, Math.min(trim_ingress.length, trim_ingress.lastIndexOf(" "))) + ' ...'            
           return  <NavLink id={`trail_${trail.id}`} key={trail.id} to={`/trails/${trail.id}`}>
                     <Card id={`card_${trail.id}`}>
                       <Image
                         id={`image_${trail.id}`}
                         src={trail.image}
                       />
-                      <Card.Header id={`title_${trail.id}`}>{trail.title}</Card.Header>
-                      <Card.Description id={`description_${trail.id}`}>{trail.description}</Card.Description>
-                      <Card.Description id={`extra_${trail.id}`}>{trail.extra}</Card.Description>
-                      <Card.Meta id={`city_${trail.id}`}>{trail.city}</Card.Meta>
-                      <Card.Meta id={`country_${trail.id}`}>{trail.country}</Card.Meta>
-                      <Card.Meta id={`continent_${trail.id}`}>{trail.continent}</Card.Meta>
-                      <Card.Meta id={`duration_${trail.id}`}>{trail.duration}</Card.Meta>
-                      <Card.Meta id={`intensity_${trail.id}`}>{trail.intensity}</Card.Meta>
+                        <Card.Header id={`title_${trail.id}`}>{trail.title}</Card.Header>
+                        <Card.Description id={`description_${trail.id}`}>Description:  {ingress}</Card.Description>
+                        <Card.Meta id={`country_${trail.id}`}>Country:  {trail.country}</Card.Meta>
+                        <Card.Meta id={`continent_${trail.id}`}>Continent:  {trail.continent}</Card.Meta>
+                        <Card.Meta id={`intensity_${trail.id}`}>Intensity Level:  {trail.intensity}</Card.Meta>
                     </Card>
                   </NavLink>
         })}
@@ -50,9 +49,11 @@ const ContinentResults = (props) => {
   return (
     <div id='search-results'>
       <Header as='h2' textAlign='center'>Adventures in this part of the world</Header>      
-      <div id='trail-list'>
-        {trailsList}
-      </div>
+      <Container id='trail-list'>
+       <Grid centered container columns={4}>
+          {trailsList}
+        </Grid>
+      </Container>
       {errorStatement}
     </div>
   )
