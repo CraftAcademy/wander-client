@@ -22,7 +22,6 @@ describe('User can view a specific trail', () => {
         cy.get('#duration_1').should('contain', '5')
         cy.get('#intensity_1').should('contain', '1')
       })
-    cy.get('[title="Åland lazy trail"]').should('exist')
   })
 
   it('unsuccessfully', () => {

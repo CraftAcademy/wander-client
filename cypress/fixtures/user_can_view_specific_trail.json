@@ -9,6 +9,10 @@
   "continent": "Europe",
   "duration": "5",
   "intensity": "1",
-  "latitude": 53.0032,
-  "longitude": 14.3435
+  "coordinates": [
+    {
+      "latitude": 53.0032,
+      "longitude": 14.3435
+    }
+  ]
 }
