@@ -7,12 +7,14 @@ import { NavLink } from 'react-router-dom'
 const ProfilePage = ({ currentUser }) => {
   const [bookmarks, setBookmarks] = useState([])
   const [errorMessage, setErrorMessage] = useState(null)
+  const [responseMessage, setResponseMessage] = useState(null)
 
   const getBookmarks = async () => {
     try {
       let response = await axios.get('http://localhost:3000/v1/bookmarks')
       setBookmarks(response.data.data)
     } catch(error) {
+      debugger
       setErrorMessage(error.response.data.error_message)
     }
   }
@@ -23,8 +25,10 @@ const ProfilePage = ({ currentUser }) => {
   
   const deleteBookmark = async id => {
     try{
+      debugger
       const response = await axios.delete(`http://localhost:3000/v1/bookmarks/${id}`)
       setBookmarks(response.data.data)
+      setResponseMessage(response.data.message)
     } catch (error) {
       console.log(error)
     }
@@ -45,11 +49,13 @@ const ProfilePage = ({ currentUser }) => {
 
     </Container>
     <Container>
-      <h2>Your Bookmarked Adventures</h2>
+      <center><h2>Your Bookmarked Adventures</h2></center>
+      <br></br>
       {errorMessage && <center><h3>{errorMessage}</h3></center>}
+      {responseMessage && <center><h3 id='response-message'>{responseMessage}</h3></center>}
       <Grid centered container columns={3} id='bookmark-list'>
         <Grid.Row>
-          {bookmarks.length > 0 && 
+          {bookmarks && 
             bookmarks.map(bookmark => {
               let trim_ingress = bookmark.description.substr(0, 75)
               let ingress = trim_ingress.substr(0, Math.min(trim_ingress.length, trim_ingress.lastIndexOf(" "))) + ' ...'

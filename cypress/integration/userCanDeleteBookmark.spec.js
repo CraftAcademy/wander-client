@@ -20,8 +20,8 @@ describe('User can delete bookmark on profile page', () => {
     })
     cy.route({
       method: 'DELETE',
-      url: 'http://localhost:3000/v1/bookmarks',
-      response: 'fixture:delete_bookmark.json',
+      url: 'http://localhost:3000/v1/bookmarks/1',
+      response: 'fixture:removed_bookmark.json',
       status: 200
     })
 
@@ -42,12 +42,15 @@ describe('User can delete bookmark on profile page', () => {
         cy.get('#nav-profile').click()
       })
 
-      cy.get('#bookmark-list')
-        .within(() => {
-          cy.get('#card_1')
-            .within(() => {
-              cy.get('#delete-button').click()
-            })
-    });
+    cy.get('#bookmark-list')
+      .within(() => {
+        cy.get('#card_1')
+          .within(() => {
+            cy.get('#delete-button').click()
+        })
+      });
+
+    cy.get('#response-message').should('contain', 'Removed bookmark!')
+    
   })
 })
