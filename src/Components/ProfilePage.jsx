@@ -51,7 +51,7 @@ const ProfilePage = ({ currentUser }) => {
     </Container>
     <Container>
       <h2>Your Bookmarked Adventures</h2>
-      {errorMessage && <div>{errorMessage}</div>}
+      {errorMessage && <center><h3>{errorMessage}</h3></center>}
       <Grid centered container columns={3} id='bookmark-list'>
         <Grid.Row>
           {bookmarks.length > 0 && 
