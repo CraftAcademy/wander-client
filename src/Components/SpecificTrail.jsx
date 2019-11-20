@@ -8,7 +8,8 @@ class SpecificTrail extends Component {
   state = {
     trail: null,
     errorMessage: null,
-    responseMessage: null
+    responseMessage: null,
+    userBookmarks: []
   }
 
   async componentDidMount() {
@@ -22,6 +23,9 @@ class SpecificTrail extends Component {
         trail: response
       })
     }
+    const bookmarks = await axios.get('http://localhost:3000/v1/bookmarks')
+    const mappedBookmarks = bookmarks.data.data.map(bookmark => bookmark.id)
+    this.setState({ userBookmarks: mappedBookmarks })
   }
 
   goBack = () => {
@@ -52,7 +56,7 @@ class SpecificTrail extends Component {
     if (trail) {
       singleTrail = (
         <>
-          <Icon size='large' name='bookmark' onClick={this.bookMark}/>
+          {this.state.userBookmarks.includes(trail.id) || <Icon size='large' name='bookmark' onClick={this.bookMark}/>}
           <center>
             {responseMessage}
           </center>

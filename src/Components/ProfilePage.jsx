@@ -31,10 +31,6 @@ const ProfilePage = ({ currentUser }) => {
     }
   }
 
-  // if (errorMessage) {
-  //   errorMessage = <p id='error-message'>{errorMessage}</p>
-  // }
-
   return (
     <>
     <Container>
