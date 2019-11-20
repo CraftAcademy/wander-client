@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
 import { Container, Grid, Header, Divider, Image } from 'semantic-ui-react'
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
+import { Map, GoogleApiWrapper, Marker, Polyline } from 'google-maps-react'
 
 class SpecificTrail extends Component {
   state = {
@@ -37,25 +37,37 @@ class SpecificTrail extends Component {
     }
 
     if (trail) {
+      const trailCoords = this.state.trail.coordinates.map(trail => ({lat: trail.latitude, lng: trail.longitude}))  
       trailMap = (
         <>
           <Map 
             google={this.props.google} 
-            zoom={13}
+            zoom={8}
             style={style}
             initialCenter={{
-              lat: trail.latitude,
-              lng: trail.longitude
+              lat: trail.coordinates[0].latitude,
+              lng: trail.coordinates[0].longitude
             }}
-          >
-            <Marker
-              id={`trail_${trail.id}`}
-              key={trail.id}
-              title={trail.title}
-              position={{
-                lat: trail.latitude, 
-                lng: trail.longitude
-              }}
+          > 
+              {trailCoords.map((trail, index) => {
+                if (index === 0 || index === trailCoords.length-1) {
+                  return(
+                    <Marker 
+                      id={`trail_${trail.lat}`}
+                      key={trail.lat}
+                      position={{
+                        lat: trail.lat, 
+                        lng: trail.lng
+                      }}
+                    /> 
+                  )
+                }
+                })}
+            <Polyline
+              path={trailCoords}
+              strokeColor='#45512b'
+              strokeOpacity={0.8}
+              strokeWeight={6} 
             />
           </Map>
         </>
@@ -83,8 +95,12 @@ class SpecificTrail extends Component {
                     <p className='single-content' id={`extra_${trail.id}`}>{trail.extra}</p>
                   </div>
                   <div className='single-trail'>
-                    <h3>Location:</h3>
-                    <p className='single-content' id={`location_${trail.id}`}>{trail.location}</p>
+                    <h3>City:</h3>
+                    <p className='single-content' id={`city_${trail.id}`}>{trail.city}</p>
+                  </div>
+                  <div className='single-trail'>
+                    <h3>Country:</h3>
+                    <p className='single-content' id={`country_${trail.id}`}>{trail.country}</p>
                   </div>
                   <div className='single-trail'>
                     <h3>Continent:</h3>

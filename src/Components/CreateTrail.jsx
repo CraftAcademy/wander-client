@@ -7,13 +7,15 @@ class CreateTrail extends Component {
     title: '',
     description: '',
     extra: '',
-    location: '',
-    continent: '',
+    country: '',
+    city: '',
+    continent: 'Asia',
     duration: '',
     intensity: 1,
     image: '',
     responseMessage: '',
-    errorMessage: ''
+    errorMessage: '',
+    coordinates: []
   }
 
   inputHandler = (e) => {
@@ -28,9 +30,17 @@ class CreateTrail extends Component {
     })
   }
 
+  mapClicked = (mapProps, map, clickEvent) => {
+    const lat = clickEvent.latLng.lat()
+    const lng = clickEvent.latLng.lng()
+    const trailsCopy = [...this.state.coordinates]
+    trailsCopy.push({latitude: lat, longitude: lng})
+    this.setState({coordinates: trailsCopy})
+  }
+
   submitTrailHandler = async () => {
-    const { title, description, extra, location, continent, duration, intensity, image } = this.state
-    let response = await submitTrail(title, description, extra, location, continent, duration, intensity, image)
+    const { title, description, extra, country, city, continent, duration, intensity, image, coordinates } = this.state
+    let response = await submitTrail(title, description, extra, country, city, continent, duration, intensity, image, coordinates)
 
     if (response.error_message) {
       this.setState({
@@ -62,6 +72,8 @@ class CreateTrail extends Component {
         inputHandler={this.inputHandler}
         submitTrailHandler={this.submitTrailHandler}
         onAvatarDropHandler={this.onAvatarDropHandler}
+        mapClicked={this.mapClicked}
+        coordinates={this.state.coordinates}
       />
     )
 
