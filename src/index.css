@@ -17,17 +17,28 @@ body {
 }
 
 .image-page {
-  min-width: 768px;
+  overflow: hidden;
+  padding-top: 56.25%;
+  position: relative;
+  text-align: center;
   margin: 0;
-  padding-bottom: 0;
-  min-height: 360px;
-  width: 100%;
+}
+
+.image-page iframe {
+  border: 0;
+  height: 92.5%;
+  width: 92.5%;
+  left: 3.75%;
+  top: 0;
+  position: absolute;
 }
 
 .content {
   position: absolute;
+  z-index: 999;
+  width: 40%;
   top: 75%;
-  left: 10rem;
+  left: -3%;
   color: white;
   font-size: 30px;
   font-weight: 700;
@@ -38,14 +49,23 @@ body {
 
 .content2 {
   position: absolute;
-  top: 790px;
-  right: 70px;
+  top: 10%;
+  right: 10%;
   color: white;
-  font-size: 12px;
+  font-size: 36px;
   font-weight: 600;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+}
+
+.content3 {
+  position: absolute;
+  z-index: 999;
+  width: 30%;
+  top: 81%;
+  left: -3%;
+  color: white;
 }
 
 #create-trail-wrapper {

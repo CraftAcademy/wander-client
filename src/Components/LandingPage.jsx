@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { getTrails, searchContinent } from '../Modules/trailsData'
-import { Card, Container, Image, Grid, Button } from 'semantic-ui-react'
-import Sarek from '../Images/sarek.jpg'
+import { getTrails } from '../Modules/trailsData'
+import { Card, Container, Image, Grid, Icon } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Footer from './Footer'
@@ -29,7 +28,6 @@ class LandingPage extends Component {
   render() {
     let trailsData = this.state.trails
     let trailsList, welcomeMessage
-    let sarek = <img src={Sarek} id='image' alt='Sarek national park' width='1800' height='800'/>
     let errorMessage = <div compact id='error-message'>{this.state.errorMessage}</div>
 
     if (this.props.currentUser.isSignedIn) {
@@ -63,16 +61,24 @@ class LandingPage extends Component {
 
     return (
       <>
-        <div className='page'>
-          <div className='image-page'>
-            {sarek}
-            <div className='content-image'>
-              <div className='content'>
-                <h1>{welcomeMessage}</h1>
-              </div>
-              <div className='content2'>
-                <p>Sarek National Park, Sweden</p>
-              </div>
+        <div className='image-page'>
+          <iframe 
+            src="https://player.vimeo.com/video/54802209?autoplay=1&loop=1" 
+            // position='relative' style={style} 
+            frameborder="0" allow="autoplay; fullscreen" 
+            allowfullscreen
+            >
+          </iframe>
+        <script src="https://player.vimeo.com/api/player.js"></script>
+          <div className='content-image'>
+            <div className='content'>
+              <h1>{welcomeMessage}</h1>
+            </div>
+            <div className='content2'>
+                <p>Find your next adventure</p>
+            </div>
+            <div className='content3'>
+              <Icon name='arrow down' size='big'/>
             </div>
           </div>
         </div>
