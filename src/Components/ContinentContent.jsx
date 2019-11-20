@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import AsiaJungle from '../Images/asia-jungle.jpg'
 import YellowStone from '../Images/yellowstone.jpg'
 import BasteiBridge from '../Images/bastei-bridge.jpg'
-import { searchTrail } from '../Modules/trailsData'
+import { searchContinent } from '../Modules/trailsData'
 import { Container } from 'semantic-ui-react'
 
 class ContinentContent extends Component {
@@ -13,7 +13,7 @@ class ContinentContent extends Component {
   }
 
   getContinentResults = async continent => {  
-    let response = await searchTrail(continent)
+    let response = await searchContinent(continent)
     if (response.error_message) {
       this.props.history.push("/continent", { errorMessage: response.error_message })
     } else {

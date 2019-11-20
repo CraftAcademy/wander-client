@@ -41,7 +41,7 @@ const submitTrail = async (title, description, extra, city, country, continent, 
   }
 }
 
-const searchTrail = async (query) => {
+const searchContinent = async (query) => {
   try {
     let response = await axios.get(apiUrl + `/trails?continent=${query}`)
     return response.data
@@ -50,4 +50,4 @@ const searchTrail = async (query) => {
   }
 }
 
-export { getTrails, submitTrail, getSpecificTrail, searchTrail }
+export { getTrails, submitTrail, getSpecificTrail, searchContinent }
