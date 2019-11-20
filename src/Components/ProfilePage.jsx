@@ -9,23 +9,21 @@ const ProfilePage = ({ currentUser }) => {
   const [errorMessage, setErrorMessage] = useState(null)
   const [responseMessage, setResponseMessage] = useState(null)
 
+  useEffect(() => {
+    getBookmarks()
+  }, [])
+
   const getBookmarks = async () => {
     try {
       let response = await axios.get('http://localhost:3000/v1/bookmarks')
       setBookmarks(response.data.data)
     } catch(error) {
-      debugger
       setErrorMessage(error.response.data.error_message)
     }
   }
-
-  useEffect(() => {
-    getBookmarks()
-  }, [])
   
   const deleteBookmark = async id => {
     try{
-      debugger
       const response = await axios.delete(`http://localhost:3000/v1/bookmarks/${id}`)
       setBookmarks(response.data.data)
       setResponseMessage(response.data.message)
@@ -44,9 +42,6 @@ const ProfilePage = ({ currentUser }) => {
         <h2>Email:</h2>
         <h3 id='user-email'>{currentUser.attributes.uid}</h3>
       </div>
-    </Container>
-    <Container>
-
     </Container>
     <Container>
       <center><h2>Your Bookmarked Adventures</h2></center>

@@ -51,6 +51,5 @@ describe('User can delete bookmark on profile page', () => {
       });
 
     cy.get('#response-message').should('contain', 'Removed bookmark!')
-    
   })
 })
