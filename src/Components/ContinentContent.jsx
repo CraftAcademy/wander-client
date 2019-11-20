@@ -46,14 +46,14 @@ class ContinentContent extends Component {
         </div>
       </div>
 
-      <Container text>
+      <Container>
         <div id='content-blurb'>
           <label id='content-label'>Explore Trails in Asia</label>
           <br />
           <br />
-          <p>Asia is the largest and most populous continent on our planet. It offers a mix of many different climates with diverse landscape and topography, from mountains and glaciers in the north to deserts in the south-west to djungles and volcanoes in the south-east.
-            With over 60 % of the world's population living here, and it's history as the site of many of the first civilizations, there is always more to explore in Asia.
-          </p>
+          <p>Asia is the largest and most populous continent on our planet.</p>
+          <p>It offers a mix of many different climates with diverse landscape and topography, from mountains and glaciers in the north to deserts in the south-west to djungles and volcanoes in the south-east.</p>
+          <p>With over 60 % of the world's population living here, and it's history as the site of many of the first civilizations, there is always more to explore in Asia.</p>
         </div>
       </Container>
 
@@ -75,12 +75,15 @@ class ContinentContent extends Component {
         </div>
       </div>
 
-      <Container text>
+      <Container>
         <div id='content-blurb'>
           <label id='content-label'>Explore Trails in North America</label>
           <br />
           <br />
-          <p>North America is home to over 23 non-sovereign territories. It's the third largest continent on our planet Earth. Since the Carribean islands are a part of North America the possibilities for adventure are endless. There are great regions of mountain, flat plateaus, subtropical islands with temperate climates below the tropics, the Artic Archipelago and deserts. Would you dare to visit the tundra in Canada? </p>
+          <p>North America is home to over 23 non-sovereign territories. It's the third largest continent on our planet Earth.</p>
+          <p>Since the Carribean islands are a part of North America the possibilities for adventure are endless.</p>
+          <p>There are great regions of mountain, flat plateaus, subtropical islands with temperate climates below the tropics, the Artic Archipelago and deserts.</p>
+          <p> Would you dare to visit the tundra in Canada?</p>
         </div>
       </Container>
 
@@ -102,12 +105,14 @@ class ContinentContent extends Component {
         </div>
       </div>
 
-      <Container text>
+      <Container>
         <div id='content-blurb'>
           <label id='content-label'>Explore Trails in Europe</label>
           <br />
           <br />
-          <p>Europe has fairly mild climate compare to other areas on Earth of the same latitude thanks to the Gulf Stream. Central Europe has vast plains, a great difference towards the mountainous fjord-cut spine of Norway or Icelands geysers. To the south there are mountainous regions alternating lowlands and mediterranean forests.  </p>
+          <p>Europe has fairly mild climate compare to other areas on Earth of the same latitude thanks to the Gulf Stream.</p>
+          <p> Central Europe has vast plains, a great difference towards the mountainous fjord-cut spine of Norway or Icelands geysers.</p>
+          <p> To the south there are mountainous regions alternating lowlands and mediterranean forests.</p>
         </div>
       </Container>
       </>
