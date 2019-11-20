@@ -18,7 +18,7 @@ class Search extends Component {
 
   getSearchResults = async () => {
     const { query } = this.state
-    if (this.state.query.length < 3) {
+    if (query.length < 3) {
       this.setState({
         errorMessage: 'Please input more than two characters.'
       })
