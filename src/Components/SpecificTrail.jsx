@@ -29,7 +29,6 @@ class SpecificTrail extends Component {
   render() {
     let singleTrail, backButton, trailMap
     const trail = this.state.trail
-    // const triangleCoords = trail.map(trail => ({lat: trail.latitude, lng: trail.longitude}))
     const style = {
       width: '80%',
       height: '50%',
@@ -38,7 +37,7 @@ class SpecificTrail extends Component {
     }
 
     if (trail) {
-      debugger
+      const triangleCoords = this.state.trail.coordinates.map(trail => ({lat: trail.latitude, lng: trail.longitude}))  
       trailMap = (
         <>
           <Map 
@@ -50,24 +49,26 @@ class SpecificTrail extends Component {
               lng: trail.coordinates[0].longitude
             }}
           > 
-              {trail.map(trail => {
-          return(
-                <Marker 
-                  id={`trail_${trail.id}`}
-                  key={trail.id}
-                  position={{
-                    lat: trail.coordinates.latitude, 
-                    lng: trail.coordinates.longitude
-                  }}
-                /> 
-          )
+              {triangleCoords.map((trail, index) => {
+                if (index === 0 || index === triangleCoords.length-1) {
+                  return(
+                    <Marker 
+                      id={`trail_${trail.lat}`}
+                      key={trail.lat}
+                      position={{
+                        lat: trail.lat, 
+                        lng: trail.lng
+                      }}
+                    /> 
+                  )
+                }
                 })}
-            {/* <Polyline
+            <Polyline
               path={triangleCoords}
-              strokeColor="#0000FF"
+              strokeColor='#45512b'
               strokeOpacity={0.8}
-              strokeWeight={2} 
-            /> */}
+              strokeWeight={6} 
+            />
           </Map>
         </>
       )
