@@ -3,14 +3,18 @@ import { Card, Image, Header } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
 const SearchResults = props => {
-
+  
   const [results, setResults] = useState([])
 
   useEffect(() => {
     setResults(props.location.state.searchResults)
   }, [])
   
-  let trailsList
+  let trailsList, goBack
+
+  goBack = () => {
+    props.history.goBack()
+  }
 
   if (results.length !== 0) {
     trailsList = (
@@ -38,7 +42,8 @@ const SearchResults = props => {
   }
   return (
     <div id='search-results'>
-      <Header as='h2' textAlign='center'>Found adventures</Header>      
+      <Header as='h2' textAlign='center'>Found adventures</Header>  
+      <a id='back-button' onClick={goBack} href='#'>Go Back</a>    
       <div id='trail-list'>
         {trailsList}
       </div>
