@@ -5,8 +5,8 @@ import { searchTrail } from "../Modules/trailsData"
 
 class Search extends Component {
   state = {
-    query: "",
-    errorMessage: "",
+    query: '',
+    errorMessage: '',
     searchResults: []
   }
 
