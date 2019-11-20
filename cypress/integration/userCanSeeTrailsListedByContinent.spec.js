@@ -6,13 +6,13 @@ describe('User can see trails listed by continent', () => {
       response: 'fixture:user_can_see _trails_listed_by_continent.json',
       status: 200
     })
-    cy.get('#asian-button').click()
+    cy.get('#eu-button').click()
     cy.get('#trail-list')
     .within(() => {
       cy.get('#trail_1')
         .within(() => {
           cy.get('#title_1').should('contain', 'Bollmora speed trail')
-          cy.get('#description_1').should('contain', 'A fast trail for fast people')
+          cy.get('#description_1').should('contain', 'A fast trail for')
           cy.get('#extra_1').should('contain', 'You are not prepared for the speed')
           cy.get('#city_1').should('contain', 'Bollmora')
           cy.get('#country_1').should('contain', 'Sweden')
