@@ -5,6 +5,8 @@ import Search from './Search'
 import logo from '../Images/logo.svg'
 import { connect } from 'react-redux'
 import Logout from './Logout'
+import { withRouter } from "react-router-dom"
+
 const Navbar = ({ currentUser }) => {
   return (
     <>
@@ -39,8 +41,9 @@ const Navbar = ({ currentUser }) => {
               name='profile'
             />
           )}
-          <Search />
-
+          {window.location.pathname !== '/search' && (
+            <Search />
+          )}
           {currentUser.isSignedIn ? (
             <Logout />
           ) : (
@@ -65,4 +68,4 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps
-)(Navbar)
+)(withRouter(Navbar))
