@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
+import { Map, GoogleApiWrapper, Marker, Polyline } from 'google-maps-react'
 import { Container, Grid, Header, Divider, Image, Icon, Message } from 'semantic-ui-react'
 import axios from 'axios'
 import { connect } from 'react-redux'
@@ -46,8 +47,52 @@ class SpecificTrail extends Component {
   }
 
   render() {
-    let singleTrail, backButton, responseMessage
+    let singleTrail, backButton, responseMessage, trailMap
     const trail = this.state.trail
+    const style = {
+      width: '80%',
+      height: '50%',
+      left: '10%',
+      borderRadius: '8px'    
+    }
+
+    if (trail) {
+      const trailCoords = this.state.trail.coordinates.map(trail => ({lat: trail.latitude, lng: trail.longitude}))  
+      trailMap = (
+        <>
+          <Map 
+            google={this.props.google} 
+            zoom={8}
+            style={style}
+            initialCenter={{
+              lat: trail.coordinates[0].latitude,
+              lng: trail.coordinates[0].longitude
+            }}
+          > 
+              {trailCoords.map((trail, index) => {
+                if (index === 0 || index === trailCoords.length-1) {
+                  return(
+                    <Marker 
+                      id={`trail_${trail.lat}`}
+                      key={trail.lat}
+                      position={{
+                        lat: trail.lat, 
+                        lng: trail.lng
+                      }}
+                    /> 
+                  )
+                }
+                })}
+            <Polyline
+              path={trailCoords}
+              strokeColor='#45512b'
+              strokeOpacity={0.8}
+              strokeWeight={6} 
+            />
+          </Map>
+        </>
+      )
+    }
 
     if (this.state.responseMessage) {
       responseMessage = <Message positive compact id='response-message'>{this.state.responseMessage}</Message>
@@ -78,8 +123,12 @@ class SpecificTrail extends Component {
                     <p className='single-content' id={`extra_${trail.id}`}>{trail.extra}</p>
                   </div>
                   <div className='single-trail'>
-                    <h3>Location:</h3>
-                    <p className='single-content' id={`location_${trail.id}`}>{trail.location}</p>
+                    <h3>City:</h3>
+                    <p className='single-content' id={`city_${trail.id}`}>{trail.city}</p>
+                  </div>
+                  <div className='single-trail'>
+                    <h3>Country:</h3>
+                    <p className='single-content' id={`country_${trail.id}`}>{trail.country}</p>
                   </div>
                   <div className='single-trail'>
                     <h3>Continent:</h3>
@@ -113,10 +162,12 @@ class SpecificTrail extends Component {
       <>
         {singleTrail}
         {backButton}
+        {trailMap}
       </>
     )
   }
 }
+
 
 const mapStateToProps = state => {
   return {
@@ -126,4 +177,6 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps
-)(SpecificTrail)
+)(GoogleApiWrapper({
+  apiKey:(process.env.REACT_APP_API_KEY)
+})(SpecificTrail))
