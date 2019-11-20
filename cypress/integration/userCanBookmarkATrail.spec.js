@@ -12,16 +12,11 @@ describe('User can bookmark a trail', () => {
       response: 'fixture:successful_user_login.json',
       status: 200
     })
+    
     cy.route({
       method: 'POST',
       url: 'http://localhost:3000/v1/bookmarks',
-      response: 'fixture:bookmark.json',
-      status: 200
-    })
-    cy.route({
-      method: 'GET',
-      url: 'http://localhost:3000/v1/bookmarks',
-      response: 'fixture:bookmark.json',
+      response: 'fixture:saved_trail_to_your_bookmarks.json',
       status: 200
     })
     cy.get('#navbar')
@@ -41,7 +36,21 @@ describe('User can bookmark a trail', () => {
         cy.get('#card_1').click()
       })
 
-    cy.get('.bookmark.large.icon').click()
+    cy.get('#bookmark').click()
+
+    cy.get('#response-message').should('contain', 'Saved trail to your bookmarks!' )
+
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/v1/bookmarks',
+      response: 'fixture:bookmark.json',
+      status: 200
+    })
+
+    cy.get('#navbar')
+      .within(() => {
+        cy.get('#nav-profile').click()
+      })
     
     cy.get('#bookmark-list')
       .within(() => {

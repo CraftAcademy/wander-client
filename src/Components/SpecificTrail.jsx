@@ -101,7 +101,7 @@ class SpecificTrail extends Component {
     if (trail) {
       singleTrail = (
         <>
-          {this.state.userBookmarks.includes(trail.id) || <Icon size='large' name='bookmark' onClick={this.bookMark}/>}
+          {this.state.userBookmarks.includes(trail.id) || <Icon id='bookmark' size='large' name='bookmark' onClick={this.bookMark}/>}
           <center>
             {responseMessage}
           </center>

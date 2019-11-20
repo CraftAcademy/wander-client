@@ -13,7 +13,6 @@ const ProfilePage = ({ currentUser }) => {
       let response = await axios.get('http://localhost:3000/v1/bookmarks')
       setBookmarks(response.data.data)
     } catch(error) {
-      debugger
       setErrorMessage(error.response.data.error_message)
     }
   }
