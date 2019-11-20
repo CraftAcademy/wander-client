@@ -1,4 +1,4 @@
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
+import { Map, GoogleApiWrapper, Marker, Polyline } from 'google-maps-react'
 import React, { Component } from 'react'
 import { Header } from 'semantic-ui-react'
 import { getTrails } from '../Modules/trailsData'
@@ -28,7 +28,8 @@ class MapContainer extends Component {
       width: '80%',
       height: '80%',
       left: '10%',
-      borderRadius: '8px'
+      borderRadius: '8px',
+      position: 'relative'
     }
 
     return (
@@ -55,8 +56,8 @@ class MapContainer extends Component {
               key={trail.id}
               title={trail.title}
               position={{
-                lat: trail.latitude, 
-                lng: trail.longitude
+                lat: trail.coordinates[0].latitude, 
+                lng: trail.coordinates[0].longitude
               }}
               onClick={() => this.props.history.push(`/trails/${trail.id}`)}
             /> 

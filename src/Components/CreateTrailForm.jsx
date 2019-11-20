@@ -1,9 +1,10 @@
 import React from 'react'
-import { Button, Input, TextArea, Form, Rating, Header } from 'semantic-ui-react'
+import { Button, Header, TextArea, Form, Rating, Container } from 'semantic-ui-react'
 import ImageUploader from 'react-images-upload'
+import CreateMap from './CreateMap'
 
-const CreateTrailForm = (props) => {
-  let { intensity } = props
+const CreateTrailForm = props => {
+  let { intensity, mapClicked, coordinates } = props
 
   return (
     <>
@@ -20,10 +21,13 @@ const CreateTrailForm = (props) => {
           <Form.Input fluid id='extra-input' className='input-trail' name='extra' placeholder='Good to know' onChange={props.inputHandler} />
         </div>
         <div>
-          <Form.Input fluid id='location-input' className='input-trail' name='location' placeholder='Location' onChange={props.inputHandler} />
+          <Form.Input fluid id='city-input' className='input-trail' name='city' placeholder='City' onChange={props.inputHandler} />
         </div>
         <div>
-          <select id='continent-input' type='input' placeholder='Select Continent' name='continents' onChange={props.inputHandler}>
+          <Form.Input fluid id='country-input' className='input-trail' name='country' placeholder='Country' onChange={props.inputHandler} />
+        </div>
+        <div>
+          <select id='continent-input' type='input' placeholder='Select Continent' name='continent' onChange={props.inputHandler}>
             <option value='Asia'>Asia</option>
             <option value='Africa'>Africa</option>
             <option value='Australia'>Australia</option>
@@ -62,9 +66,16 @@ const CreateTrailForm = (props) => {
             singleImage={true}
           />
         </div>
+        <Container textAlign='center'>
         <div>
           <Button id='submit-trail' onClick={props.submitTrailHandler}>Submit Trail</Button>
         </div>
+        </Container>
+        <br />
+        <CreateMap 
+          coordinates={coordinates}
+          mapClicked={mapClicked}
+        />
       </Form>
       </div>
     </>
