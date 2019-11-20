@@ -303,9 +303,10 @@ body {
 }
 
 #content-blurb {
-  margin: 15rem!important;
+  margin: 10rem!important;
   position: relative;
   text-align: center;
+  line-height: 15px;
 }
 
 #content-label {
