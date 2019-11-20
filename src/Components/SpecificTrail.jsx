@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
-import { Container, Grid, Header, Divider, Image } from 'semantic-ui-react'
+import { Container, Grid, Header, Divider, Image, Table, Item } from 'semantic-ui-react'
 import { Map, GoogleApiWrapper, Marker, Polyline } from 'google-maps-react'
 
 class SpecificTrail extends Component {
@@ -65,7 +65,7 @@ class SpecificTrail extends Component {
                 })}
             <Polyline
               path={trailCoords}
-              strokeColor='#45512b'
+              strokeColor='#0000ff'
               strokeOpacity={0.8}
               strokeWeight={6} 
             />
@@ -77,44 +77,58 @@ class SpecificTrail extends Component {
     if (trail) {
       singleTrail = (
         <>
-          <Container textAlign='justified' id='specific-trail'>
-            <Grid columns={2}>
+          <Container id='specific-trail'>
+            <Grid>
               <Grid.Row>
-                <Grid.Column width={5}>
+                <Grid.Column width='8'>
                   <Image
                     id={`image_${trail.id}`}
                     src={trail.image}
                   />
                 </Grid.Column>
-                <Grid.Column>
+                <Grid.Column width='6'>
                   <Header as='h2' id={`title_${trail.id}`}>{trail.title}</Header>
                   <Divider />
-                  <p className='single-description' id={`description_${trail.id}`}>{trail.description}</p>
-                  <div className='single-trail'>
-                    <h3>Good to know:</h3>
+                 <p className='single-content' id={`description_${trail.id}`}> {trail.description}</p>
+                    <Header as='h3'>Good to know:</Header>
                     <p className='single-content' id={`extra_${trail.id}`}>{trail.extra}</p>
-                  </div>
-                  <div className='single-trail'>
-                    <h3>City:</h3>
-                    <p className='single-content' id={`city_${trail.id}`}>{trail.city}</p>
-                  </div>
-                  <div className='single-trail'>
-                    <h3>Country:</h3>
-                    <p className='single-content' id={`country_${trail.id}`}>{trail.country}</p>
-                  </div>
-                  <div className='single-trail'>
-                    <h3>Continent:</h3>
-                    <p className='single-content' id={`continent_${trail.id}`}>{trail.continent}</p>
-                  </div> 
-                  <div className='single-trail'>
-                    <h3>Duration:</h3>
-                    <p className='single-content' id={`duration_${trail.id}`}>{trail.duration} min</p>
-                  </div>
-                  <div className='single-trail'>
-                    <h3>Intensity Level:</h3>
-                    <p className='single-content' id={`intensity_${trail.id}`}>{trail.intensity}</p>
-                  </div>
-                </Grid.Column>
+                  </Grid.Column>
+                  <Grid.Column width='2'>
+                    <Table basic='very' celled collapsing>
+                    <Table.Body>
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as='h4'>City:</Header>
+                        </Table.Cell>
+                        <Table.Cell id={`city_${trail.id}`}content={trail.city}/>
+                      </Table.Row>
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as='h4'> Country:</Header> 
+                        </Table.Cell>
+                        <Table.Cell id={`country_${trail.id}`} content={trail.country}/>
+                      </Table.Row>
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as='h4'>Continent:</Header> 
+                        </Table.Cell>
+                        <Table.Cell id={`continent_${trail.id}`} content={trail.continent}/>
+                      </Table.Row>
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as='h4'>Duration:</Header>
+                        </Table.Cell>
+                        <Table.Cell id={`duration_${trail.id}`} content={trail.duration}/>
+                      </Table.Row>
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as='h4'>Intensity:</Header>
+                        </Table.Cell>
+                        <Table.Cell id={`intensity_${trail.id}`} content={trail.intensity}/>
+                      </Table.Row>
+                    </Table.Body>
+                    </Table>
+                  </Grid.Column>
               </Grid.Row>
             </Grid>
           </Container>

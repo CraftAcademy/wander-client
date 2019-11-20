@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { getTrails, searchContinent } from '../Modules/trailsData'
-import { Card, Container, Image, Grid, Button } from 'semantic-ui-react'
+import { getTrails } from '../Modules/trailsData'
+import { Card, Container, Image, Grid } from 'semantic-ui-react'
 import Sarek from '../Images/sarek.jpg'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -28,7 +28,7 @@ class LandingPage extends Component {
   render() {
     let trailsData = this.state.trails
     let trailsList, welcomeMessage
-    let sarek = <img src={Sarek} id='image' alt='Sarek national park' width='1800' height='800'/>
+    let sarek = <img src={Sarek} id='image' alt='Sarek national park' width='1800' height='650'/>
     let errorMessage = <div compact id='error-message'>{this.state.errorMessage}</div>
 
     if (this.props.currentUser.isSignedIn) {

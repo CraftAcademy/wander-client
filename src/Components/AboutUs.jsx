@@ -26,8 +26,10 @@ const AboutUs = () => {
             <Grid.Column width='10'>
               <Grid.Row>
                 <Header size='medium'>Who are team behind Wander? <img src={logo} alt='Logo'/></Header> 
-                <p>We are an elite alien space force tasked to bring you the best trail-finding application currently available on earth. </p>
+                <Container text>
+                  <p>We are an elite alien space force tasked to bring you the best trail-finding application currently available on earth. </p>
                   <p>We love you, and want to wander the earth with you! </p> 
+                </Container>
               </Grid.Row>  
               <br/>
               <Grid>

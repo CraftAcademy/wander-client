@@ -308,18 +308,9 @@ footer {
   text-align: center;
 }
 
-.single-trail {
-  margin-top: 30px;
-  margin-bottom: 15px;
-}
-
-.single-description {
-  font-size: 20px;
-}
-
 .single-content {
-  font-size: 16px;
-}
+  line-height: 24px;
+} 
 
 #search-input {
   margin-right: 15px;
