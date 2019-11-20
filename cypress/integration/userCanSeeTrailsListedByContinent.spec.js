@@ -2,7 +2,7 @@ describe('User can see trails listed by continent', () => {
   it('successfully', () => {
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/v1//trails?continent=Europe',
+      url: 'http://localhost:3000/v1/trails?continent=Europe',
       response: 'fixture:user_can_see_trails_listed_by_continent.json',
       status: 200
     })
@@ -33,7 +33,7 @@ describe('User can see trails listed by continent', () => {
   it('unsuccessfully', () => {
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/v1//trails?continent=Asia',
+      url: 'http://localhost:3000/v1/trails?continent=Asia',
       response: 'fixture:user_can_view_list_of_trails_unsuccessfully.json',
       status: 400
     })
