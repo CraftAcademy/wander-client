@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
-import { Container, Grid, Header, Divider, Image } from 'semantic-ui-react'
 import { Map, GoogleApiWrapper, Marker, Polyline } from 'google-maps-react'
+import { Container, Grid, Header, Divider, Image, Icon, Message } from 'semantic-ui-react'
+import axios from 'axios'
+import { connect } from 'react-redux'
 
 class SpecificTrail extends Component {
   state = {
     trail: null,
-    errorMessage: null
+    errorMessage: null,
+    responseMessage: null
   }
 
   async componentDidMount() {
@@ -26,8 +29,21 @@ class SpecificTrail extends Component {
     this.props.history.goBack()
   }
 
+  bookMark = async () => {
+    try {
+     let response = await axios.post('http://localhost:3000/v1/bookmarks', {
+        id: this.state.trail.id
+      })
+      this.setState({
+        responseMessage: response.data.message 
+      })
+    } catch (error) {
+      return error.response.data.error_message
+    }
+  }
+
   render() {
-    let singleTrail, backButton, trailMap
+    let singleTrail, backButton, responseMessage, trailMap
     const trail = this.state.trail
     const style = {
       width: '80%',
@@ -74,9 +90,17 @@ class SpecificTrail extends Component {
       )
     }
 
+    if (this.state.responseMessage) {
+      responseMessage = <Message positive compact id='response-message'>{this.state.responseMessage}</Message>
+    } 
+
     if (trail) {
       singleTrail = (
         <>
+          <Icon size='large' name='bookmark' onClick={this.bookMark}/>
+          <center>
+            {responseMessage}
+          </center>
           <Container textAlign='justified' id='specific-trail'>
             <Grid columns={2}>
               <Grid.Row>
@@ -140,6 +164,15 @@ class SpecificTrail extends Component {
   }
 }
 
-export default GoogleApiWrapper({
+
+const mapStateToProps = state => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(GoogleApiWrapper({
   apiKey:(process.env.REACT_APP_API_KEY)
-})(SpecificTrail)
+})(SpecificTrail))

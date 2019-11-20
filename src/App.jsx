@@ -9,7 +9,7 @@ import CreateTrail from './Components/CreateTrail'
 import Navbar from './Components/Navbar'
 import Login from './Components/Login'
 import SignUp from './Components/SignUp'
-import MapContainer from './Components/MapContainer';
+import MapContainer from './Components/MapContainer'
 import SearchResults from './Components/SearchResults'
 import ProfilePage from './Components/ProfilePage'
 import AboutUs from './Components/AboutUs'
