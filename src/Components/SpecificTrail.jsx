@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
 import { Map, GoogleApiWrapper, Marker, Polyline } from 'google-maps-react'
-import { Container, Grid, Header, Divider, Image, Table, Label } from 'semantic-ui-react'
+import { Container, Grid, Header, Divider, Image, Table, Label, Message, Icon } from 'semantic-ui-react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 
@@ -45,6 +45,7 @@ class SpecificTrail extends Component {
       return error.response.data.error_message
     }
   }
+
 
   render() {
     let singleTrail, backButton, responseMessage, trailMap
@@ -101,7 +102,6 @@ class SpecificTrail extends Component {
     if (trail) {
       singleTrail = (
         <>
-          {this.state.userBookmarks.includes(trail.id) || <Icon id='bookmark' size='large' name='bookmark' onClick={this.bookMark}/>}
           <center>
             {responseMessage}
           </center>
@@ -115,7 +115,9 @@ class SpecificTrail extends Component {
                   />
                 </Grid.Column>
                 <Grid.Column width='6'>
-                  <Header as='h2' id={`title_${trail.id}`}>{trail.title}</Header>
+                  <Header as='h2' id={`title_${trail.id}`}>
+                    {trail.title} {this.state.userBookmarks.includes(trail.id) || <Icon id='bookmark' size='big' name='bookmark' onClick={this.bookMark}/>}
+                  </Header>
                   <Divider />
                  <p className='single-content' id={`description_${trail.id}`}> {trail.description}</p>
                     <Header as='h3'>Good to know:</Header>
