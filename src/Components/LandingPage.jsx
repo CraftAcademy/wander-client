@@ -4,7 +4,6 @@ import { Card, Container, Image, Grid, Button } from 'semantic-ui-react'
 import Sarek from '../Images/sarek.jpg'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Footer from './Footer'
 import ContinentContent from './ContinentContent'
 
 class LandingPage extends Component {
@@ -85,7 +84,6 @@ class LandingPage extends Component {
           </Grid>
         </Container>
         <ContinentContent history={this.props.history}/>
-        <Footer />
       </>
     )
   }
