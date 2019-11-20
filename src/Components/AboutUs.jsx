@@ -25,14 +25,14 @@ const AboutUs = () => {
             </Grid.Column>
             <Grid.Column width='10'>
               <Grid.Row>
-                <Header size='medium'>Who are team Wonder? <img src={logo} alt='Logo'/></Header> 
+                <Header size='medium'>Who are team behind Wander? <img src={logo} alt='Logo'/></Header> 
                 <p>We are an elite alien space force tasked to bring you the best trail-finding application currently available on earth. </p>
                   <p>We love you, and want to wander the earth with you! </p> 
               </Grid.Row>  
               <br/>
               <Grid>
                 <Grid.Column verticalAlign='middle' width='8'>
-                  <Header size='large' dividing > The Team</Header>
+                  <Header size='large' dividing>The Team</Header>
                   <h3>Jonas Masharqa</h3> 
                   <h3>David Izosimov</h3>
                   <h3>Luca Lobacher</h3>
