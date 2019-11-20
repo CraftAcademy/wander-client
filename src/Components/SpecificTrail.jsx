@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
-import { Container, Grid, Header, Divider, Image, Table, Item } from 'semantic-ui-react'
+import { Container, Grid, Header, Divider, Image, Table, Label } from 'semantic-ui-react'
 import { Map, GoogleApiWrapper, Marker, Polyline } from 'google-maps-react'
 
 class SpecificTrail extends Component {
@@ -94,7 +94,7 @@ class SpecificTrail extends Component {
                     <p className='single-content' id={`extra_${trail.id}`}>{trail.extra}</p>
                   </Grid.Column>
                   <Grid.Column width='2'>
-                    <Table basic='very' celled collapsing>
+                    <Table color='olive' celled collapsing>
                       <Table.Header>
                           <Table.HeaderCell colSpan='3'><h3>Trail Facts</h3></Table.HeaderCell>
                       </Table.Header>
@@ -121,7 +121,7 @@ class SpecificTrail extends Component {
                         <Table.Cell>
                           <Header as='h4'>Duration:</Header>
                         </Table.Cell>
-                        <Table.Cell id={`duration_${trail.id}`} content={trail.duration}/>
+                        <Table.Cell id={`duration_${trail.id}`}>{trail.duration} minutes</Table.Cell>
                       </Table.Row>
                       <Table.Row>
                         <Table.Cell>
@@ -144,13 +144,15 @@ class SpecificTrail extends Component {
     }
 
     backButton = (
-      <a id='back-button' onClick={this.goBack} href='#'>Go Back</a>
+      <Label as='a' color='olive' id='back-button' onClick={this.goBack} href='#'>Go Back</Label>
     )
 
     return (
       <>
+      <br/>
+      {backButton}
         {singleTrail}
-        {backButton}
+        <br/>
         {trailMap}
       </>
     )

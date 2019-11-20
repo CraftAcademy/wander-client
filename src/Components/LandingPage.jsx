@@ -42,7 +42,7 @@ class LandingPage extends Component {
             let trim_ingress = trail.description.substr(0, 75)
             let ingress = trim_ingress.substr(0, Math.min(trim_ingress.length, trim_ingress.lastIndexOf(" "))) + ' ...'            
             return  <NavLink id={`trail_${trail.id}`} key={trail.id} to={`/trails/${trail.id}`}>
-                      <Card id={`card_${trail.id}`}>
+                      <Card color='olive' id={`card_${trail.id}`}>
                         <Image
                           id={`image_${trail.id}`}
                           src={trail.image}
