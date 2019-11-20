@@ -37,7 +37,7 @@ class SpecificTrail extends Component {
     }
 
     if (trail) {
-      const triangleCoords = this.state.trail.coordinates.map(trail => ({lat: trail.latitude, lng: trail.longitude}))  
+      const trailCoords = this.state.trail.coordinates.map(trail => ({lat: trail.latitude, lng: trail.longitude}))  
       trailMap = (
         <>
           <Map 
@@ -49,8 +49,8 @@ class SpecificTrail extends Component {
               lng: trail.coordinates[0].longitude
             }}
           > 
-              {triangleCoords.map((trail, index) => {
-                if (index === 0 || index === triangleCoords.length-1) {
+              {trailCoords.map((trail, index) => {
+                if (index === 0 || index === trailCoords.length-1) {
                   return(
                     <Marker 
                       id={`trail_${trail.lat}`}
@@ -64,7 +64,7 @@ class SpecificTrail extends Component {
                 }
                 })}
             <Polyline
-              path={triangleCoords}
+              path={trailCoords}
               strokeColor='#45512b'
               strokeOpacity={0.8}
               strokeWeight={6} 
