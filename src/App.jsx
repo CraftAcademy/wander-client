@@ -33,7 +33,7 @@ const App = () => {
         <Route exact path='/signup' component={SignUp}/>
         <Route exact path='/map' component={MapContainer}/>
         <Route exact path='/user/:name' component={requireSignIn(ProfilePage)}/>
-        <Route exact path='/about' compoment={AboutUs}/>
+        <Route exact path='/about' component={AboutUs}/>
       </>
     </Router>
   )
