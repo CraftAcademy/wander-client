@@ -1,18 +1,28 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from 'react'
 import { Card, Image, Header } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
-const SearchResults = props => {
-
+const ContinentResults = (props) => {
   const [results, setResults] = useState([])
+  const [errorMessage, setErrorMessage] = useState(null)
 
   useEffect(() => {
     setResults(props.location.state.searchResults)
   }, [])
-  
-  let trailsList
 
-  if (results.length !== 0) {
+  useEffect(() => {
+    setErrorMessage(props.location.state.errorMessage)
+  }, [])
+  
+  let trailsList, errorStatement
+
+  if (errorMessage) {
+    errorStatement = (
+      <p id='error-message'>{errorMessage}</p>
+    )
+  }
+
+  if (results) {
     trailsList = (
       <>
         {results.map(trail => {
@@ -35,14 +45,16 @@ const SearchResults = props => {
       </>
     )
   }
+
   return (
     <div id='search-results'>
-      <Header as='h2' textAlign='center'>Found adventures</Header>      
+      <Header as='h2' textAlign='center'>Adventures</Header>      
       <div id='trail-list'>
         {trailsList}
       </div>
+      {errorStatement}
     </div>
   )
 }
 
-export default SearchResults
+export default ContinentResults

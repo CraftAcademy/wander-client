@@ -1,0 +1,26 @@
+{
+  "search": [
+    {
+      "id": 1,
+      "title": "Bollmora speed trail",
+      "description": "A fast trail for fast people",
+      "image": "https://t3.ftcdn.net/jpg/02/48/42/64/240_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg",
+      "extra": "You are not prepared for the speed",
+      "location": "Bollmora",
+      "continent": "Asia",
+      "duration": "10 minutes",
+      "intensity": "5"
+    },
+    {
+      "id": 5,
+      "title": "Tyresö Flaten to Gammelström",
+      "description": "A short trail for everyone",
+      "image": "https://t3.ftcdn.net/jpg/02/48/42/64/240_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg",
+      "extra": "You are not prepared for the speed",
+      "location": "Bollmora",
+      "continent": "Asia",
+      "duration": "5 minutes",
+      "intensity": "2"
+    }
+  ]
+}
