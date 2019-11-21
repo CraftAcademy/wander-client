@@ -115,19 +115,14 @@ class SpecificTrail extends Component {
                   />
                 </Grid.Column>
                 <Grid.Column width='6'>
-                <Popup trigger={
                   <Header as='h2' id={`title_${trail.id}`}>
-                  
                     {trail.title} 
-                    {this.state.userBookmarks.includes(trail.id) || <Icon id='bookmark' size='big' name='bookmark' onClick={this.bookMark}/>}
-                    </Header>
-                  }
-                  >
-                     <Popup.Header>User Rating</Popup.Header>
-                    <Popup.Content>
-                      Bookmark me!
-                    </Popup.Content>
-                  </Popup>
+                    {this.state.userBookmarks.includes(trail.id) || 
+                    <Popup trigger={ 
+                      <Icon id='bookmark' size='big' name='bookmark' onClick={this.bookMark}/> }>
+                      <Popup.Header>Bookmark me!</Popup.Header>
+                    </Popup>}
+                  </Header>
                   <Divider />
                  <p className='single-content' id={`description_${trail.id}`}> {trail.description}</p>
                     <Header as='h3'>Good to know:</Header>
