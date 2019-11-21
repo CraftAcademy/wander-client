@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { Container, Divider, Card, Image, Grid, Button } from 'semantic-ui-react'
+import { Container, Divider, Card, Image, Grid, Table, Button, Header, Icon } from 'semantic-ui-react'
 import axios from 'axios'
 import { NavLink } from 'react-router-dom'
+import Avatar from '../Images/greenavatar.png'
 
 const ProfilePage = ({ currentUser }) => {
   const [bookmarks, setBookmarks] = useState([])
@@ -34,18 +35,25 @@ const ProfilePage = ({ currentUser }) => {
 
   return (
     <>
-    <Container>
-      <h1 id='user-name'>{currentUser.attributes.name}</h1>
-      <Divider />
-      <br></br>
-      <div>
-        <h2>Email:</h2>
-        <h3 id='user-email'>{currentUser.attributes.uid}</h3>
-      </div>
-    </Container>
-    <Container>
+      <br/>
+      <Container textAlign='center'>
+        <Header as='h1' dividing>Profile</Header>
+        <center>
+        <Table basic='very' collapsing >
+          <Table.Body>
+              <Table.Cell>   
+                <Image src={Avatar} size='small' circular />
+              </Table.Cell>
+              <Table.Cell>
+                <Header as='h2' id='user-name'> {currentUser.attributes.name}</Header>
+                <Header as='h3' id='user-email'>E-mail: {currentUser.attributes.uid}</Header>
+              </Table.Cell>
+            </Table.Body>
+          </Table>
+          </center>
+      <Divider/>
       <center><h2>Your Bookmarked Adventures</h2></center>
-      <br></br>
+      <br/>
       {errorMessage && <center><h3>{errorMessage}</h3></center>}
       {responseMessage && <center><h3 id='response-message'>{responseMessage}</h3></center>}
       <Grid centered container columns={3} id='bookmark-list'>
