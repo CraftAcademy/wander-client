@@ -4,9 +4,9 @@ import { InfoWindow } from 'google-maps-react'
 
 export default class InfoWindowEx extends Component {
   constructor(props) {
-    super(props);
-    this.infoWindowRef = React.createRef();
-    this.contentElement = document.createElement(`div`);
+    super(props)
+    this.infoWindowRef = React.createRef()
+    this.contentElement = document.createElement(`div`)
   }
 
   componentDidUpdate(prevProps) {
@@ -15,11 +15,11 @@ export default class InfoWindowEx extends Component {
         React.Children.only(this.props.children),
         this.contentElement
       );
-      this.infoWindowRef.current.infowindow.setContent(this.contentElement);
+      this.infoWindowRef.current.infowindow.setContent(this.contentElement)
     }
   }
 
   render() {
-    return <InfoWindow ref={this.infoWindowRef} {...this.props} />;
+    return <InfoWindow ref={this.infoWindowRef} {...this.props} />
   }
 }
