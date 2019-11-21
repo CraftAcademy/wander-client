@@ -37,7 +37,7 @@ const ProfilePage = ({ currentUser }) => {
     <>
       <br/>
       <Container textAlign='center'>
-        <Header as='h1' id='user-name' dividing>Profile</Header>
+        <Header as='h1' dividing>Profile</Header>
         <center>
         <Table basic='very' collapsing >
           <Table.Body>
