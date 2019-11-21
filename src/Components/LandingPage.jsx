@@ -46,6 +46,8 @@ class LandingPage extends Component {
                         <Image
                           id={`image_${trail.id}`}
                           src={trail.image}
+                          object-fit='cover'
+                          height='200px'
                         />
                         <Card.Content>
                           <Card.Header as='h3' id={`title_${trail.id}`}>{trail.title}</Card.Header>

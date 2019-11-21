@@ -115,7 +115,7 @@ class SpecificTrail extends Component {
                   />
                 </Grid.Column>
                 <Grid.Column width='6'>
-                  <Header as='h2' id={`title_${trail.id}`}>
+                  <Header as='h2' id={`title_${trail.id}`}> 
                     {trail.title} {this.state.userBookmarks.includes(trail.id) || <Icon id='bookmark' size='big' name='bookmark' onClick={this.bookMark}/>}
                   </Header>
                   <Divider />
