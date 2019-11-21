@@ -33,9 +33,9 @@ class Login extends Component {
   
   render() {
     let renderLogin, errorMessage 
-    
+
     if (this.state.errorMessage) {
-      errorMessage = <Message compact id="error-message">{this.state.errorMessage}</Message>
+      errorMessage = <Message negative compact='true' id="error-message">{this.state.errorMessage}</Message>
     }
 
     if (!this.props.currentUser.isSignedIn) {
@@ -51,8 +51,11 @@ class Login extends Component {
 
     return (
       <Container>
+        <br/>
         {renderLogin}
-        {errorMessage}
+        <center>
+         {errorMessage}
+        </center>
       </Container>
     )
   }
