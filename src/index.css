@@ -24,7 +24,7 @@ body {
   width: 100%;
 }
 
-.content {
+.content1 {
   position: absolute;
   top: 75%;
   left: 10rem;
@@ -329,4 +329,29 @@ footer {
 
 i.bookmark.large.icon {
   cursor: pointer;
+}
+
+.ui.card.infoCard {
+  margin: 0 !important;
+  height: 300px;
+}
+
+.ui.card > .content.infoCardContent {
+  height: 80px !important;
+}
+.gm-style .gm-style-iw-c{
+  padding: 0 !important;
+  max-height: 300px;
+}
+
+.gm-style-iw-d {
+  max-width: 300px;
+  overflow: hidden !important;
+}
+
+.gm-ui-hover-effect {
+  position: relative !important;
+  top: 0px !important;
+  right: -50px !important;
+  display: none !important;
 }

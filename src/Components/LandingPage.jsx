@@ -66,7 +66,7 @@ class LandingPage extends Component {
           <div className='image-page'>
             {sarek}
             <div className='content-image'>
-              <div className='content'>
+              <div className='content1'>
                 <h1>{welcomeMessage}</h1>
               </div>
               <div className='content2'>

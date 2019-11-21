@@ -1,6 +1,6 @@
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 import React, { Component } from 'react'
-import { Header } from 'semantic-ui-react'
+import { Header, Card, Image, Icon } from 'semantic-ui-react'
 import { getTrails } from '../Modules/trailsData'
 import InfoWindowEx from './InfoWindowEx'
 
@@ -26,7 +26,7 @@ class MapContainer extends Component {
     }
   }
 
-  outMaker = (props) => {
+  onMapClicked = (props) => {
     if(this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
@@ -53,10 +53,6 @@ class MapContainer extends Component {
       position: 'relative'
     }
 
-    const infoWindowStyle = {
-
-    }
-
     return (
       <>
       <center>
@@ -73,6 +69,7 @@ class MapContainer extends Component {
             lat: 30.0131,
             lng: 10.0686
           }}
+          onClick={this.onMapClicked}
         >
         {trailsData.map(trail => {
           return(
@@ -81,6 +78,8 @@ class MapContainer extends Component {
               key={trail.id}
               name={trail.title}
               image={trail.image}
+              city={trail.city}
+              intensity={trail.intensity}
               position={{
                 lat: trail.coordinates[0].latitude, 
                 lng: trail.coordinates[0].longitude
@@ -90,15 +89,25 @@ class MapContainer extends Component {
           )
         })}
           <InfoWindowEx
-            options={{maxWidth: 400, maxHeight: 100}}
+            options={{maxWidth: 300, maxHeight: 300}}
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
-            onClose={this.outMaker}
-            style={infoWindowStyle}
           >
             <div style={{height: '300px'}}>
-              <img onClick={() => {this.props.history.push(`/trails/${this.state.selectedPlace.id.split('_')[1]}`)}} src={this.state.selectedPlace.image} />
-              <p>{this.state.selectedPlace.name}</p>
+              <Card fluid className='infoCard'>
+              <Image onClick={() => {this.props.history.push(`/trails/${this.state.selectedPlace.id.split('_')[1]}`)}} src={this.state.selectedPlace.image} />
+              <Card.Content className='infoCardContent'>
+              <Card.Header as='h3'>{this.state.selectedPlace.name}</Card.Header>
+              <Card.Description>City: {this.state.selectedPlace.city}</Card.Description>
+              <Card.Description>Intensity Level: {this.state.selectedPlace.intensity}</Card.Description>
+              </Card.Content>
+              <Card.Content extra>
+                <a>
+                  <Icon name='like' />
+                  12 Likes
+                </a>
+              </Card.Content>
+              </Card>
             </div>
           </InfoWindowEx>
         </Map>
