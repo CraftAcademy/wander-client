@@ -2,6 +2,7 @@ import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
 import React, { Component } from 'react'
 import { Header } from 'semantic-ui-react'
 import { getTrails } from '../Modules/trailsData'
+import InfoWindowEx from './InfoWindowEx'
 
 class MapContainer extends Component {
   state = {
@@ -26,7 +27,6 @@ class MapContainer extends Component {
   }
 
   outMaker = (props) => {
-    debugger
     if(this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
@@ -36,7 +36,6 @@ class MapContainer extends Component {
   }
 
   onMarkerClick = (props, marker, e) => {
-    debugger
     this.setState({
       selectedPlace: props,
       showingInfoWindow: true,
@@ -86,16 +85,16 @@ class MapContainer extends Component {
             /> 
           )
         })}
-          <InfoWindow
+          <InfoWindowEx
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
             onClose={this.outMaker}
           >
-            <div onClick={() => this.props.history.push(`/trails/${this.state.selectedPlace.id}`)}>
-              <img src={this.state.selectedPlace.image} />
-              <p>{this.state.selectedPlace.name}</p>
-            </div>
-          </InfoWindow>
+              <div>
+                <img onClick={() => {this.props.history.push(`/trails/${this.state.selectedPlace.id.split('_')[1]}`)}} src={this.state.selectedPlace.image} />
+                <p>{this.state.selectedPlace.name}</p>
+              </div>
+          </InfoWindowEx>
         </Map>
       </>
     )
