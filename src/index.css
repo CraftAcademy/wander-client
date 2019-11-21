@@ -353,3 +353,7 @@ i.bookmark.big.icon {
 .gm-ui-hover-effect {
   display: none !important;
 }
+
+.info-window-image {
+  cursor: pointer;
+}
