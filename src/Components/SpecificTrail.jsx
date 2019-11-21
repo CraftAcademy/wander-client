@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
 import { Map, GoogleApiWrapper, Marker, Polyline } from 'google-maps-react'
-import { Container, Grid, Header, Divider, Image, Icon, Message } from 'semantic-ui-react'
+import { Container, Grid, Header, Divider, Image, Table, Label, Message, Icon } from 'semantic-ui-react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 
@@ -46,6 +46,7 @@ class SpecificTrail extends Component {
     }
   }
 
+
   render() {
     let singleTrail, backButton, responseMessage, trailMap
     const trail = this.state.trail
@@ -85,7 +86,7 @@ class SpecificTrail extends Component {
                 })}
             <Polyline
               path={trailCoords}
-              strokeColor='#45512b'
+              strokeColor='#0000ff'
               strokeOpacity={0.8}
               strokeWeight={6} 
             />
@@ -101,48 +102,66 @@ class SpecificTrail extends Component {
     if (trail) {
       singleTrail = (
         <>
-          {this.state.userBookmarks.includes(trail.id) || <Icon id='bookmark' size='large' name='bookmark' onClick={this.bookMark}/>}
           <center>
             {responseMessage}
           </center>
           <Container textAlign='justified' id='specific-trail'>
             <Grid columns={2}>
               <Grid.Row>
-                <Grid.Column width={5}>
+                <Grid.Column width='8'>
                   <Image
                     id={`image_${trail.id}`}
                     src={trail.image}
                   />
                 </Grid.Column>
-                <Grid.Column>
-                  <Header as='h2' id={`title_${trail.id}`}>{trail.title}</Header>
+                <Grid.Column width='6'>
+                  <Header as='h2' id={`title_${trail.id}`}>
+                    {trail.title} {this.state.userBookmarks.includes(trail.id) || <Icon id='bookmark' size='big' name='bookmark' onClick={this.bookMark}/>}
+                  </Header>
                   <Divider />
-                  <p className='single-description' id={`description_${trail.id}`}>{trail.description}</p>
-                  <div className='single-trail'>
-                    <h3>Good to know:</h3>
+                 <p className='single-content' id={`description_${trail.id}`}> {trail.description}</p>
+                    <Header as='h3'>Good to know:</Header>
                     <p className='single-content' id={`extra_${trail.id}`}>{trail.extra}</p>
-                  </div>
-                  <div className='single-trail'>
-                    <h3>City:</h3>
-                    <p className='single-content' id={`city_${trail.id}`}>{trail.city}</p>
-                  </div>
-                  <div className='single-trail'>
-                    <h3>Country:</h3>
-                    <p className='single-content' id={`country_${trail.id}`}>{trail.country}</p>
-                  </div>
-                  <div className='single-trail'>
-                    <h3>Continent:</h3>
-                    <p className='single-content' id={`continent_${trail.id}`}>{trail.continent}</p>
-                  </div> 
-                  <div className='single-trail'>
-                    <h3>Duration:</h3>
-                    <p className='single-content' id={`duration_${trail.id}`}>{trail.duration} min</p>
-                  </div>
-                  <div className='single-trail'>
-                    <h3>Intensity Level:</h3>
-                    <p className='single-content' id={`intensity_${trail.id}`}>{trail.intensity}</p>
-                  </div>
-                </Grid.Column>
+                  </Grid.Column>
+                  <Grid.Column width='2'>
+                    <Table color='olive' celled collapsing>
+                      <Table.Header>
+                          <Table.HeaderCell colSpan='3'><h3>Trail Facts</h3></Table.HeaderCell>
+                      </Table.Header>
+                    <Table.Body>
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as='h4'>City:</Header>
+                        </Table.Cell>
+                        <Table.Cell id={`city_${trail.id}`}content={trail.city}/>
+                      </Table.Row>
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as='h4'> Country:</Header> 
+                        </Table.Cell>
+                        <Table.Cell id={`country_${trail.id}`} content={trail.country}/>
+                      </Table.Row>
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as='h4'>Continent:</Header> 
+                        </Table.Cell>
+                        <Table.Cell id={`continent_${trail.id}`} content={trail.continent}/>
+                      </Table.Row>
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as='h4'>Duration:</Header>
+                        </Table.Cell>
+                        <Table.Cell id={`duration_${trail.id}`}>{trail.duration} minutes</Table.Cell>
+                      </Table.Row>
+                      <Table.Row>
+                        <Table.Cell>
+                          <Header as='h4'>Intensity:</Header>
+                        </Table.Cell>
+                        <Table.Cell id={`intensity_${trail.id}`} content={trail.intensity}/>
+                      </Table.Row>
+                    </Table.Body>
+                    </Table>
+                  </Grid.Column>
               </Grid.Row>
             </Grid>
           </Container>
@@ -155,13 +174,15 @@ class SpecificTrail extends Component {
     }
 
     backButton = (
-      <a id='back-button' onClick={this.goBack} href='#'>Go Back</a>
+      <Label as='a' color='olive' id='back-button' onClick={this.goBack} href='#'>Go Back</Label>
     )
 
     return (
       <>
+      <br/>
+      {backButton}
         {singleTrail}
-        {backButton}
+        <br/>
         {trailMap}
       </>
     )
