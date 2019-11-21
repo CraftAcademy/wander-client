@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
 import { Map, GoogleApiWrapper, Marker, Polyline } from 'google-maps-react'
-import { Container, Grid, Header, Divider, Image, Icon, Message } from 'semantic-ui-react'
+import { Container, Grid, Header, Divider, Image, Icon, Message, Feed } from 'semantic-ui-react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 
@@ -35,11 +35,22 @@ class SpecificTrail extends Component {
 
   bookMark = async () => {
     try {
-     let response = await axios.post('http://localhost:3000/v1/bookmarks', {
+      let response = await axios.post('http://localhost:3000/v1/bookmarks', {
         id: this.state.trail.id
       })
       this.setState({
         responseMessage: response.data.message 
+      })
+    } catch (error) {
+      return error.response.data.error_message
+    }
+  }
+
+  like = async () => {
+    debugger
+    try {
+      await axios.post('http://localhost:3000/v1/likes', { 
+        id: this.state.trail.id
       })
     } catch (error) {
       return error.response.data.error_message
@@ -113,6 +124,9 @@ class SpecificTrail extends Component {
                     id={`image_${trail.id}`}
                     src={trail.image}
                   />
+                  <Feed.Like color='red'>
+                    <Icon name='like' size='large' onClick={this.like}/>
+                  </Feed.Like>
                 </Grid.Column>
                 <Grid.Column>
                   <Header as='h2' id={`title_${trail.id}`}>{trail.title}</Header>
