@@ -65,7 +65,7 @@ class SpecificTrail extends Component {
         <>
           <Map 
             google={this.props.google} 
-            zoom={8}
+            zoom={11}
             style={style}
             initialCenter={{
               lat: trail.coordinates[0].latitude,
