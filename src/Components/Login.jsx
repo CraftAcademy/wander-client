@@ -18,7 +18,6 @@ class Login extends Component {
   }
 
   handleLogin = () => {
-    debugger
     const { signInUser } = this.props;
     const { email, password } = this.state;
       signInUser({ email, password })

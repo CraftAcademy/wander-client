@@ -20,7 +20,6 @@ class SignUp extends Component {
   }
 
   handleSignup = () => {
-    debugger
     const { registerUser } = this.props;
     const { email, name, password, password_confirmation } = this.state;
     registerUser({ email, name, password, password_confirmation })
@@ -30,7 +29,6 @@ class SignUp extends Component {
         }}
       )
       .catch(error => {
-        debugger
         this.setState({errorMessage: error.response.data.errors.full_messages})
       })
   }
