@@ -16,6 +16,7 @@ import AboutUs from './Components/AboutUs'
 import axios from 'axios'
 import getCurrentCredentials from './Modules/credentials'
 import ContinentResults from './Components/ContinentResults'
+import Footer from './Components/Footer'
 
 const requireSignIn = generateRequireSignInWrapper({
   redirectPathIfNotSignedIn: '/login'
@@ -41,7 +42,8 @@ const App = ({ currentUser }) => {
         <Route exact path='/map' component={MapContainer}/>
         <Route exact path='/user/:name' component={requireSignIn(ProfilePage)}/>
         <Route exact path='/about' component={AboutUs}/>
-        <Route exact path='/continent' component={ContinentResults} />
+        <Route exact path='/continent' component={ContinentResults}/>
+        <Footer/>
       </>
     </Router>
   )
