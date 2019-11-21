@@ -38,7 +38,7 @@ class Search extends Component {
     let search, errorMessage
 
     if (this.state.errorMessage) {
-      errorMessage = <p id="search-error">{this.state.errorMessage}</p>
+      errorMessage = <p id="search-error-message">{this.state.errorMessage}</p>
     }
 
     search = (
@@ -56,7 +56,7 @@ class Search extends Component {
           onClick={this.getSearchResults}
         />
         {this.state.errorMessage && (
-          <Label pointing='left'>Please input more than 2 characters.</Label>
+          <Label id='search-error' pointing='left'>Please input more than 2 characters.</Label>
         )}
       </Menu.Item>
     )

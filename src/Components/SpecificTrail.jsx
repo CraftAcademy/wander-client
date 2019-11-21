@@ -10,7 +10,8 @@ class SpecificTrail extends Component {
     trail: null,
     errorMessage: null,
     responseMessage: null,
-    userBookmarks: []
+    userBookmarks: [],
+    bookMarkErrorMessage: null
   }
 
   async componentDidMount() {
@@ -43,7 +44,7 @@ class SpecificTrail extends Component {
       })
     } catch (error) {
       this.setState({
-        errorMessage: error.response.data.errors[0]
+        bookMarkErrorMessage: error.response.data.errors[0]
       })
     }
   }
@@ -100,8 +101,8 @@ class SpecificTrail extends Component {
       responseMessage = <Message positive compact id='response-message'>{this.state.responseMessage}</Message>
     } 
 
-    if (this.state.errorMessage) {
-      errorMessage = <Message warning compact id='warning-message'>{this.state.errorMessage}</Message>
+    if (this.state.bookMarkErrorMessage) {
+      errorMessage = <Message warning compact id='warning-message'>{this.state.bookMarkErrorMessage}</Message>
     }
 
     if (trail) {
@@ -110,6 +111,7 @@ class SpecificTrail extends Component {
           {this.state.userBookmarks.includes(trail.id) || <Icon id='bookmark' size='large' name='bookmark' onClick={this.bookMark}/>}
           <center>
             {responseMessage}
+            {errorMessage}
           </center>
           <Container textAlign='justified' id='specific-trail'>
             <Grid columns={2}>
@@ -166,7 +168,6 @@ class SpecificTrail extends Component {
 
     return (
       <>
-        {errorMessage}
         {singleTrail}
         {backButton}
         {trailMap}

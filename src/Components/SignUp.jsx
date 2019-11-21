@@ -29,6 +29,7 @@ class SignUp extends Component {
         }}
       )
       .catch(error => {
+        debugger
         this.setState({errorMessage: error.response.data.errors.full_messages})
       })
   }
@@ -36,9 +37,11 @@ class SignUp extends Component {
   render() {
     let errorMessage, errorMessage2
 
-    if (this.state.errorMessage) {
+    if (this.state.errorMessage.length === 2) {
       errorMessage = <Message negative compact id="error-message">{this.state.errorMessage[0]}</Message>
       errorMessage2 = <Message negative compact id="error-message">{this.state.errorMessage[1]}</Message>
+    } else if (this.state.errorMessage.length >= 1){
+      errorMessage = <Message negative compact id="error-message">{this.state.errorMessage}</Message>
     }
 
     return(
