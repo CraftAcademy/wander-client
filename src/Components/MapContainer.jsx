@@ -53,6 +53,10 @@ class MapContainer extends Component {
       position: 'relative'
     }
 
+    const infoWindowStyle = {
+
+    }
+
     return (
       <>
       <center>
@@ -86,14 +90,16 @@ class MapContainer extends Component {
           )
         })}
           <InfoWindowEx
+            options={{maxWidth: 400, maxHeight: 100}}
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
             onClose={this.outMaker}
+            style={infoWindowStyle}
           >
-              <div>
-                <img onClick={() => {this.props.history.push(`/trails/${this.state.selectedPlace.id.split('_')[1]}`)}} src={this.state.selectedPlace.image} />
-                <p>{this.state.selectedPlace.name}</p>
-              </div>
+            <div style={{height: '300px'}}>
+              <img onClick={() => {this.props.history.push(`/trails/${this.state.selectedPlace.id.split('_')[1]}`)}} src={this.state.selectedPlace.image} />
+              <p>{this.state.selectedPlace.name}</p>
+            </div>
           </InfoWindowEx>
         </Map>
       </>
