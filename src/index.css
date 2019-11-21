@@ -10,6 +10,11 @@ body {
   margin: 0 auto;
 }
 
+.ui.image {
+  object-fit: cover!important;
+  height: 200px!important;
+}
+
 #image {
   object-fit: cover;
   width: 100%;
@@ -24,7 +29,7 @@ body {
   width: 100%;
 }
 
-.content {
+.content1 {
   position: absolute;
   top: 75%;
   left: 10rem;

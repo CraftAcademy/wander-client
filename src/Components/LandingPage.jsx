@@ -47,11 +47,13 @@ class LandingPage extends Component {
                           id={`image_${trail.id}`}
                           src={trail.image}
                         />
+                        <Card.Content>
                         <Card.Header as='h3' id={`title_${trail.id}`}>{trail.title}</Card.Header>
-                        <Card.Description id={`description_${trail.id}`}>Description: {ingress}</Card.Description>
+                        <Card.Description id={`description_${trail.id}`}>{ingress}</Card.Description>
                         <Card.Meta id={`city_${trail.id}`}>City: {trail.city}</Card.Meta>
                         <Card.Meta id={`country_${trail.id}`}>Country: {trail.country}</Card.Meta>
                         <Card.Meta id={`continent_${trail.id}`}>Continent: {trail.continent}</Card.Meta>
+                        </Card.Content>
                         <Card.Content extra id={`intensity_${trail.id}`}>Intensity Level: {trail.intensity}</Card.Content>
                       </Card>
                     </NavLink>
@@ -66,7 +68,7 @@ class LandingPage extends Component {
           <div className='image-page'>
             {sarek}
             <div className='content-image'>
-              <div className='content'>
+              <div className='content1'>
                 <h1>{welcomeMessage}</h1>
               </div>
               <div className='content2'>
