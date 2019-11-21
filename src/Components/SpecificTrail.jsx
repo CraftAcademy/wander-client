@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
 import { Map, GoogleApiWrapper, Marker, Polyline } from 'google-maps-react'
-import { Container, Grid, Header, Divider, Image, Table, Label, Message, Icon } from 'semantic-ui-react'
+import { Container, Grid, Header, Divider, Image, Table, Label, Message, Icon, Popup } from 'semantic-ui-react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 
@@ -10,7 +10,8 @@ class SpecificTrail extends Component {
     trail: null,
     errorMessage: null,
     responseMessage: null,
-    userBookmarks: []
+    userBookmarks: [],
+    bookMarkErrorMessage: null
   }
 
   async componentDidMount() {
@@ -42,13 +43,14 @@ class SpecificTrail extends Component {
         responseMessage: response.data.message 
       })
     } catch (error) {
-      return error.response.data.error_message
+      this.setState({
+        bookMarkErrorMessage: error.response.data.errors[0]
+      })
     }
   }
 
-
   render() {
-    let singleTrail, backButton, responseMessage, trailMap
+    let singleTrail, backButton, responseMessage, trailMap, errorMessage
     const trail = this.state.trail
     const style = {
       width: '80%',
@@ -96,14 +98,19 @@ class SpecificTrail extends Component {
     }
 
     if (this.state.responseMessage) {
-      responseMessage = <Message positive compact id='response-message'>{this.state.responseMessage}</Message>
+      responseMessage = <Message positive compact='true' id='response-message'>{this.state.responseMessage}</Message>
     } 
+
+    if (this.state.bookMarkErrorMessage) {
+      errorMessage = <Message warning compact='true' id='warning-message'>{this.state.bookMarkErrorMessage}</Message>
+    }
 
     if (trail) {
       singleTrail = (
         <>
           <center>
             {responseMessage}
+            {errorMessage}
           </center>
           <Container textAlign='justified' id='specific-trail'>
             <Grid columns={2}>
@@ -116,7 +123,12 @@ class SpecificTrail extends Component {
                 </Grid.Column>
                 <Grid.Column width='6'>
                   <Header as='h2' id={`title_${trail.id}`}>
-                    {trail.title} {this.state.userBookmarks.includes(trail.id) || <Icon id='bookmark' size='big' name='bookmark' onClick={this.bookMark}/>}
+                    {trail.title} 
+                    {this.state.userBookmarks.includes(trail.id) || 
+                    <Popup trigger={ 
+                      <Icon id='bookmark' size='big' name='bookmark' onClick={this.bookMark}/> }>
+                      <Popup.Header>Bookmark me!</Popup.Header>
+                    </Popup>}
                   </Header>
                   <Divider />
                  <p className='single-content' id={`description_${trail.id}`}> {trail.description}</p>
@@ -169,7 +181,7 @@ class SpecificTrail extends Component {
       )
     } else {
       singleTrail = (
-        <h3 id='error-message'>{this.state.errorMessage}</h3>
+        <Message negative compact='true' id="error-message">{this.state.errorMessage}</Message>
       )
     }
 
@@ -188,7 +200,6 @@ class SpecificTrail extends Component {
     )
   }
 }
-
 
 const mapStateToProps = state => {
   return {

@@ -21,7 +21,7 @@ describe('User can see trails listed by continent', () => {
         cy.get('#trail_5')
         .within(() => {
           cy.get('#title_5').should('contain', 'Tyresö Flaten to Gammelström')
-          cy.get('#description_5').should('contain', 'A short trail ')
+          cy.get('#description_5').should('contain', 'A short trail')
           cy.get('#city_5').should('contain', 'Tyresö')
           cy.get('#country_5').should('contain', 'Sweden')
           cy.get('#continent_5').should('contain', 'Europe')

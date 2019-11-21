@@ -1,6 +1,6 @@
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 import React, { Component } from 'react'
-import { Header, Card, Image, Icon } from 'semantic-ui-react'
+import { Header, Card, Image, Icon, Message } from 'semantic-ui-react'
 import { getTrails } from '../Modules/trailsData'
 import InfoWindowEx from './InfoWindowEx'
 
@@ -45,6 +45,7 @@ class MapContainer extends Component {
 
   render() {
     let trailsData = this.state.trails
+    let errorMessage
     const style = {
       width: '80%',
       height: '80%',
@@ -53,12 +54,17 @@ class MapContainer extends Component {
       position: 'relative'
     }
 
+    if (this.state.errorMessage) {
+      errorMessage = <Message negative compact='true' id="error-message">{this.state.errorMessage}</Message>
+    }
+
     return (
       <>
       <center>
         <Header id='map-header'>
           Trails Around the World
         </Header>
+        {errorMessage}
       </center>
       <br />
         <Map 
@@ -93,9 +99,13 @@ class MapContainer extends Component {
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
           >
-            <div style={{height: '300px'}}>
+            <div style={{height: '300px', width: '250px'}}>
               <Card fluid className='infoCard'>
-              <Image onClick={() => {this.props.history.push(`/trails/${this.state.selectedPlace.id.split('_')[1]}`)}} src={this.state.selectedPlace.image} />
+              <Image onClick={() => {this.props.history.push(`/trails/${this.state.selectedPlace.id.split('_')[1]}`)}} 
+                src={this.state.selectedPlace.image} 
+                object-fit='cover'
+                height='170px'
+              />
               <Card.Content className='infoCardContent'>
               <Card.Header as='h3'>{this.state.selectedPlace.name}</Card.Header>
               <Card.Description>City: {this.state.selectedPlace.city}</Card.Description>

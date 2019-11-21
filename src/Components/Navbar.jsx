@@ -1,11 +1,12 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Image } from 'semantic-ui-react'
 import Search from './Search'
 import logo from '../Images/logo.svg'
 import { connect } from 'react-redux'
 import Logout from './Logout'
 import { withRouter } from "react-router-dom"
+import banner from '../Images/banner1.png'
 
 const Navbar = ({ currentUser }) => {
   return (
@@ -18,6 +19,7 @@ const Navbar = ({ currentUser }) => {
         >
           <img src={logo} alt='Logo'/>
         </Menu.Item>
+        <Image src={banner} alt='Banner'/>
         <Menu.Menu position='right'>
           <Menu.Item
             as={NavLink}

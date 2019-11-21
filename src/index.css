@@ -327,7 +327,7 @@ footer {
   margin-top: 4rem;
 }
 
-i.bookmark.large.icon {
+i.bookmark.big.icon {
   cursor: pointer;
 }
 
@@ -339,6 +339,7 @@ i.bookmark.large.icon {
 .ui.card > .content.infoCardContent {
   height: 80px !important;
 }
+
 .gm-style .gm-style-iw-c{
   padding: 0 !important;
   max-height: 300px;
