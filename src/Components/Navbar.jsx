@@ -31,7 +31,13 @@ const Navbar = ({ currentUser }) => {
         >
           <img src={logo} alt='Logo'/>
         </Menu.Item>
-        <Image src={banner} alt='Banner'/>
+        <Image 
+          as={NavLink}
+          src={banner} 
+          alt='Banner'
+          to='/about'
+          className='banner'
+        />
         <Menu.Menu position='right'>
           <Menu.Item
             as={NavLink}
