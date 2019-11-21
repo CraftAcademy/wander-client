@@ -10,7 +10,8 @@ class SpecificTrail extends Component {
     trail: null,
     errorMessage: null,
     responseMessage: null,
-    userBookmarks: []
+    userBookmarks: [],
+    likeCounter: null
   }
 
   async componentDidMount() {
@@ -47,10 +48,22 @@ class SpecificTrail extends Component {
   }
 
   like = async () => {
-    debugger
     try {
       await axios.post('http://localhost:3000/v1/likes', { 
         id: this.state.trail.id
+      }, getLikes())
+    } catch (error) {
+      return error.response.data.error_message
+    }
+  }
+
+  getLikes = () => {
+    try {
+      let response = await axios.get('http://localhost:3000/v1/likes', { 
+        id: this.state.trail.id
+      })
+      this.setState({
+        likeCounter: response.data
       })
     } catch (error) {
       return error.response.data.error_message
@@ -125,7 +138,7 @@ class SpecificTrail extends Component {
                     src={trail.image}
                   />
                   <Feed.Like color='red'>
-                    <Icon name='like' size='large' onClick={this.like}/>
+                    <Icon name='like' size='large' onClick={this.like}/>{this.state.likeCounter}
                   </Feed.Like>
                 </Grid.Column>
                 <Grid.Column>
