@@ -11,7 +11,8 @@ class SpecificTrail extends Component {
     errorMessage: null,
     responseMessage: null,
     userBookmarks: [],
-    likeCount: []
+    likeCount: [],
+    bookMarkErrorMessage: null
   }
 
   async componentDidMount() {
@@ -43,7 +44,9 @@ class SpecificTrail extends Component {
         responseMessage: response.data.message 
       })
     } catch (error) {
-      return error.response.data.error_message
+      this.setState({
+        bookMarkErrorMessage: error.response.data.errors[0]
+      })
     }
   }
 
@@ -76,7 +79,7 @@ class SpecificTrail extends Component {
   }
 
   render() {
-    let singleTrail, backButton, responseMessage, trailMap
+    let singleTrail, backButton, responseMessage, trailMap, errorMessage
     const trail = this.state.trail
     const style = {
       width: '80%',
@@ -124,14 +127,19 @@ class SpecificTrail extends Component {
     }
 
     if (this.state.responseMessage) {
-      responseMessage = <Message positive compact id='response-message'>{this.state.responseMessage}</Message>
+      responseMessage = <Message positive compact='true' id='response-message'>{this.state.responseMessage}</Message>
     } 
+
+    if (this.state.bookMarkErrorMessage) {
+      errorMessage = <Message warning compact='true' id='warning-message'>{this.state.bookMarkErrorMessage}</Message>
+    }
 
     if (trail) {
       singleTrail = (
         <>
           <center>
             {responseMessage}
+            {errorMessage}
           </center>
           <Container textAlign='justified' id='specific-trail'>
             <Grid columns={2}>
@@ -200,7 +208,7 @@ class SpecificTrail extends Component {
       )
     } else {
       singleTrail = (
-        <h3 id='error-message'>{this.state.errorMessage}</h3>
+        <Message negative compact='true' id="error-message">{this.state.errorMessage}</Message>
       )
     }
 
@@ -219,7 +227,6 @@ class SpecificTrail extends Component {
     )
   }
 }
-
 
 const mapStateToProps = state => {
   return {

@@ -50,7 +50,7 @@ describe('User can search for trail', () => {
           cy.get('#search-input').type('Bo')
           cy.get('#search-submit').click()
         })
-      cy.get('#search-error').should('contain', 'Please input more than two characters.')    
+      cy.get('#search-error').should('contain', 'Please input more than 2 characters.')    
     })
   })
 })
