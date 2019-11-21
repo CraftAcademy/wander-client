@@ -282,11 +282,11 @@ body {
   opacity: 1!important;
 }
 
-#content-blurb {
+/* #content-blurb {
   margin: 15rem!important;
   position: relative;
   text-align: center;
-}
+} */
 
 #content-label {
   font-size: 20px;
@@ -356,4 +356,10 @@ i.bookmark.big.icon {
 
 .info-window-image {
   cursor: pointer;
+}
+
+.continent-container {
+  height: 22rem !important;
+  margin: 8rem !important;
+  margin-bottom: 12rem !important;
 }

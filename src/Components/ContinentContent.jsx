@@ -3,7 +3,8 @@ import AsiaJungle from '../Images/asia-jungle.jpg'
 import YellowStone from '../Images/yellowstone.jpg'
 import BasteiBridge from '../Images/bastei-bridge.jpg'
 import { searchContinent } from '../Modules/trailsData'
-import { Container } from 'semantic-ui-react'
+import { Container, Grid, Header, Image } from 'semantic-ui-react'
+import Buddha from '../Images/buddha.jpg'
 
 class ContinentContent extends Component {
   state={
@@ -23,8 +24,9 @@ class ContinentContent extends Component {
   render() {
     let asiaJungle = <img src={AsiaJungle} id='image' alt='Asia Jungle' width='1800' height='600'/>
     let yellowstone = <img src={YellowStone} id='image' alt='Yellowstone' width='1950' height='600'/>
-    let basteiBridge = <img src={BasteiBridge} id='image' alt='Bastei Bridge' width='1950' height='600' />
-    let errorMessage = <div compact='true' id='error-message'>{this.state.errorMessage}</div>
+    let basteiBridge = <img src={BasteiBridge} id='image' alt='Bastei Bridge' width='1950' height='600'/>
+    let buddha = <img src={Buddha} alt='Bastei Bridge' width='300' height='350'/>
+    let errorMessage = <div compact id='error-message'>{this.state.errorMessage}</div>
     return (
       <>
       {errorMessage}
@@ -46,15 +48,21 @@ class ContinentContent extends Component {
         </div>
       </div>
 
-      <Container>
-        <div id='content-blurb'>
-          <label id='content-label'>Explore Trails in Asia</label>
-          <br />
-          <br />
-          <p>Asia is the largest and most populous continent on our planet.</p>
-          <p>It offers a mix of many different climates with diverse landscape and topography, from mountains and glaciers in the north to deserts in the south-west to djungles and volcanoes in the south-east.</p>
-          <p>With over 60 % of the world's population living here, and it's history as the site of many of the first civilizations, there is always more to explore in Asia.</p>
-        </div>
+      <Container className='continent-container' textAlign='justified'>
+        <Grid centered container columns={2}>
+          <Grid.Row>
+            <Grid.Column width={4}>
+              <Image>{buddha}</Image>
+            </Grid.Column>
+            <Grid.Column width={9}>
+              <div id='content-blurb'>
+                <Header as='h3'>Explore Trails in Asia</Header>
+                <br />
+                <p>Asia is the largest and most populous continent on our planet. It offers a mix of many different climates with diverse landscape and topography, from mountains and glaciers in the north to deserts in the south-west to djungles and volcanoes in the south-east. With over 60 % of the world's population living here, and it's history as the site of many of the first civilizations, there is always more to explore in Asia.</p>
+              </div>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </Container>
 
       <div className='na-page'>
