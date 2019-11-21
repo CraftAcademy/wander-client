@@ -29,7 +29,7 @@ class LandingPage extends Component {
     let trailsData = this.state.trails
     let trailsList, welcomeMessage
     let sarek = <img src={Sarek} id='image' alt='Sarek national park' width='1800' height='650'/>
-    let errorMessage = <div compact id='error-message'>{this.state.errorMessage}</div>
+    let errorMessage = <div compact='true' id='error-message'>{this.state.errorMessage}</div>
 
     if (this.props.currentUser.isSignedIn) {
       welcomeMessage = 
@@ -37,7 +37,7 @@ class LandingPage extends Component {
     }
 
     if (this.state.errorMessage) {
-      errorMessage = <Message negative compact id="error-message">{this.state.errorMessage}</Message>
+      errorMessage = <Message negative compact='true' id="error-message">{this.state.errorMessage}</Message>
     }
 
     if (trailsData.length !== 0) {

@@ -99,11 +99,11 @@ class SpecificTrail extends Component {
     }
 
     if (this.state.responseMessage) {
-      responseMessage = <Message positive compact id='response-message'>{this.state.responseMessage}</Message>
+      responseMessage = <Message positive compact='true' id='response-message'>{this.state.responseMessage}</Message>
     } 
 
     if (this.state.bookMarkErrorMessage) {
-      errorMessage = <Message warning compact id='warning-message'>{this.state.bookMarkErrorMessage}</Message>
+      errorMessage = <Message warning compact='true' id='warning-message'>{this.state.bookMarkErrorMessage}</Message>
     }
 
     if (trail) {
@@ -177,7 +177,7 @@ class SpecificTrail extends Component {
       )
     } else {
       singleTrail = (
-        <Message negative compact id="error-message">{this.state.errorMessage}</Message>
+        <Message negative compact='true' id="error-message">{this.state.errorMessage}</Message>
       )
     }
 

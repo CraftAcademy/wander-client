@@ -35,7 +35,7 @@ class Login extends Component {
     let renderLogin, errorMessage 
 
     if (this.state.errorMessage) {
-      errorMessage = <Message negative compact id="error-message">{this.state.errorMessage}</Message>
+      errorMessage = <Message negative compact='true' id="error-message">{this.state.errorMessage}</Message>
     }
 
     if (!this.props.currentUser.isSignedIn) {
