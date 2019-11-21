@@ -49,7 +49,6 @@ class SpecificTrail extends Component {
     }
   }
 
-
   render() {
     let singleTrail, backButton, responseMessage, trailMap, errorMessage
     const trail = this.state.trail
