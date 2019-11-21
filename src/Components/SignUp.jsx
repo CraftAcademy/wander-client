@@ -29,15 +29,18 @@ class SignUp extends Component {
         }}
       )
       .catch(error => {
-        this.setState({errorMessage: error.response.data.errors})
+        this.setState({errorMessage: error.response.data.errors.full_messages})
       })
   }
 
   render() {
-    let errorMessage
+    let errorMessage, errorMessage2
 
-    if (this.state.errorMessage) {
-      errorMessage = <Message compact id="error-message">{this.state.errorMessage}</Message>
+    if (this.state.errorMessage.length === 2) {
+      errorMessage = <Message negative compact='true' id="error-message">{this.state.errorMessage[0]}</Message>
+      errorMessage2 = <Message negative compact='true' id="error-message">{this.state.errorMessage[1]}</Message>
+    } else if (this.state.errorMessage.length >= 1){
+      errorMessage = <Message negative compact='true' id="error-message">{this.state.errorMessage}</Message>
     }
 
     return(
@@ -46,7 +49,12 @@ class SignUp extends Component {
           handleSignup={this.handleSignup}
           inputChangeHandler={this.inputChangeHandler}
         />
-        {errorMessage}
+        <center>
+        <br />
+         {errorMessage}
+         <br />
+         {errorMessage2}
+        </center>
       </Container>
     )
   }
