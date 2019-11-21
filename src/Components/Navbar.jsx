@@ -10,7 +10,7 @@ import { withRouter } from "react-router-dom"
 const Navbar = ({ currentUser }) => {
   return (
     <>
-      <Menu stackable id='navbar'>
+      <Menu color='olive' stackable id='navbar'>
         <Menu.Item
           as={NavLink}
           to='/'
