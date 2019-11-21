@@ -330,3 +330,26 @@ footer {
 i.bookmark.big.icon {
   cursor: pointer;
 }
+
+.ui.card.infoCard {
+  margin: 0 !important;
+  height: 300px;
+}
+
+.ui.card > .content.infoCardContent {
+  height: 80px !important;
+}
+
+.gm-style .gm-style-iw-c{
+  padding: 0 !important;
+  max-height: 300px;
+}
+
+.gm-style-iw-d {
+  max-width: 300px;
+  overflow: hidden !important;
+}
+
+.gm-ui-hover-effect {
+  display: none !important;
+}
