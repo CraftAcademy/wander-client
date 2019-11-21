@@ -71,7 +71,7 @@ class LandingPage extends Component {
           </iframe>
         <script src="https://player.vimeo.com/api/player.js"></script>
           <div className='content-image'>
-            <div className='content'>
+            <div className='content1'>
               <h1>{welcomeMessage}</h1>
             </div>
             <div className='content2'>
