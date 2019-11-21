@@ -37,13 +37,17 @@ const ContinentResults = (props) => {
                       <Image
                         id={`image_${trail.id}`}
                         src={trail.image}
+                        object-fit='cover'
+                        height='200px'
                       />
-                        <Card.Header id={`title_${trail.id}`}>{trail.title}</Card.Header>
-                        <Card.Description id={`description_${trail.id}`}>Description:  {ingress}</Card.Description>
-                        <Card.Meta id={`city_${trail.id}`}>City:  {trail.city}</Card.Meta>
-                        <Card.Meta id={`country_${trail.id}`}>Country:  {trail.country}</Card.Meta>
-                        <Card.Meta id={`continent_${trail.id}`}>Continent:  {trail.continent}</Card.Meta>
-                        <Card.Meta id={`intensity_${trail.id}`}>Intensity Level:  {trail.intensity}</Card.Meta>
+                      <Card.Content>
+                        <Card.Header as='h3' id={`title_${trail.id}`}>{trail.title}</Card.Header>
+                        <Card.Description id={`description_${trail.id}`}>{ingress}</Card.Description>
+                        <Card.Meta id={`city_${trail.id}`}>City: {trail.city}</Card.Meta>
+                        <Card.Meta id={`country_${trail.id}`}>Country: {trail.country}</Card.Meta>
+                        <Card.Meta id={`continent_${trail.id}`}>Continent: {trail.continent}</Card.Meta>
+                      </Card.Content>
+                      <Card.Content extra id={`intensity_${trail.id}`}>Intensity Level: {trail.intensity}</Card.Content>
                     </Card>
                   </NavLink>
         })}
