@@ -24,7 +24,7 @@ class ContinentContent extends Component {
     let asiaJungle = <img src={AsiaJungle} id='image' alt='Asia Jungle' width='1800' height='600'/>
     let yellowstone = <img src={YellowStone} id='image' alt='Yellowstone' width='1950' height='600'/>
     let basteiBridge = <img src={BasteiBridge} id='image' alt='Bastei Bridge' width='1950' height='600' />
-    let errorMessage = <div compact id='error-message'>{this.state.errorMessage}</div>
+    let errorMessage = <div compact='true' id='error-message'>{this.state.errorMessage}</div>
     return (
       <>
       {errorMessage}
