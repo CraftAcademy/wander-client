@@ -42,12 +42,14 @@ class SpecificTrail extends Component {
         responseMessage: response.data.message 
       })
     } catch (error) {
-      return error.response.data.error_message
+      this.setState({
+        errorMessage: error.response.data.errors[0]
+      })
     }
   }
 
   render() {
-    let singleTrail, backButton, responseMessage, trailMap
+    let singleTrail, backButton, responseMessage, trailMap, errorMessage
     const trail = this.state.trail
     const style = {
       width: '80%',
@@ -97,6 +99,10 @@ class SpecificTrail extends Component {
     if (this.state.responseMessage) {
       responseMessage = <Message positive compact id='response-message'>{this.state.responseMessage}</Message>
     } 
+
+    if (this.state.errorMessage) {
+      errorMessage = <Message warning compact id='warning-message'>{this.state.errorMessage}</Message>
+    }
 
     if (trail) {
       singleTrail = (
@@ -160,6 +166,7 @@ class SpecificTrail extends Component {
 
     return (
       <>
+        {errorMessage}
         {singleTrail}
         {backButton}
         {trailMap}

@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Menu, Input, Icon } from "semantic-ui-react"
+import { Menu, Input, Icon, Message, Label } from "semantic-ui-react"
 import { withRouter } from "react-router-dom"
 import { searchTrail } from "../Modules/trailsData"
 
@@ -20,7 +20,7 @@ class Search extends Component {
     const { query } = this.state
     if (query.length < 3) {
       this.setState({
-        errorMessage: 'Please input more than two characters.'
+        errorMessage: true
       })
     } else {
       let response = await searchTrail(query)
@@ -48,12 +48,16 @@ class Search extends Component {
           placeholder="Search..."
           name="query"
           onChange={this.inputChangeHandler}
+          error={this.state.errorMessage}
         />
         <Icon
           id="search-submit"
           name="search"
           onClick={this.getSearchResults}
         />
+        {this.state.errorMessage && (
+          <Label pointing='left'>Please input more than 2 characters.</Label>
+        )}
       </Menu.Item>
     )
 

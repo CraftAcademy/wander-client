@@ -30,15 +30,17 @@ class SignUp extends Component {
         }}
       )
       .catch(error => {
-        this.setState({errorMessage: error.response.data.errors})
+        debugger
+        this.setState({errorMessage: error.response.data.errors.full_messages})
       })
   }
 
   render() {
-    let errorMessage
+    let errorMessage, errorMessage2
 
     if (this.state.errorMessage) {
-      errorMessage = <Message negative compact id="error-message">{this.state.errorMessage}</Message>
+      errorMessage = <Message negative compact id="error-message">{this.state.errorMessage[0]}</Message>
+      errorMessage2 = <Message negative compact id="error-message">{this.state.errorMessage[1]}</Message>
     }
 
     return(
@@ -48,7 +50,10 @@ class SignUp extends Component {
           inputChangeHandler={this.inputChangeHandler}
         />
         <center>
+        <br />
          {errorMessage}
+         <br />
+         {errorMessage2}
         </center>
       </Container>
     )

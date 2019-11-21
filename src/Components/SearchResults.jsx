@@ -39,6 +39,10 @@ const SearchResults = props => {
         })}
       </>
     )
+  } else {
+    trailsList = (
+      <center><p>Sorry, there are no trails that match your search.</p></center>
+    ) 
   }
   return (
     <div id='search-results'>
