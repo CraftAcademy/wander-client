@@ -350,8 +350,5 @@ i.bookmark.large.icon {
 }
 
 .gm-ui-hover-effect {
-  position: relative !important;
-  top: 0px !important;
-  right: -50px !important;
   display: none !important;
 }
