@@ -33,7 +33,7 @@ class Logout extends Component {
         <Menu.Item
           id='nav-logout'
           as={NavLink}
-          to='/'
+          exact to='/'
           onClick={signOut}
           name='logout'
         />
