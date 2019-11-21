@@ -16,6 +16,7 @@ import AboutUs from './Components/AboutUs'
 import axios from 'axios'
 import getCurrentCredentials from './Modules/credentials'
 import ContinentResults from './Components/ContinentResults'
+import Footer from './Components/Footer'
 
 const history = createBrowserHistory({})
 
@@ -38,6 +39,7 @@ const App = ({ currentUser }) => {
         {currentUser.isSignedIn ? <Route exact path='/user/:name' component={ProfilePage}/> : <Redirect to='/'/>}
         <Route exact path='/about' component={AboutUs}/>
         <Route exact path='/continent' component={ContinentResults}/>
+        <Footer/>
       </>
     </Router>
   )

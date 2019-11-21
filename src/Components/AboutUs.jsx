@@ -9,7 +9,7 @@ const AboutUs = () => {
     <>
       <Container textAlign='center' >
         <br/>
-        <Header size='huge'> <Icon name='tree'/> About Wander </Header>
+        <Header size='huge'> <Icon color='olive' name='tree'/> About Wander </Header>
         <Divider/>
         <Container text>
         <p>Developed in November 2019, Wander is a platform built for nature and hiking lovers across the globe that share
@@ -25,14 +25,16 @@ const AboutUs = () => {
             </Grid.Column>
             <Grid.Column width='10'>
               <Grid.Row>
-                <Header size='medium'>Who are team Wonder? <img src={logo} alt='Logo'/></Header> 
-                <p>We are an elite alien space force tasked to bring you the best trail-finding application currently available on earth. </p>
+                <Header size='medium'>The team behind Wander <img src={logo} alt='Logo'/></Header> 
+                <Container text>
+                  <p>We are an elite alien space force tasked to bring you the best trail-finding application currently available on earth. </p>
                   <p>We love you, and want to wander the earth with you! </p> 
+                </Container>
               </Grid.Row>  
               <br/>
               <Grid>
                 <Grid.Column verticalAlign='middle' width='8'>
-                  <Header size='large' dividing > The Team</Header>
+                  <Header size='large' dividing>The Team</Header>
                   <h3>Jonas Masharqa</h3> 
                   <h3>David Izosimov</h3>
                   <h3>Luca Lobacher</h3>
@@ -41,7 +43,7 @@ const AboutUs = () => {
                 </Grid.Column>
                 <Grid.Column width='2'></Grid.Column>
                 <Grid.Column verticalAlign='middle' width='6'> 
-                  <Table collapsing>
+                  <Table color='olive' collapsing>
                     <Table.Header> 
                       <Table.HeaderCell><Icon size='large' name='github square'/>GitHub Repositories</Table.HeaderCell>
                     </Table.Header>
