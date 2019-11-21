@@ -64,8 +64,8 @@ class LandingPage extends Component {
         <div className='image-page'>
           <iframe 
             src="https://player.vimeo.com/video/54802209?autoplay=1&loop=1" 
-            // position='relative' style={style} 
-            frameborder="0" allow="autoplay; fullscreen" 
+            frameborder="0" 
+            allow="autoplay; fullscreen" 
             allowfullscreen
             >
           </iframe>
