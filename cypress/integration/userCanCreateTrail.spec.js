@@ -42,7 +42,7 @@ describe('User can create a trail', () => {
         cy.get('#continent-input').select('Europe')
         cy.get('#duration-input').type('600')
         cy.get('input[type=range]').invoke('val', 4).trigger('input')
-        cy.get('#rating').should('contain', 'Rating: 4')
+        cy.get('#rating').should('contain', 'Intensity: 4')
         cy.get('.file-input')
           .within(() => {
             const fileName = 'love.jpg'
@@ -75,7 +75,7 @@ describe('User can create a trail', () => {
         cy.get('#continent-input').select('Europe')
         cy.get('#duration-input').type('600')
         cy.get('input[type=range]').invoke('val', 4).trigger('input')
-        cy.get('#rating').should('contain', 'Rating: 4')
+        cy.get('#rating').should('contain', 'Intensity: 4')
         cy.get('.file-input')
           .within(() => {
             const fileName = 'love.jpg'

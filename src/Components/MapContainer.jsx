@@ -1,4 +1,4 @@
-import { Map, GoogleApiWrapper, Marker, Polyline } from 'google-maps-react'
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 import React, { Component } from 'react'
 import { Header, Message } from 'semantic-ui-react'
 import { getTrails } from '../Modules/trailsData'

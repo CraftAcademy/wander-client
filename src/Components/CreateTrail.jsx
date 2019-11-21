@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CreateTrailForm from './CreateTrailForm'
 import { submitTrail } from '../Modules/trailsData'
-import { Message, Container } from 'semantic-ui-react'
+import { Message } from 'semantic-ui-react'
 
 class CreateTrail extends Component {
   state = {

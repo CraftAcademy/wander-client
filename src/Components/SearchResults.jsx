@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Card, Image, Header } from 'semantic-ui-react'
+import { Card, Image, Header, Label } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
 const SearchResults = props => {
@@ -21,7 +21,7 @@ const SearchResults = props => {
       <>
         {results.map(trail => {
           return  <NavLink id={`trail_${trail.id}`} key={trail.id} to={`/trails/${trail.id}`}>
-                    <Card id={`card_${trail.id}`}>
+                    <Card color='olive' id={`card_${trail.id}`}>
                       <Image
                         id={`image_${trail.id}`}
                         src={trail.image}
@@ -47,7 +47,7 @@ const SearchResults = props => {
   return (
     <div id='search-results'>
       <Header as='h2' textAlign='center'>Found adventures</Header>  
-      <a id='back-button' onClick={goBack} href='#'>Go Back</a>    
+      <Label as='a' color='olive' id='back-button' onClick={goBack} href='#'>Go Back</Label>    
       <div id='trail-list'>
         {trailsList}
       </div>

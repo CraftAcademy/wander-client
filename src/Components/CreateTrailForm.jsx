@@ -40,7 +40,7 @@ const CreateTrailForm = props => {
           <Form.Input fluid id='duration-input' className='input-trail' name='duration' placeholder='Duration' onChange={props.inputHandler} />
         </div>
         <div>
-          <div id='rating'>Rating: { intensity }</div>
+          <div id='rating'>Intensity: { intensity }</div>
           <input
             id='intensity-rating'
             type='range'
