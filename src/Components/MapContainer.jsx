@@ -1,4 +1,4 @@
-import { Map, GoogleApiWrapper, Marker, Polyline } from 'google-maps-react'
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
 import React, { Component } from 'react'
 import { Header } from 'semantic-ui-react'
 import { getTrails } from '../Modules/trailsData'
@@ -6,7 +6,10 @@ import { getTrails } from '../Modules/trailsData'
 class MapContainer extends Component {
   state = {
     trails: [],
-    errorMessage: null
+    errorMessage: null,
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {}
   }
 
   async componentDidMount() {
@@ -20,6 +23,25 @@ class MapContainer extends Component {
         trails: response
       })
     }
+  }
+
+  outMaker = (props) => {
+    debugger
+    if(this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      })
+    }
+  }
+
+  onMarkerClick = (props, marker, e) => {
+    debugger
+    this.setState({
+      selectedPlace: props,
+      showingInfoWindow: true,
+      activeMarker: marker
+    })
   }
 
   render() {
@@ -54,15 +76,26 @@ class MapContainer extends Component {
             <Marker 
               id={`trail_${trail.id}`}
               key={trail.id}
-              title={trail.title}
+              name={trail.title}
+              image={trail.image}
               position={{
                 lat: trail.coordinates[0].latitude, 
                 lng: trail.coordinates[0].longitude
               }}
-              onClick={() => this.props.history.push(`/trails/${trail.id}`)}
+              onClick={this.onMarkerClick}
             /> 
           )
         })}
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
+            onClose={this.outMaker}
+          >
+            <div onClick={() => this.props.history.push(`/trails/${this.state.selectedPlace.id}`)}>
+              <img src={this.state.selectedPlace.image} />
+              <p>{this.state.selectedPlace.name}</p>
+            </div>
+          </InfoWindow>
         </Map>
       </>
     )
