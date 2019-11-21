@@ -11,7 +11,7 @@ class SpecificTrail extends Component {
     errorMessage: null,
     responseMessage: null,
     userBookmarks: [],
-    likeCounter: null
+    likeCount: []
   }
 
   async componentDidMount() {
@@ -48,22 +48,27 @@ class SpecificTrail extends Component {
   }
 
   like = async () => {
+    debugger
     try {
-      await axios.post('http://localhost:3000/v1/likes', { 
-        id: this.state.trail.id
-      }, getLikes())
+      let response = await axios.post('http://localhost:3000/v1/likes', { 
+        trail_id: this.state.trail.id
+      })
+      if (response) {
+        this.getLikes()
+      }
     } catch (error) {
       return error.response.data.error_message
     }
   }
 
-  getLikes = () => {
+  getLikes = async () => {
+    debugger
     try {
       let response = await axios.get('http://localhost:3000/v1/likes', { 
-        id: this.state.trail.id
+        trail_id: this.state.trail.id
       })
       this.setState({
-        likeCounter: response.data
+        likeCount: response.data
       })
     } catch (error) {
       return error.response.data.error_message
