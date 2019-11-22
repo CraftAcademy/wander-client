@@ -2,7 +2,7 @@ describe('User can create a trail', () => {
   beforeEach(() => {
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/auth/sign_in',
+      url: 'https://c-wander-api.herokuapp.com/auth/sign_in',
       response: 'fixture:successful_user_login.json',
       status: 200
     })
@@ -27,7 +27,7 @@ describe('User can create a trail', () => {
   it('successully creates a trail', () => {
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/v1/trails',
+      url: 'https://c-wander-api.herokuapp.com/v1/trails',
       response: 'fixture:successfully_created_trail.json',
       status: 200
     })
@@ -60,7 +60,7 @@ describe('User can create a trail', () => {
   it('unsuccessfully creates a trail', () => {
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/v1/trails',
+      url: 'https://c-wander-api.herokuapp.com/v1/trails',
       response: 'fixture:cannot_create_trail.json',
       status: 400
     })

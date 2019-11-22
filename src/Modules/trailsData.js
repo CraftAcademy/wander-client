@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const apiUrl = 'http://localhost:3000/v1/'
+const apiUrl = 'https://c-wander-api.herokuapp.com/v1/'
 
 const getTrails = async () => {
   try {

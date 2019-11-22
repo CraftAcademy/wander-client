@@ -17,7 +17,7 @@ describe('User can view a list of trails', () => {
   it('unsuccessfully', () => {
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/v1/trails',
+      url: 'https://c-wander-api.herokuapp.com/v1/trails',
       response: 'fixture:user_can_view_list_of_trails_unsuccessfully.json',
       status: 400
     })

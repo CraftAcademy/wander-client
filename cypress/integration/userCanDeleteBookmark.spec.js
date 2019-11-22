@@ -2,25 +2,25 @@ describe('User can delete bookmark on profile page', () => {
   it('succesfully', () => {
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/v1/trails/1',
+      url: 'https://c-wander-api.herokuapp.com/v1/trails/1',
       response: 'fixture:user_can_view_specific_trail.json',
       status: 200
     })
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/auth/sign_in',
+      url: 'https://c-wander-api.herokuapp.com/auth/sign_in',
       response: 'fixture:successful_user_login.json',
       status: 200
     })
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/v1/bookmarks',
+      url: 'https://c-wander-api.herokuapp.com/v1/bookmarks',
       response: 'fixture:bookmark.json',
       status: 200
     })
     cy.route({
       method: 'DELETE',
-      url: 'http://localhost:3000/v1/bookmarks/1',
+      url: 'https://c-wander-api.herokuapp.com/v1/bookmarks/1',
       response: 'fixture:removed_bookmark.json',
       status: 200
     })
