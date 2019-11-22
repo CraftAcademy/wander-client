@@ -35,7 +35,7 @@ const submitTrail = async (title, description, extra, city, country, continent, 
       image: image,
       coordinates: coordinates
     })
-    return response.data.message
+    return response.data
   } catch(error) {
     return error.response.data
   }
