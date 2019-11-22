@@ -22,6 +22,12 @@ describe('User can create a trail', () => {
     .within(() => {
       cy.get('#nav-create').click()
     })
+    cy.route({
+      method: 'GET',
+      url: 'https://c-wander-api.herokuapp.com/v1/bookmarks',
+      response: 'fixture:bookmark.json',
+      status: 200
+    })
   });
   
   it('successully creates a trail', () => {

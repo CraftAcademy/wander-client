@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
 import { Map, GoogleApiWrapper, Marker, Polyline } from 'google-maps-react'
-import { Container, Grid, Header, Divider, Image, Table, Label, Message, Icon, Popup } from 'semantic-ui-react'
+import { Container, Grid, Header, Divider, Image, Table, Label, Message, Icon, Feed, Popup } from 'semantic-ui-react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 
@@ -11,7 +11,9 @@ class SpecificTrail extends Component {
     errorMessage: null,
     responseMessage: null,
     userBookmarks: [],
-    bookMarkErrorMessage: null
+    likeCount: [],
+    bookMarkErrorMessage: null,
+    likeStatus: false
   }
 
   async componentDidMount() {
@@ -22,7 +24,9 @@ class SpecificTrail extends Component {
       })
     } else {
       this.setState({
-        trail: response
+        trail: response.trail,
+        likeCount: response.trail.likes,
+        likeStatus: response.like_status
       })
     }
     const bookmarks = await axios.get('https://c-wander-api.herokuapp.com/v1/bookmarks')
@@ -47,6 +51,36 @@ class SpecificTrail extends Component {
         bookMarkErrorMessage: error.response.data.errors[0]
       })
     }
+  }
+
+  like = async id => {
+    this.state.likeStatus ? this.destroyLike(id) : this.createLike()
+  }
+
+  createLike = async () => {
+    try {
+   let response = await axios.post('https://c-wander-api.herokuapp.com/v1/likes', { 
+        trail_id: this.state.trail.id
+      })
+      this.setState({
+        likeCount: response.data.likes,
+        likeStatus: true
+      })
+    } catch (error) {
+      return error.response.data.error_message
+    }
+  }
+
+  destroyLike = async id => {
+    try {
+      const response = await axios.delete(`https://c-wander-api.herokuapp.com/v1/likes/${id}`)
+      this.setState({
+        likeCount: response.data.likes,
+        likeStatus: false
+      })
+      } catch (error) {
+        return error.response.data.error_message
+      }
   }
 
   render() {
@@ -120,6 +154,9 @@ class SpecificTrail extends Component {
                     id={`image_${trail.id}`}
                     src={trail.image}
                   />
+                  <Feed.Like id='like-button' color='red'>
+                    <Icon name='like' size='large' onClick={() => this.like(trail.id)}/><span id='like-counter'>{this.state.likeCount}</span>
+                  </Feed.Like>
                 </Grid.Column>
                 <Grid.Column width='6'>
                   <Header as='h2' id={`title_${trail.id}`}>
