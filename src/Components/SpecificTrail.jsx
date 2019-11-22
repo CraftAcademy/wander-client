@@ -158,17 +158,22 @@ class SpecificTrail extends Component {
                 <Grid.Column width='6'>
                   <Header as='h2' id={`title_${trail.id}`}>
                     {trail.title} 
+                    <Item.Group>
+                      <Item>
+                    <Item.Content>
                     {this.state.userBookmarks.includes(trail.id) || 
                     <Popup trigger={ 
-                      <Icon id='bookmark' size='big' name='bookmark' onClick={this.bookMark}/> }>
+                      <Icon id='bookmark' name='bookmark' onClick={this.bookMark}/> }>
                       <Popup.Header>Bookmark me!</Popup.Header>
                     </Popup>}
-                    <Item.Content>
                       <Popup trigger={
-                        <Icon aria-hidden="true" name='like' id='like-button' size='large' onClick={() => this.like(trail.id)}/>}><span id='like-counter'>{this.state.likeCount}</span> 
+                        <Icon aria-hidden="true" name='like' id='like-button'onClick={() => this.like(trail.id)}/>}> 
                         <Popup.Header>Like me!</Popup.Header>
                       </Popup>
+                      <span id='like-counter'>{this.state.likeCount}</span>
                     </Item.Content>
+                    </Item>
+                    </Item.Group>
                   </Header>
                   <Divider />
                  <p className='single-content' id={`description_${trail.id}`}> {trail.description}</p>
