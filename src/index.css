@@ -379,14 +379,14 @@ i.bookmark.big.icon {
 }
 
 .ui.justified.container.continent-container {
-  margin: 7rem 0 7rem 0 !important;
-  padding-left:  15rem !important;
+  margin: 7rem 0 7rem 10rem !important;
+  width: none !important;
 }
 
 .content-description {
   font-size: 20px;
 }
 
-.continent-image {
-  padding-right: 4rem;
+#content-blurb {
+  padding-left: 2rem
 }

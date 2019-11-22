@@ -6,6 +6,7 @@ import { searchContinent } from '../Modules/trailsData'
 import { Container, Grid, Header, Image } from 'semantic-ui-react'
 import Italy from '../Images/italy.jpg'
 import Buddha from '../Images/buddha.jpg'
+import GoldenGate from '../Images/golden-gate-bridge.jpg'
 
 class ContinentContent extends Component {
   state={
@@ -28,6 +29,7 @@ class ContinentContent extends Component {
     let basteiBridge = <img src={BasteiBridge} id='image' alt='Bastei Bridge' width='1950' height='600'/>
     let buddha = <img src={Buddha} alt='Buddha' width='300' height='300'/>
     let italy = <img src={Italy} alt='Italy' width='450' height='400'/>
+    let goldenGate = <img src={GoldenGate} alt='Golden Gate Bridge' width='450' height='400'/>
     let errorMessage = <div compact id='error-message'>{this.state.errorMessage}</div>
     return (
       <>
@@ -53,10 +55,10 @@ class ContinentContent extends Component {
       <Container className='continent-container' textAlign='justified'>
         <Grid container columns={2} className='continent-grid'>
           <Grid.Row>
-            <Grid.Column width={6}>
+            <Grid.Column width={5}>
               <Image className='continent-image'>{buddha}</Image>
             </Grid.Column>
-            <Grid.Column width={10}>
+            <Grid.Column width={9}>
               <div id='content-blurb'>
                 <Header as='h2'>Explore Trails in Asia</Header>
                 <br />
@@ -89,12 +91,12 @@ class ContinentContent extends Component {
       </div>
 
       <Container className='continent-container' textAlign='justified'>
-        <Grid centered container columns={2}>
+        <Grid container columns={2}>
           <Grid.Row>
-            <Grid.Column width={6}>
-              <Image className='continent-image'>{}</Image>
+            <Grid.Column width={7}>
+              <Image className='continent-image'>{goldenGate}</Image>
             </Grid.Column>
-            <Grid.Column width={10}>
+            <Grid.Column width={9}>
               <div id='content-blurb'>
                 <Header as='h2'>Explore Trails in North America</Header>
                 <br />
@@ -129,18 +131,19 @@ class ContinentContent extends Component {
       </div>
 
       <Container className='continent-container' textAlign='justified'>
-        <Grid centered container columns={2}>
+        <Grid container columns={2}>
           <Grid.Row>
-            <Grid.Column width={4}>
-              <Image>{italy}</Image>
+            <Grid.Column width={7}>
+              <Image id='continent-image'>{italy}</Image>
             </Grid.Column>
             <Grid.Column width={9}>
               <div id='content-blurb'>
-                <Header as='h3'>Explore Trails in Europe</Header>
+                <Header as='h2'>Explore Trails in Europe</Header>
                 <br />
+                <div className='content-description'>
                 <p>Europe has fairly mild climate compare to other areas on Earth of the same latitude thanks to the Gulf Stream.</p>
-                <p> Central Europe has vast plains, a great difference towards the mountainous fjord-cut spine of Norway or Icelands geysers.</p>
-                <p> To the south there are mountainous regions alternating lowlands and mediterranean forests.</p>
+                <p> Central Europe has vast plains, a great difference towards the mountainous fjord-cut spine of Norway or Icelands geysers. To the south there are mountainous regions alternating lowlands and mediterranean forests.</p>
+                </div>
               </div>
             </Grid.Column>
           </Grid.Row>
