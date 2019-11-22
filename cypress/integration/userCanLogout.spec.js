@@ -2,13 +2,13 @@ describe('User can logout', () => {
   it('successfully', () => {
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/auth/sign_in',
+      url: 'https://c-wander-api.herokuapp.com/auth/sign_in',
       response: 'fixture:successful_user_login.json',
       status: 200
     })
     cy.route({
       method: 'DELETE',
-      url: 'http://localhost:3000/auth/sign_out',
+      url: 'https://c-wander-api.herokuapp.com/auth/sign_out',
       response: 'fixture:successful_user_logout.json',
       status: 200
     })

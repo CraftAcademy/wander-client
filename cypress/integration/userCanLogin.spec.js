@@ -2,7 +2,7 @@ describe('User can log in to application', () => {
   it('successfully', () => {
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/auth/sign_in',
+      url: 'https://c-wander-api.herokuapp.com/auth/sign_in',
       response: 'fixture:successful_user_login.json',
       status: 200
     })
@@ -24,7 +24,7 @@ describe('User can not log in to application', () => {
   beforeEach(() => {
   cy.route({
     method: 'POST',
-    url: 'http://localhost:3000/auth/sign_in',
+    url: 'https://c-wander-api.herokuapp.com/auth/sign_in',
     response: 'fixture:unsuccessful_user_login.json',
     status: 401
   })

@@ -2,7 +2,7 @@ describe('User can view a specific trail', () => {
   it('successfully', () => {
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/v1/trails/1',
+      url: 'https://c-wander-api.herokuapp.com/v1/trails/1',
       response: 'fixture:user_can_view_specific_trail.json',
       status: 200
     })
@@ -27,7 +27,7 @@ describe('User can view a specific trail', () => {
   it('unsuccessfully', () => {
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/v1/trails/1',
+      url: 'https://c-wander-api.herokuapp.com/v1/trails/1',
       response: 'fixture:user_can_view_specific_trail_unsuccessfully.json',
       status: 400
     })

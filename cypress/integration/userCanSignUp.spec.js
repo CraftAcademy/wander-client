@@ -2,7 +2,7 @@ describe('User can sign up to application', () => {
   it('successfully', () => {
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/auth',
+      url: 'https://c-wander-api.herokuapp.com/auth',
       response: 'fixture:successful_user_signup.json',
       status: 200
     })
@@ -28,7 +28,7 @@ describe('User can not sign up to application', () => {
   it('with invalid password credentials', () => {
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/auth',
+      url: 'https://c-wander-api.herokuapp.com/auth',
       response: 'fixture:unsuccessful_user_signup.json',
       status: 401
     })

@@ -25,7 +25,7 @@ class SpecificTrail extends Component {
         trail: response
       })
     }
-    const bookmarks = await axios.get('http://localhost:3000/v1/bookmarks')
+    const bookmarks = await axios.get('https://c-wander-api.herokuapp.com/v1/bookmarks')
     const mappedBookmarks = bookmarks.data.data.map(bookmark => bookmark.id)
     this.setState({ userBookmarks: mappedBookmarks })
   }
@@ -36,7 +36,7 @@ class SpecificTrail extends Component {
 
   bookMark = async () => {
     try {
-     let response = await axios.post('http://localhost:3000/v1/bookmarks', {
+     let response = await axios.post('https://c-wander-api.herokuapp.com/v1/bookmarks', {
         id: this.state.trail.id
       })
       this.setState({

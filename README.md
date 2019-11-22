@@ -27,7 +27,7 @@ A step by step series of examples that tell you how to get a development env run
 ### `yarn start`
 
 Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [https://c-wander-api.herokuapp.com](https://c-wander-api.herokuapp.com) to view it in the browser.
 
 Explain how to run the automated tests for this system
 

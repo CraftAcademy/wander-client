@@ -2,13 +2,13 @@ describe('User can view personal information on Profile Page', () => {
   it('successfully', () => {
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/auth/sign_in',
+      url: 'https://c-wander-api.herokuapp.com/auth/sign_in',
       response: 'fixture:successful_user_login.json',
       status: 200
     })
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/v1/bookmarks',
+      url: 'https://c-wander-api.herokuapp.com/v1/bookmarks',
       response: 'fixture:no_bookmarks.json',
       status: 400
     })

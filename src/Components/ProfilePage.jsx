@@ -16,7 +16,7 @@ const ProfilePage = ({ currentUser }) => {
 
   const getBookmarks = async () => {
     try {
-      let response = await axios.get('http://localhost:3000/v1/bookmarks')
+      let response = await axios.get('https://c-wander-api.herokuapp.com/v1/bookmarks')
       setBookmarks(response.data.data)
     } catch(error) {
       setErrorMessage(error.response.data.error_message)
@@ -25,7 +25,7 @@ const ProfilePage = ({ currentUser }) => {
   
   const deleteBookmark = async id => {
     try{
-      const response = await axios.delete(`http://localhost:3000/v1/bookmarks/${id}`)
+      const response = await axios.delete(`https://c-wander-api.herokuapp.com/v1/bookmarks/${id}`)
       setBookmarks(response.data.data)
       setResponseMessage(response.data.message)
     } catch (error) {
