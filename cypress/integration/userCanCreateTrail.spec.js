@@ -31,6 +31,12 @@ describe('User can create a trail', () => {
       response: 'fixture:successfully_created_trail.json',
       status: 200
     })
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/v1/trails/1',
+      response: 'fixture:successfully_view_created_trail.json',
+      status: 200
+    })
     
     cy.get('#trail-form')
       .within(() => {
@@ -54,12 +60,6 @@ describe('User can create a trail', () => {
         cy.get('#submit-trail').click()
       }
     )
-    cy.route({
-      method: 'GET',
-      url: `http://localhost:3000/v1/trails/1`,
-      response: 'fixture:successfully_created_trail.json',
-      status: 200
-    })
     cy.get('#specific-trail')
       .within(() => {
         cy.get('#title_1').should('contain', 'Höga Kusten trail')
@@ -73,7 +73,7 @@ describe('User can create a trail', () => {
       })
   })
 
-  xit('unsuccessfully creates a trail', () => {
+  it('unsuccessfully creates a trail', () => {
     cy.route({
       method: 'POST',
       url: 'http://localhost:3000/v1/trails',
