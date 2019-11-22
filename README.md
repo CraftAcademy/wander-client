@@ -39,7 +39,7 @@ Back-end API:
 - API is also using Gems, to check which ones please see the Gemfile
 
 Front-end Client:
-- Client with [React](https://rspec.info/)
+- Client with [React](https://reactjs.org/)
 - Client is using [Cypress](https://www.cypress.io/) for automated testing
 - User generated images are stored on [Amazon webstorage](https://aws.amazon.com/)
 - Client is using the [Google Maps API](https://developers.google.com/maps/documentation) with the Google Maps React Package
