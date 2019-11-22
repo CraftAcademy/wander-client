@@ -126,6 +126,10 @@ body {
   height: 400px;
 }
 
+.ui.container.trail-list {
+  padding-bottom: 5rem!important;
+}
+
 .ui.card.bookmark-card {
   margin: 2rem!important;
   color: black;

@@ -40,13 +40,14 @@ class LandingPage extends Component {
     }
 
     if (trailsData.length !== 0) {
+      let random = trailsData.sort(() => .5 - Math.random()).slice(0, 3)
       trailsList = (
         <>
-          {trailsData.map(trail => {
+          {random.map(trail => {
             let trim_ingress = trail.description.substr(0, 75)
             let ingress = trim_ingress.substr(0, Math.min(trim_ingress.length, trim_ingress.lastIndexOf(" "))) + ' ...'            
             return  <NavLink id={`trail_${trail.id}`} key={trail.id} to={`/trails/${trail.id}`}>
-                      <Card color='olive' id={`card_${trail.id}`}>
+                      <Card color='olive' id={`card_${trail.id}`} className='landing-page-cards'>
                         <Image
                           id={`image_${trail.id}`}
                           src={trail.image}
@@ -91,7 +92,7 @@ class LandingPage extends Component {
             </div>
           </div>
         </div>
-        <Container id='trail-list'>
+        <Container className='trail-list'>
           <Grid centered container columns={3}>
             <Grid.Row>
               {trailsList}
