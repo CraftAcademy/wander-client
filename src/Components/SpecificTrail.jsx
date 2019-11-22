@@ -17,6 +17,7 @@ class SpecificTrail extends Component {
   }
 
   async componentDidMount() {
+    debugger
     let response = await getSpecificTrail(this.props.match.params.id)
     if (response.error_message) {
       this.setState({
@@ -62,6 +63,7 @@ class SpecificTrail extends Component {
    let response = await axios.post('http://localhost:3000/v1/likes', { 
         trail_id: this.state.trail.id
       })
+      debugger
       this.setState({
         likeCount: response.data.likes,
         likeStatus: true
@@ -154,8 +156,8 @@ class SpecificTrail extends Component {
                     id={`image_${trail.id}`}
                     src={trail.image}
                   />
-                  <Feed.Like color='red'>
-                    <Icon name='like' size='large' onClick={() => this.like(trail.id)}/>{this.state.likeCount}
+                  <Feed.Like id='like-button' color='red'>
+                    <Icon name='like' size='large' onClick={() => this.like(trail.id)}/><span id='like-counter'>{this.state.likeCount}</span>
                   </Feed.Like>
                 </Grid.Column>
                 <Grid.Column width='6'>

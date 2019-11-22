@@ -24,6 +24,25 @@ describe('User can like a trail', () => {
       response: 'fixture:user_can_view_specific_trail.json',
       status: 200
     })
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/v1/bookmarks',
+      response: 'fixture:bookmark.json',
+      status: 200
+    })
+
+    cy.route({
+      method: 'POST',
+      url: 'http://localhost:3000/v1/likes',
+      response: 'fixture:create_like.json',
+      status: 200
+    })
+    // cy.route({
+    //   method: 'POST',
+    //   url: 'http://localhost:3000/v1/likes',
+    //   response: 'fixture:like_status.json',
+    //   status: 200
+    // })
     
     cy.get('#trail-list')
       .within(() => {
@@ -33,6 +52,7 @@ describe('User can like a trail', () => {
     cy.get('#specific-trail')
     .within(() => {
       cy.get('#like-button').click()
+      cy.get('#like-counter').should('contain', 1)
     });
 
   })
