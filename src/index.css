@@ -409,3 +409,15 @@ i.bookmark.big.icon {
 #content-blurb {
   padding-left: 2rem
 }
+
+#like-button {
+  cursor: pointer;
+}
+
+#bookmark {
+  cursor: pointer;
+}
+
+#search-submit {
+  cursor: pointer;
+}

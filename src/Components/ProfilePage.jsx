@@ -60,7 +60,7 @@ const ProfilePage = ({ currentUser }) => {
         <Grid.Row>
           {bookmarks && 
             bookmarks.map(bookmark => {
-              let trim_ingress = bookmark.description.substr(0, 75)
+              let trim_ingress = bookmark.description.substr(0, 71)
               let ingress = trim_ingress.substr(0, Math.min(trim_ingress.length, trim_ingress.lastIndexOf(" "))) + ' ...'
               return  <Card className='bookmark-card' color='olive' id={`card_${bookmark.id}`}>
                         <Button id='delete-button' name='hello' onClick={() => deleteBookmark(bookmark.id)}>Remove Bookmark</Button>
