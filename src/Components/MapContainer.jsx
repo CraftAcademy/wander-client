@@ -114,7 +114,7 @@ class MapContainer extends Component {
               <Card.Description>City: {this.state.selectedPlace.city}</Card.Description>
               <Card.Description>Intensity Level: {this.state.selectedPlace.intensity}</Card.Description>
               </Card.Content>
-              <Card.Content extra>
+              <Card.Content>
               <div id='like-container'>
                 <Icon name='heart' color='red'/>
                 {this.state.selectedPlace.likes}
