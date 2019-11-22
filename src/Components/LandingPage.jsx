@@ -60,6 +60,7 @@ class LandingPage extends Component {
                           <Card.Meta id={`city_${trail.id}`}>City: {trail.city}</Card.Meta>
                           <Card.Meta id={`country_${trail.id}`}>Country: {trail.country}</Card.Meta>
                           <Card.Meta id={`continent_${trail.id}`}>Continent: {trail.continent}</Card.Meta>
+                          <Card.Meta id={`continent_${trail.id}`}>likes: {trail.likes}</Card.Meta>
                         </Card.Content>
                         <Card.Content extra id={`intensity_${trail.id}`}>Intensity Level: {trail.intensity}</Card.Content>
                       </Card>
