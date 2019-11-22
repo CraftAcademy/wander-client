@@ -69,7 +69,7 @@ const ProfilePage = ({ currentUser }) => {
                             src={bookmark.image}
                             key={bookmark.id} as={NavLink} to={`/trails/${bookmark.id}`}
                           />
-                          <Card.Header id={`title_${bookmark.id}`}>{bookmark.title}</Card.Header>
+                          <Card.Header as='h3' id={`title_${bookmark.id}`}>{bookmark.title}</Card.Header>
                           <Card.Description id={`description_${bookmark.id}`}>Description:  {ingress}</Card.Description>
                           <Card.Description id={`extra_${bookmark.id}`}>Good to Know:  {bookmark.extra}</Card.Description>
                           <Card.Meta id={`location_${bookmark.id}`}>Location:  {bookmark.location}</Card.Meta>
