@@ -4,6 +4,7 @@ const apiUrl = 'http://localhost:3000/v1/'
 
 const getTrails = async () => {
   try {
+
     let response = await axios.get(apiUrl + 'trails')
     return response.data
   } catch(error) {
@@ -16,7 +17,9 @@ const getSpecificTrail = async (chosenTrail) => {
     let response = await axios.get(apiUrl + `trails/${chosenTrail}`)
     return response.data
   } catch(error) {
+
     return error.response.data
+
   }
 }
 
@@ -35,7 +38,7 @@ const submitTrail = async (title, description, extra, city, country, continent, 
       image: image,
       coordinates: coordinates
     })
-    return response.data.message
+    return response.data
   } catch(error) {
     return error.response.data
   }
