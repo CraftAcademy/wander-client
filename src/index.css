@@ -18,6 +18,7 @@ body {
   object-fit: cover;
   width: 100%;
   position: relative;
+  box-shadow: 0 0 15px 0;
 }
 
 .image-page {
@@ -307,13 +308,6 @@ body {
   opacity: 1!important;
 }
 
-#content-blurb {
-  margin: 10rem!important;
-  position: relative;
-  text-align: center;
-  line-height: 15px;
-}
-
 #content-label {
   font-size: 20px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -378,4 +372,21 @@ i.bookmark.big.icon {
 
 .gm-ui-hover-effect {
   display: none !important;
+}
+
+.info-window-image {
+  cursor: pointer;
+}
+
+.ui.justified.container.continent-container {
+  margin: 7rem 0 7rem 10rem !important;
+  width: none !important;
+}
+
+.content-description {
+  font-size: 20px;
+}
+
+#content-blurb {
+  padding-left: 2rem
 }
