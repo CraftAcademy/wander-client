@@ -62,21 +62,26 @@ const ProfilePage = ({ currentUser }) => {
             bookmarks.map(bookmark => {
               let trim_ingress = bookmark.description.substr(0, 75)
               let ingress = trim_ingress.substr(0, Math.min(trim_ingress.length, trim_ingress.lastIndexOf(" "))) + ' ...'
-              return    <Card id={`card_${bookmark.id}`}>
-                          <Button id='delete-button' name='hello' onClick={() => deleteBookmark(bookmark.id)}>Remove Bookmark</Button>
-                          <Image
-                            id={`image_${bookmark.id}`}
-                            src={bookmark.image}
-                            key={bookmark.id} as={NavLink} to={`/trails/${bookmark.id}`}
-                          />
+              return  <Card  color='olive' id={`card_${bookmark.id}`}>
+                        <Button id='delete-button' name='hello' onClick={() => deleteBookmark(bookmark.id)}>Remove Bookmark</Button>
+                        <Image
+                          id={`image_${bookmark.id}`}
+                          src={bookmark.image}
+                          key={bookmark.id} as={NavLink} to={`/trails/${bookmark.id}`}
+                          object-fit='cover'
+                          height='200px'  
+                        />
+                        <Card.Content>
                           <Card.Header as='h3' id={`title_${bookmark.id}`}>{bookmark.title}</Card.Header>
-                          <Card.Description id={`description_${bookmark.id}`}>Description:  {ingress}</Card.Description>
-                          <Card.Description id={`extra_${bookmark.id}`}>Good to Know:  {bookmark.extra}</Card.Description>
-                          <Card.Meta id={`location_${bookmark.id}`}>Location:  {bookmark.location}</Card.Meta>
-                          <Card.Meta id={`continent_${bookmark.id}`}>Continent:  {bookmark.continent}</Card.Meta>
-                          <Card.Meta id={`duration_${bookmark.id}`}>Duration:  {bookmark.duration} min</Card.Meta>
-                          <Card.Meta id={`intensity_${bookmark.id}`}>Intensity Level:  {bookmark.intensity}</Card.Meta>
-                        </Card>
+                          <Card.Description id={`description_${bookmark.id}`}>{ingress}</Card.Description>
+                          <Card.Meta id={`city_${bookmark.id}`}>City: {bookmark.city}</Card.Meta>
+                          <Card.Meta id={`country_${bookmark.id}`}>Counrty: {bookmark.country}</Card.Meta>
+                          <Card.Meta id={`continent_${bookmark.id}`}>Continent: {bookmark.continent}</Card.Meta>
+                        </Card.Content>
+                        <Card.Content extra>
+                          <Card.Meta id={`intensity_${bookmark.id}`}>Intensity Level: {bookmark.intensity}</Card.Meta>
+                        </Card.Content>
+                      </Card>
           })}
         </Grid.Row>
       </Grid>
