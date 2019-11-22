@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { getTrails } from '../Modules/trailsData'
-import { Card, Container, Image, Grid, Message } from 'semantic-ui-react'
-import Sarek from '../Images/sarek.jpg'
+import { Card, Container, Image, Grid, Icon, Message } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import ContinentContent from './ContinentContent'
+import Footer from './Footer'
 
 class LandingPage extends Component {
   state = {
@@ -28,7 +28,6 @@ class LandingPage extends Component {
   render() {
     let trailsData = this.state.trails
     let trailsList, welcomeMessage
-    let sarek = <img src={Sarek} id='image' alt='Sarek national park' width='1800' height='650'/>
     let errorMessage = <div compact='true' id='error-message'>{this.state.errorMessage}</div>
 
     if (this.props.currentUser.isSignedIn) {
@@ -51,12 +50,16 @@ class LandingPage extends Component {
                         <Image
                           id={`image_${trail.id}`}
                           src={trail.image}
+                          object-fit='cover'
+                          height='200px'
                         />
-                        <Card.Header as='h3' id={`title_${trail.id}`}>{trail.title}</Card.Header>
-                        <Card.Description id={`description_${trail.id}`}>Description: {ingress}</Card.Description>
-                        <Card.Meta id={`city_${trail.id}`}>City: {trail.city}</Card.Meta>
-                        <Card.Meta id={`country_${trail.id}`}>Country: {trail.country}</Card.Meta>
-                        <Card.Meta id={`continent_${trail.id}`}>Continent: {trail.continent}</Card.Meta>
+                        <Card.Content>
+                          <Card.Header as='h3' id={`title_${trail.id}`}>{trail.title}</Card.Header>
+                          <Card.Description id={`description_${trail.id}`}>{ingress}</Card.Description>
+                          <Card.Meta id={`city_${trail.id}`}>City: {trail.city}</Card.Meta>
+                          <Card.Meta id={`country_${trail.id}`}>Country: {trail.country}</Card.Meta>
+                          <Card.Meta id={`continent_${trail.id}`}>Continent: {trail.continent}</Card.Meta>
+                        </Card.Content>
                         <Card.Content extra id={`intensity_${trail.id}`}>Intensity Level: {trail.intensity}</Card.Content>
                       </Card>
                     </NavLink>
@@ -67,16 +70,24 @@ class LandingPage extends Component {
 
     return (
       <>
-        <div className='page'>
-          <div className='image-page'>
-            {sarek}
-            <div className='content-image'>
-              <div className='content'>
-                <h1>{welcomeMessage}</h1>
-              </div>
-              <div className='content2'>
-                <p>Sarek National Park, Sweden</p>
-              </div>
+        <div className='image-page'>
+          <iframe 
+            src="https://player.vimeo.com/video/54802209?autoplay=1&loop=1" 
+            frameborder="0" 
+            allow="autoplay; fullscreen" 
+            allowfullscreen
+            >
+          </iframe>
+        <script src="https://player.vimeo.com/api/player.js"></script>
+          <div className='content-image'>
+            <div className='content1'>
+              <h1>{welcomeMessage}</h1>
+            </div>
+            <div className='content2'>
+                <p>Find your next adventure</p>
+            </div>
+            <div className='content3'>
+              <Icon name='arrow down' size='big'/>
             </div>
           </div>
         </div>
@@ -89,6 +100,7 @@ class LandingPage extends Component {
           </Grid>
         </Container>
         <ContinentContent history={this.props.history}/>
+        <Footer/>
       </>
     )
   }

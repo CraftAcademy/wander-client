@@ -6,6 +6,12 @@ describe('User can view personal information on Profile Page', () => {
       response: 'fixture:successful_user_login.json',
       status: 200
     })
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/v1/bookmarks',
+      response: 'fixture:no_bookmarks.json',
+      status: 400
+    })
     cy.get('#navbar')
       .within(() => {
         cy.get('#nav-login').click()

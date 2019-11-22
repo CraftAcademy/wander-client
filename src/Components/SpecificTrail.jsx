@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
 import { Map, GoogleApiWrapper, Marker, Polyline } from 'google-maps-react'
-import { Container, Grid, Header, Divider, Image, Table, Label, Message, Icon, Feed } from 'semantic-ui-react'
+import { Container, Grid, Header, Divider, Image, Table, Label, Message, Icon, Feed, Popup } from 'semantic-ui-react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 
@@ -139,7 +139,12 @@ class SpecificTrail extends Component {
                 </Grid.Column>
                 <Grid.Column width='6'>
                   <Header as='h2' id={`title_${trail.id}`}>
-                    {trail.title} {this.state.userBookmarks.includes(trail.id) || <Icon id='bookmark' size='big' name='bookmark' onClick={this.bookMark}/>}
+                    {trail.title} 
+                    {this.state.userBookmarks.includes(trail.id) || 
+                    <Popup trigger={ 
+                      <Icon id='bookmark' size='big' name='bookmark' onClick={this.bookMark}/> }>
+                      <Popup.Header>Bookmark me!</Popup.Header>
+                    </Popup>}
                   </Header>
                   <Divider />
                  <p className='single-content' id={`description_${trail.id}`}> {trail.description}</p>

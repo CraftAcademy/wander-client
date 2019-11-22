@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Card, Image, Header, Label } from 'semantic-ui-react'
+import { Grid, Card, Image, Header, Label } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
 const SearchResults = props => {
@@ -20,20 +20,24 @@ const SearchResults = props => {
     trailsList = (
       <>
         {results.map(trail => {
+          let trim_ingress = trail.description.substr(0, 75)
+          let ingress = trim_ingress.substr(0, Math.min(trim_ingress.length, trim_ingress.lastIndexOf(" "))) + ' ...'            
           return  <NavLink id={`trail_${trail.id}`} key={trail.id} to={`/trails/${trail.id}`}>
                     <Card color='olive' id={`card_${trail.id}`}>
                       <Image
                         id={`image_${trail.id}`}
                         src={trail.image}
+                        object-fit='cover'
+                        height='200px'
                       />
-                      <Card.Header id={`title_${trail.id}`}>{trail.title}</Card.Header>
-                      <Card.Description id={`description_${trail.id}`}>Description: {trail.description}</Card.Description>
-                      <Card.Description id={`extra_${trail.id}`}>Good to know: {trail.extra}</Card.Description>
-                      <Card.Meta id={`city_${trail.id}`}>City: {trail.city}</Card.Meta>
-                      <Card.Meta id={`country_${trail.id}`}>Country: {trail.country}</Card.Meta>
-                      <Card.Meta id={`continent_${trail.id}`}>Continent: {trail.continent}</Card.Meta>
-                      <Card.Meta id={`duration_${trail.id}`}>Duration: {trail.duration}</Card.Meta>
-                      <Card.Meta id={`intensity_${trail.id}`}>Intensity: {trail.intensity}</Card.Meta>
+                      <Card.Content>
+                        <Card.Header as='h3' id={`title_${trail.id}`}>{trail.title}</Card.Header>
+                        <Card.Description id={`description_${trail.id}`}>{ingress}</Card.Description>
+                        <Card.Meta id={`city_${trail.id}`}>City: {trail.city}</Card.Meta>
+                        <Card.Meta id={`country_${trail.id}`}>Country: {trail.country}</Card.Meta>
+                        <Card.Meta id={`continent_${trail.id}`}>Continent: {trail.continent}</Card.Meta>
+                      </Card.Content>
+                      <Card.Content extra id={`intensity_${trail.id}`}>Intensity Level: {trail.intensity}</Card.Content>
                     </Card>
                   </NavLink>
         })}
@@ -48,9 +52,9 @@ const SearchResults = props => {
     <div id='search-results'>
       <Header as='h2' textAlign='center'>Found adventures</Header>  
       <Label as='a' color='olive' id='back-button' onClick={goBack} href='#'>Go Back</Label>    
-      <div id='trail-list'>
+      <Grid centered container columns={4} id='trail-list'>
         {trailsList}
-      </div>
+      </Grid>
     </div>
   )
 }
