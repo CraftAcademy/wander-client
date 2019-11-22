@@ -70,7 +70,7 @@ class SpecificTrail extends Component {
       return error.response.data.error_message
     }
   }
-
+  
   destroyLike = async id => {
     try {
       const response = await axios.delete(`https://c-wander-api.herokuapp.com/v1/likes/${id}`)
@@ -84,7 +84,7 @@ class SpecificTrail extends Component {
   }
 
   render() {
-    let singleTrail, backButton, responseMessage, trailMap, errorMessage
+    let singleTrail, backButton, responseMessage, trailMap, errorMessage, likeButton
     const trail = this.state.trail
     const style = {
       width: '80%',
@@ -139,6 +139,12 @@ class SpecificTrail extends Component {
       errorMessage = <Message warning compact='true' id='warning-message'>{this.state.bookMarkErrorMessage}</Message>
     }
 
+    if (this.state.likeStatus) {
+      likeButton = <Icon name='heart' color='red' id='like-button'onClick={() => this.like(trail.id)}/>
+    } else {
+      likeButton = <Icon aria-hidden="true" name='like' id='like-button'onClick={() => this.like(trail.id)}/>
+    }
+
     if (trail) {
       singleTrail = (
         <>
@@ -160,19 +166,16 @@ class SpecificTrail extends Component {
                     {trail.title} 
                     <Item.Group>
                       <Item>
-                    <Item.Content>
-                    {this.state.userBookmarks.includes(trail.id) || 
-                    <Popup trigger={ 
-                      <Icon id='bookmark' name='bookmark' onClick={this.bookMark}/> }>
-                      <Popup.Header>Bookmark me!</Popup.Header>
-                    </Popup>}
-                      <Popup trigger={
-                        <Icon aria-hidden="true" name='like' id='like-button'onClick={() => this.like(trail.id)}/>}> 
-                        <Popup.Header>Like me!</Popup.Header>
-                      </Popup>
-                      <span id='like-counter'>{this.state.likeCount}</span>
-                    </Item.Content>
-                    </Item>
+                        <Item.Content>
+                          {this.state.userBookmarks.includes(trail.id) || 
+                          <Popup trigger={ 
+                            <Icon id='bookmark' name='bookmark' onClick={this.bookMark}/> }>
+                            <Popup.Header>Bookmark me!</Popup.Header>
+                          </Popup>}
+                          {likeButton}
+                          <span id='like-counter'>{this.state.likeCount}</span>
+                        </Item.Content>
+                      </Item>
                     </Item.Group>
                   </Header>
                   <Divider />
