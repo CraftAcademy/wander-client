@@ -378,11 +378,9 @@ i.bookmark.big.icon {
   cursor: pointer;
 }
 
-.continent-container {
-  height: 22rem !important;
-  margin-top: 5rem !important;
-  padding-right: 20rem !important;
-  margin-bottom: 12rem !important;
+.ui.justified.container.continent-container {
+  margin: 7rem 0 7rem 0 !important;
+  padding-left:  15rem !important;
 }
 
 .content-description {

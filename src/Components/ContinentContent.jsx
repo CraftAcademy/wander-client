@@ -51,16 +51,19 @@ class ContinentContent extends Component {
       </div>
 
       <Container className='continent-container' textAlign='justified'>
-        <Grid container columns={2}>
+        <Grid container columns={2} className='continent-grid'>
           <Grid.Row>
             <Grid.Column width={6}>
               <Image className='continent-image'>{buddha}</Image>
             </Grid.Column>
-            <Grid.Column width={9}>
+            <Grid.Column width={10}>
               <div id='content-blurb'>
-                <Header as='h3'>Explore Trails in Asia</Header>
+                <Header as='h2'>Explore Trails in Asia</Header>
                 <br />
-                <p className='content-description'>Asia is the largest and most populous continent on our planet. It offers a mix of many different climates with diverse landscape and topography, from mountains and glaciers in the north to deserts in the south-west to djungles and volcanoes in the south-east. With over 60 % of the world's population living here, and it's history as the site of many of the first civilizations, there is always more to explore in Asia.</p>
+                <div className='content-description'>
+                  <p>Asia is the largest and most populous continent on our planet. It offers a mix of many different climates with diverse landscape and topography, from mountains and glaciers in the north to deserts in the south-west to djungles and volcanoes in the south-east. </p>
+                  <p>With over 60 % of the world's population living here, and it's history as the site of many of the first civilizations, there is always more to explore in Asia.</p>
+                </div>
               </div>
             </Grid.Column>
           </Grid.Row>
@@ -88,17 +91,18 @@ class ContinentContent extends Component {
       <Container className='continent-container' textAlign='justified'>
         <Grid centered container columns={2}>
           <Grid.Row>
-            <Grid.Column width={4}>
-              <Image>{}</Image>
+            <Grid.Column width={6}>
+              <Image className='continent-image'>{}</Image>
             </Grid.Column>
-            <Grid.Column width={9}>
+            <Grid.Column width={10}>
               <div id='content-blurb'>
-                <Header as='h3'>Explore Trails in North America</Header>
+                <Header as='h2'>Explore Trails in North America</Header>
                 <br />
+                <div className='content-description'>
                 <p>North America is home to over 23 non-sovereign territories. It's the third largest continent on our planet Earth.</p>
-                <p>Since the Carribean islands are a part of North America the possibilities for adventure are endless.</p>
-                <p>There are great regions of mountain, flat plateaus, subtropical islands with temperate climates below the tropics, the Artic Archipelago and deserts.</p>
+                <p>Since the Carribean islands are a part of North America the possibilities for adventure are endless. There are great regions of mountain, flat plateaus, subtropical islands with temperate climates below the tropics, the Artic Archipelago and deserts.</p>
                 <p> Would you dare to visit the tundra in Canada?</p>
+                </div>
               </div>
             </Grid.Column>
           </Grid.Row>
