@@ -36,6 +36,7 @@ class MapContainer extends Component {
   }
 
   onMarkerClick = (props, marker, e) => {
+    debugger
     this.setState({
       selectedPlace: props,
       showingInfoWindow: true,
@@ -85,6 +86,7 @@ class MapContainer extends Component {
               name={trail.title}
               image={trail.image}
               city={trail.city}
+              likes={trail.likes}
               intensity={trail.intensity}
               position={{
                 lat: trail.coordinates[0].latitude, 
@@ -112,11 +114,11 @@ class MapContainer extends Component {
               <Card.Description>City: {this.state.selectedPlace.city}</Card.Description>
               <Card.Description>Intensity Level: {this.state.selectedPlace.intensity}</Card.Description>
               </Card.Content>
-              <Card.Content extra>
-                <a>
-                  <Icon name='like' />
-                  12 Likes
-                </a>
+              <Card.Content>
+              <div id='like-container'>
+                <Icon name='heart' color='red'/>
+                {this.state.selectedPlace.likes}
+              </div>
               </Card.Content>
               </Card>
             </div>

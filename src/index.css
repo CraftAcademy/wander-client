@@ -123,7 +123,11 @@ body {
 .ui.card {
   margin: 2rem!important;
   color: black;
-  height: 400px;
+  height: 420px;
+}
+
+#like-container {
+  text-align: right;
 }
 
 .ui.container.trail-list {

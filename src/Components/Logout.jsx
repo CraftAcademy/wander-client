@@ -20,7 +20,7 @@ class Logout extends Component {
       }}
     )
     .catch(error => {
-      this.setState({errorMessage: error.response.data.errors})
+      console.log(error)
     })
   }
 
