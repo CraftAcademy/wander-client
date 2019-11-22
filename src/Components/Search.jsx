@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Menu, Input, Icon, Label, Message } from "semantic-ui-react"
+import { Menu, Input, Icon, Label } from "semantic-ui-react"
 import { withRouter } from "react-router-dom"
 import { searchTrail } from "../Modules/trailsData"
 
