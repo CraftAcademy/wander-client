@@ -23,7 +23,8 @@ class SpecificTrail extends Component {
       })
     } else {
       this.setState({
-        trail: response
+        trail: response,
+        likeCount: response.likes
       })
     }
     const bookmarks = await axios.get('http://localhost:3000/v1/bookmarks')
@@ -53,25 +54,8 @@ class SpecificTrail extends Component {
   like = async () => {
     debugger
     try {
-      let response = await axios.post('http://localhost:3000/v1/likes', { 
+    await axios.post('http://localhost:3000/v1/likes', { 
         trail_id: this.state.trail.id
-      })
-      if (response) {
-        this.getLikes()
-      }
-    } catch (error) {
-      return error.response.data.error_message
-    }
-  }
-
-  getLikes = async () => {
-    debugger
-    try {
-      let response = await axios.get('http://localhost:3000/v1/likes', { 
-        trail_id: this.state.trail.id
-      })
-      this.setState({
-        likeCount: response.data
       })
     } catch (error) {
       return error.response.data.error_message
@@ -150,7 +134,7 @@ class SpecificTrail extends Component {
                     src={trail.image}
                   />
                   <Feed.Like color='red'>
-                    <Icon name='like' size='large' onClick={this.like}/>{this.state.likeCounter}
+                    <Icon name='like' size='large' onClick={this.like}/>{this.state.likeCount}
                   </Feed.Like>
                 </Grid.Column>
                 <Grid.Column width='6'>
