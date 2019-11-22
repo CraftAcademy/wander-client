@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Grid, Card, Image, Header, Label } from 'semantic-ui-react'
+import { Grid, Card, Image, Header, Label, Message } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
 const SearchResults = props => {
@@ -45,7 +45,7 @@ const SearchResults = props => {
     )
   } else {
     trailsList = (
-      <center><p>Sorry, there are no trails that match your search.</p></center>
+      <center><Message negative compact='true'>Sorry, there are no trails that match your search.</Message></center>
     ) 
   }
   return (
