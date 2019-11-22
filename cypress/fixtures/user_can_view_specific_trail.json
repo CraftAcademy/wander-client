@@ -1,18 +1,21 @@
 {
-  "id": 1,
-  "title": "Åland lazy trail",
-  "description": "A slow trail for fat people",
-  "image": "https://t3.ftcdn.net/jpg/02/48/42/64/240_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg",
-  "extra": "You seem prepared for the chill trail",
-  "city": "Bollmora",
-  "country": "Åland",
-  "continent": "Europe",
-  "duration": "5",
-  "intensity": "1",
-  "coordinates": [
-    {
-      "latitude": 53.0032,
-      "longitude": 14.3435
-    }
-  ]
+  "trail": {
+    "id": 1,
+    "title": "Åland lazy trail",
+    "description": "A slow trail for fat people",
+    "image": "https://t3.ftcdn.net/jpg/02/48/42/64/240_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg",
+    "extra": "You seem prepared for the chill trail",
+    "city": "Bollmora",
+    "country": "Åland",
+    "continent": "Europe",
+    "duration": "5",
+    "intensity": "1",
+    "likes": 0,
+    "coordinates": [
+      {
+        "latitude": 53.0032,
+        "longitude": 14.3435
+      }
+    ]
+  }
 }
