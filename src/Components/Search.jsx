@@ -38,7 +38,7 @@ class Search extends Component {
     let search, errorMessage
 
     if (this.state.errorMessage) {
-      errorMessage = <Message negative compact='true' id="search-error-message">{this.state.errorMessage}</Message>
+      errorMessage = <p id="search-error-message">{this.state.errorMessage}</p>
     }
 
     search = (

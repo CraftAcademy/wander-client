@@ -31,7 +31,7 @@ describe('User can bookmark a trail', () => {
     cy.get('#submit-login-form').click()
     cy.get('#welcome-message').should('contain', 'Hello wanderer name')
     
-    cy.get('#trail-list')
+    cy.get('.trail-list')
       .within(() => {
         cy.get('#card_1').click()
       })

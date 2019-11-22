@@ -7,7 +7,7 @@ describe('User can view a specific trail', () => {
       status: 200
     })
     
-    cy.get('#trail-list')
+    cy.get('.trail-list')
       .within(() => {
         cy.get('#card_1').click()
       })
@@ -31,7 +31,7 @@ describe('User can view a specific trail', () => {
       response: 'fixture:user_can_view_specific_trail_unsuccessfully.json',
       status: 400
     })
-    cy.get('#trail-list')
+    cy.get('.trail-list')
       .within(() => {
         cy.get('#card_1').click()
       })

@@ -1,6 +1,6 @@
 describe('User can view a list of trails', () => {
   it('successfully', () => {
-    cy.get('#trail-list')
+    cy.get('.trail-list')
       .within(() => {
         cy.get('#trail_1')
           .within(() => {
@@ -22,7 +22,7 @@ describe('User can view a list of trails', () => {
       status: 400
     })
     cy.visit('http://localhost:3001')
-    cy.get('#trail-list')
+    cy.get('.trail-list')
       .within(() => {
         cy.get('#trail_1').should('not.exist')
       })
