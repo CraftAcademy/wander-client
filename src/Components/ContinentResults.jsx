@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Card, Image, Header, Container, Grid, Label } from 'semantic-ui-react'
+import { Card, Image, Header, Container, Grid, Label, Icon } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
 const ContinentResults = (props) => {
@@ -46,6 +46,10 @@ const ContinentResults = (props) => {
                         <Card.Meta id={`city_${trail.id}`}>City: {trail.city}</Card.Meta>
                         <Card.Meta id={`country_${trail.id}`}>Country: {trail.country}</Card.Meta>
                         <Card.Meta id={`continent_${trail.id}`}>Continent: {trail.continent}</Card.Meta>
+                        <div id='like-container'>
+                          <Icon name='heart' color='red'/>
+                          {trail.likes}
+                        </div>
                       </Card.Content>
                       <Card.Content extra id={`intensity_${trail.id}`}>Intensity Level: {trail.intensity}</Card.Content>
                     </Card>
