@@ -47,7 +47,7 @@ class CreateTrail extends Component {
         errorMessage: 'All fields are mandatory!'
       })
     }
-    
+
     let response = await submitTrail(title, description, extra, country, city, continent, duration, intensity, image, coordinates)
     if (response.error_message) {
       this.setState({
