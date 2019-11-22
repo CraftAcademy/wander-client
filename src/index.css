@@ -120,10 +120,21 @@ body {
   object-position: -20% 1;
 }
 
-.ui.card .bookmark-card {
+.ui.card {
   margin: 2rem!important;
   color: black;
   height: 400px;
+}
+
+.ui.card.bookmark-card {
+  margin: 2rem!important;
+  color: black;
+  height: 400px !important;
+}
+
+.ui.image.bookmark-image img {
+  height: 150px !important;
+  object-fit: cover !important;
 }
 
 #map-header {

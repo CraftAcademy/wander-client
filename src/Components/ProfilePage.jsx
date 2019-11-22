@@ -65,11 +65,10 @@ const ProfilePage = ({ currentUser }) => {
               return  <Card className='bookmark-card' color='olive' id={`card_${bookmark.id}`}>
                         <Button id='delete-button' name='hello' onClick={() => deleteBookmark(bookmark.id)}>Remove Bookmark</Button>
                         <Image
+                          className='bookmark-image'
                           id={`image_${bookmark.id}`}
                           src={bookmark.image}
                           key={bookmark.id} as={NavLink} to={`/trails/${bookmark.id}`}
-                          object-fit='cover'
-                          height='200px'  
                         />
                         <Card.Content>
                           <Card.Header as='h3' id={`title_${bookmark.id}`}>{bookmark.title}</Card.Header>

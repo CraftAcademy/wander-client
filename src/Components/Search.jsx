@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Menu, Input, Icon, Label } from "semantic-ui-react"
+import { Menu, Input, Icon, Label, Message } from "semantic-ui-react"
 import { withRouter } from "react-router-dom"
 import { searchTrail } from "../Modules/trailsData"
 
@@ -38,7 +38,7 @@ class Search extends Component {
     let search, errorMessage
 
     if (this.state.errorMessage) {
-      errorMessage = <p id="search-error-message">{this.state.errorMessage}</p>
+      errorMessage = <Message negative compact='true' id="search-error-message">{this.state.errorMessage}</Message>
     }
 
     search = (
