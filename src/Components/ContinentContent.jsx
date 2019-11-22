@@ -3,7 +3,10 @@ import AsiaJungle from '../Images/asia-jungle.jpg'
 import YellowStone from '../Images/yellowstone.jpg'
 import BasteiBridge from '../Images/bastei-bridge.jpg'
 import { searchContinent } from '../Modules/trailsData'
-import { Container } from 'semantic-ui-react'
+import { Container, Grid, Header, Image } from 'semantic-ui-react'
+import Italy from '../Images/italy.jpg'
+import Buddha from '../Images/buddha.jpg'
+import GoldenGate from '../Images/golden-gate-bridge.jpg'
 
 class ContinentContent extends Component {
   state={
@@ -23,98 +26,128 @@ class ContinentContent extends Component {
   render() {
     let asiaJungle = <img src={AsiaJungle} id='image' alt='Asia Jungle' width='1800' height='600'/>
     let yellowstone = <img src={YellowStone} id='image' alt='Yellowstone' width='1950' height='600'/>
-    let basteiBridge = <img src={BasteiBridge} id='image' alt='Bastei Bridge' width='1950' height='600' />
-    let errorMessage = <div compact='true' id='error-message'>{this.state.errorMessage}</div>
+    let basteiBridge = <img src={BasteiBridge} id='image' alt='Bastei Bridge' width='1950' height='600'/>
+    let buddha = <img src={Buddha} alt='Buddha' width='300' height='300'/>
+    let italy = <img src={Italy} alt='Italy' width='450' height='400'/>
+    let goldenGate = <img src={GoldenGate} alt='Golden Gate Bridge' width='450' height='400'/>
+    let errorMessage = <div compact id='error-message'>{this.state.errorMessage}</div>
     return (
       <>
-      {errorMessage}
-      <div className='asia-page'>
-        <div className='asia-image'>
-          {asiaJungle}
-            <div className='asia-image-content'>
-              <div className='asia-content-name'>
-                <p>Asian Jungle</p>
+        {errorMessage}
+        <div className='asia-page'>
+          <div className='asia-image'>
+            {asiaJungle}
+              <div className='asia-image-content'>
+                <div className='asia-content-name'>
+                  <p>Asian Jungle</p>
+                </div>
+                <div className='asia-content-button'>
+                  <button id='asian-button' onClick={() => this.getContinentResults('Asia')}>
+                    <div className='asian-button-text'>
+                      Explore Asia
+                    </div>
+                  </button>
+                </div>
               </div>
-              <div className='asia-content-button'>
-                <button id='asian-button' onClick={() => this.getContinentResults('Asia')}>
-                  <div className='asian-button-text'>
-                    Explore Asia
+          </div>
+        </div>
+
+        <Container className='continent-container' textAlign='justified'>
+          <Grid container columns={2} className='continent-grid'>
+            <Grid.Row>
+              <Grid.Column width={5}>
+                <Image className='continent-image'>{buddha}</Image>
+              </Grid.Column>
+              <Grid.Column width={9}>
+                <div id='content-blurb'>
+                  <Header as='h2'>Explore Trails in Asia</Header>
+                  <br />
+                  <div className='content-description'>
+                    <p>Asia is the largest and most populous continent on our planet. It offers a mix of many different climates with diverse landscape and topography, from mountains and glaciers in the north to deserts in the south-west to djungles and volcanoes in the south-east. </p>
+                    <p>With over 60 % of the world's population living here, and it's history as the site of many of the first civilizations, there is always more to explore in Asia.</p>
                   </div>
-                </button>
-              </div>
-            </div>
-        </div>
-      </div>
+                </div>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Container>
 
-      <Container>
-        <div id='content-blurb'>
-          <label id='content-label'>Explore Trails in Asia</label>
-          <br />
-          <br />
-          <p>Asia is the largest and most populous continent on our planet.</p>
-          <p>It offers a mix of many different climates with diverse landscape and topography, from mountains and glaciers in the north to deserts in the south-west to djungles and volcanoes in the south-east.</p>
-          <p>With over 60 % of the world's population living here, and it's history as the site of many of the first civilizations, there is always more to explore in Asia.</p>
-        </div>
-      </Container>
-
-      <div className='na-page'>
-        <div className='na-image'>
-          {yellowstone}
-            <div className='na-image-content'>
-              <div className='na-content-name'>
-                <p>Yellowstone National Park, U.S.A</p>
+        <div className='na-page'>
+          <div className='na-image'>
+            {yellowstone}
+              <div className='na-image-content'>
+                <div className='na-content-name'>
+                  <p>Yellowstone National Park, U.S.A</p>
+                </div>
+                <div className='na-content-button'>
+                  <button id='na-button' onClick={() => this.getContinentResults('North America')}>
+                    <div className='na-button-text'>
+                      Explore North America
+                    </div>
+                  </button>
+                </div>
               </div>
-              <div className='na-content-button'>
-                <button id='na-button' onClick={() => this.getContinentResults('North America')}>
-                  <div className='na-button-text'>
-                    Explore North America
+          </div>
+        </div>
+
+        <Container className='continent-container' textAlign='justified'>
+          <Grid container columns={2}>
+            <Grid.Row>
+              <Grid.Column width={7}>
+                <Image className='continent-image'>{goldenGate}</Image>
+              </Grid.Column>
+              <Grid.Column width={9}>
+                <div id='content-blurb'>
+                  <Header as='h2'>Explore Trails in North America</Header>
+                  <br />
+                  <div className='content-description'>
+                    <p>North America is home to over 23 non-sovereign territories. It's the third largest continent on our planet Earth.</p>
+                    <p>Since the Carribean islands are a part of North America the possibilities for adventure are endless. There are great regions of mountain, flat plateaus, subtropical islands with temperate climates below the tropics, the Artic Archipelago and deserts.</p>
+                    <p> Would you dare to visit the tundra in Canada?</p>
                   </div>
-                </button>
-              </div>
-            </div>
-        </div>
-      </div>
+                </div>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Container>
 
-      <Container>
-        <div id='content-blurb'>
-          <label id='content-label'>Explore Trails in North America</label>
-          <br />
-          <br />
-          <p>North America is home to over 23 non-sovereign territories. It's the third largest continent on our planet Earth.</p>
-          <p>Since the Carribean islands are a part of North America the possibilities for adventure are endless.</p>
-          <p>There are great regions of mountain, flat plateaus, subtropical islands with temperate climates below the tropics, the Artic Archipelago and deserts.</p>
-          <p> Would you dare to visit the tundra in Canada?</p>
-        </div>
-      </Container>
-
-      <div className='eu-page'>
-        <div className='eu-image'>
-          {basteiBridge}
-            <div className='eu-image-content'>
-              <div className='eu-content-name'>
-                <p>Bastei Bridge, Switzerland / Germany</p>
+        <div className='eu-page'>
+          <div className='eu-image'>
+            {basteiBridge}
+              <div className='eu-image-content'>
+                <div className='eu-content-name'>
+                  <p>Bastei Bridge, Switzerland / Germany</p>
+                </div>
+                <div className='eu-content-button'>
+                  <button id='eu-button' onClick={() => this.getContinentResults('Europe')}>
+                    <div className='eu-button-text'>
+                      Explore Europe
+                    </div>
+                  </button>
+                </div>
               </div>
-              <div className='eu-content-button'>
-                <button id='eu-button' onClick={() => this.getContinentResults('Europe')}>
-                  <div className='eu-button-text'>
-                    Explore Europe
+          </div>
+        </div>
+
+        <Container className='continent-container' textAlign='justified'>
+          <Grid container columns={2}>
+            <Grid.Row>
+              <Grid.Column width={7}>
+                <Image id='continent-image'>{italy}</Image>
+              </Grid.Column>
+              <Grid.Column width={9}>
+                <div id='content-blurb'>
+                  <Header as='h2'>Explore Trails in Europe</Header>
+                  <br />
+                  <div className='content-description'>
+                    <p>Europe has fairly mild climate compare to other areas on Earth of the same latitude thanks to the Gulf Stream.</p>
+                    <p> Central Europe has vast plains, a great difference towards the mountainous fjord-cut spine of Norway or Icelands geysers. To the south there are mountainous regions alternating lowlands and mediterranean forests.</p>
                   </div>
-                </button>
-              </div>
-            </div>
-        </div>
-      </div>
-
-      <Container>
-        <div id='content-blurb'>
-          <label id='content-label'>Explore Trails in Europe</label>
-          <br />
-          <br />
-          <p>Europe has fairly mild climate compare to other areas on Earth of the same latitude thanks to the Gulf Stream.</p>
-          <p> Central Europe has vast plains, a great difference towards the mountainous fjord-cut spine of Norway or Icelands geysers.</p>
-          <p> To the south there are mountainous regions alternating lowlands and mediterranean forests.</p>
-        </div>
-      </Container>
+                </div>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Container>
       </>
     )
   }

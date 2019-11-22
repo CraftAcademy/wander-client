@@ -102,6 +102,7 @@ class MapContainer extends Component {
             <div style={{height: '300px', width: '250px'}}>
               <Card fluid className='infoCard'>
               <Image onClick={() => {this.props.history.push(`/trails/${this.state.selectedPlace.id.split('_')[1]}`)}} 
+                className='info-window-image'
                 src={this.state.selectedPlace.image} 
                 object-fit='cover'
                 height='170px'
