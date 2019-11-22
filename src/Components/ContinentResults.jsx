@@ -30,7 +30,7 @@ const ContinentResults = (props) => {
     trailsList = (
       <>
         {results.map(trail => {
-          let trim_ingress = trail.description.substr(0, 75)
+          let trim_ingress = trail.description.substr(0, 71)
           let ingress = trim_ingress.substr(0, Math.min(trim_ingress.length, trim_ingress.lastIndexOf(" "))) + ' ...'            
           return  <NavLink id={`trail_${trail.id}`} key={trail.id} to={`/trails/${trail.id}`}>
                     <Card color='olive' id={`card_${trail.id}`}>
