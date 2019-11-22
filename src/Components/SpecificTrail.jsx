@@ -211,7 +211,7 @@ class SpecificTrail extends Component {
                         <Table.Cell>
                           <Header as='h4'>Duration:</Header>
                         </Table.Cell>
-                        <Table.Cell id={`duration_${trail.id}`}>{trail.duration} minutes</Table.Cell>
+                        <Table.Cell id={`duration_${trail.id}`}>{trail.duration} hours</Table.Cell>
                       </Table.Row>
                       <Table.Row>
                         <Table.Cell>
