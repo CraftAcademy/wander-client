@@ -12,7 +12,8 @@ class SpecificTrail extends Component {
     responseMessage: null,
     userBookmarks: [],
     likeCount: [],
-    bookMarkErrorMessage: null
+    bookMarkErrorMessage: null,
+    likeStatus: false
   }
 
   async componentDidMount() {
@@ -23,8 +24,9 @@ class SpecificTrail extends Component {
       })
     } else {
       this.setState({
-        trail: response,
-        likeCount: response.likes
+        trail: response.trail,
+        likeCount: response.trail.likes,
+        likeStatus: response.like_status
       })
     }
     const bookmarks = await axios.get('http://localhost:3000/v1/bookmarks')
@@ -51,15 +53,34 @@ class SpecificTrail extends Component {
     }
   }
 
-  like = async () => {
-    debugger
+  like = async id => {
+    this.state.likeStatus ? this.destroyLike(id) : this.createLike()
+  }
+
+  createLike = async () => {
     try {
-    await axios.post('http://localhost:3000/v1/likes', { 
+   let response = await axios.post('http://localhost:3000/v1/likes', { 
         trail_id: this.state.trail.id
+      })
+      this.setState({
+        likeCount: response.data.likes,
+        likeStatus: true
       })
     } catch (error) {
       return error.response.data.error_message
     }
+  }
+
+  destroyLike = async id => {
+    try {
+      const response = await axios.delete(`http://localhost:3000/v1/likes/${id}`)
+      this.setState({
+        likeCount: response.data.likes,
+        likeStatus: false
+      })
+      } catch (error) {
+        return error.response.data.error_message
+      }
   }
 
   render() {
@@ -134,7 +155,7 @@ class SpecificTrail extends Component {
                     src={trail.image}
                   />
                   <Feed.Like color='red'>
-                    <Icon name='like' size='large' onClick={this.like}/>{this.state.likeCount}
+                    <Icon name='like' size='large' onClick={() => this.like(trail.id)}/>{this.state.likeCount}
                   </Feed.Like>
                 </Grid.Column>
                 <Grid.Column width='6'>
