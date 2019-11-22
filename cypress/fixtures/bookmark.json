@@ -9,7 +9,8 @@
       "id": 1,
       "image": "https://wander-project-development.s3.eu-north-1.amazonaws.com/9zd9mq95iptf2cft4s7atzkmjgqg?response-content-disposition=inline%3B%20filename%3D%22testimage.png%22%3B%20filename%2A%3DUTF-8%27%27testimage.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUYRJY36E6LUOFMMC%2F20191119%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20191119T124502Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=6579d04bfbdc9e6ccca6d682dd3ddddb0724c554772ee7d9e3ac1f1d67be03cb",
       "intensity": 4,
-      "location": "Gavinberg",
+      "city": "Bollmora",
+      "country": "Sweden",
       "title": "High Rock",
       "user_id": 1
     }
