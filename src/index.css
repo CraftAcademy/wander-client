@@ -120,7 +120,7 @@ body {
   object-position: -20% 1;
 }
 
-.ui.card {
+.ui.card .bookmark-card {
   margin: 2rem!important;
   color: black;
   height: 400px;

@@ -1,0 +1,18 @@
+{
+  "id": 1,
+  "title": "Höga Kusten trail",
+  "description": "Sweden’s only long-distance coastal trail passes through a land that is still rising.",
+  "image": "https://t3.ftcdn.net/jpg/02/48/42/64/240_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg",
+  "extra": "Located close to the E4 highway, it’s also easy to access by car.",
+  "city": "Hornöberget",
+  "country": "Sweden",
+  "continent": "Europe",
+  "duration": "600",
+  "intensity": "4",
+  "coordinates": [
+    {
+      "latitude": 800,
+      "longitude": 600
+    }
+  ]
+}
