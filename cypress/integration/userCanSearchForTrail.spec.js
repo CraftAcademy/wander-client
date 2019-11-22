@@ -2,7 +2,7 @@ describe('User can search for trail', () => {
   it('successfully', () => {
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/v1/trails/?search=Bollmora',
+      url: 'https://c-wander-api.herokuapp.com/v1/trails/?search=Bollmora',
       response: 'fixture:successful_search.json',
       status: 200
     })

@@ -2,20 +2,20 @@ describe('User can bookmark a trail', () => {
   it('successfully', () => {
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/v1/trails/1',
+      url: 'https://c-wander-api.herokuapp.com/v1/trails/1',
       response: 'fixture:user_can_view_specific_trail.json',
       status: 200
     })
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/auth/sign_in',
+      url: 'https://c-wander-api.herokuapp.com/auth/sign_in',
       response: 'fixture:successful_user_login.json',
       status: 200
     })
     
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/v1/bookmarks',
+      url: 'https://c-wander-api.herokuapp.com/v1/bookmarks',
       response: 'fixture:saved_trail_to_your_bookmarks.json',
       status: 200
     })
@@ -42,7 +42,7 @@ describe('User can bookmark a trail', () => {
 
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/v1/bookmarks',
+      url: 'https://c-wander-api.herokuapp.com/v1/bookmarks',
       response: 'fixture:bookmark.json',
       status: 200
     })

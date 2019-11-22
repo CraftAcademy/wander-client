@@ -1,7 +1,7 @@
 import { generateAuthActions } from 'redux-token-auth'
 
 const config = {
-  authUrl: 'http://localhost:3000/auth',
+  authUrl: 'https://c-wander-api.herokuapp.com/auth',
   userAttributes: {
     uid: 'uid',
     email: 'email',

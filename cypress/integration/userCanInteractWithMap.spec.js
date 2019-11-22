@@ -2,7 +2,7 @@ describe('User can interact with map', () => {
   beforeEach(() => {
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/v1/trails',
+      url: 'https://c-wander-api.herokuapp.com/v1/trails',
       response: 'fixture:gm_map_markers.json',
       status: 200
     })

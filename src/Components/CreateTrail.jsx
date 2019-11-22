@@ -41,16 +41,21 @@ class CreateTrail extends Component {
 
   submitTrailHandler = async () => {
     const { title, description, extra, country, city, continent, duration, intensity, image, coordinates } = this.state
-    let response = await submitTrail(title, description, extra, country, city, continent, duration, intensity, image, coordinates)
+    const formData = { title, description, extra, country, city, continent, duration, intensity, image, coordinates }
+    if (Object.values(formData).filter(el => el === "").length > 0 ){
+      return this.setState({
+        errorMessage: 'All fields are mandatory!'
+      })
+    }
 
+    let response = await submitTrail(title, description, extra, country, city, continent, duration, intensity, image, coordinates)
     if (response.error_message) {
       this.setState({
         errorMessage: response.error_message
       })
     } else {
-      this.setState({
-        responseMessage: response
-      })
+      const id = response.data.id
+      this.props.history.push(`/trails/${id}`)
     }
   }
 

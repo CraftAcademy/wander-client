@@ -2,7 +2,7 @@ describe('User can create a trail', () => {
   beforeEach(() => {
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/auth/sign_in',
+      url: 'https://c-wander-api.herokuapp.com/auth/sign_in',
       response: 'fixture:successful_user_login.json',
       status: 200
     })
@@ -24,7 +24,7 @@ describe('User can create a trail', () => {
     })
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/v1/bookmarks',
+      url: 'https://c-wander-api.herokuapp.com/v1/bookmarks',
       response: 'fixture:bookmark.json',
       status: 200
     })
@@ -33,8 +33,14 @@ describe('User can create a trail', () => {
   it('successully creates a trail', () => {
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/v1/trails',
+      url: 'https://c-wander-api.herokuapp.com/v1/trails',
       response: 'fixture:successfully_created_trail.json',
+      status: 200
+    })
+    cy.route({
+      method: 'GET',
+      url: 'https://c-wander-api.herokuapp.com/v1/trails/1',
+      response: 'fixture:successfully_view_created_trail.json',
       status: 200
     })
     
@@ -60,13 +66,23 @@ describe('User can create a trail', () => {
         cy.get('#submit-trail').click()
       }
     )
-    cy.get('#response-message').should('contain', 'Trail was successfully created')
+    cy.get('#specific-trail')
+      .within(() => {
+        cy.get('#title_1').should('contain', 'Höga Kusten trail')
+        cy.get('#description_1').should('contain', 'Sweden’s only long-distance coastal trail passes through a land that is still rising.')
+        cy.get('#extra_1').should('contain', 'Located close to the E4 highway, it’s also easy to access by car.')
+        cy.get('#city_1').should('contain', 'Hornöberget')
+        cy.get('#country_1').should('contain', 'Sweden')
+        cy.get('#continent_1').should('contain', 'Europe')
+        cy.get('#duration_1').should('contain', '600')
+        cy.get('#intensity_1').should('contain', '4')
+      })
   })
 
   it('unsuccessfully creates a trail', () => {
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/v1/trails',
+      url: 'https://c-wander-api.herokuapp.com/v1/trails',
       response: 'fixture:cannot_create_trail.json',
       status: 400
     })

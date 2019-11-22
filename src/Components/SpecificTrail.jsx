@@ -17,7 +17,6 @@ class SpecificTrail extends Component {
   }
 
   async componentDidMount() {
-    debugger
     let response = await getSpecificTrail(this.props.match.params.id)
     if (response.error_message) {
       this.setState({
@@ -30,7 +29,7 @@ class SpecificTrail extends Component {
         likeStatus: response.like_status
       })
     }
-    const bookmarks = await axios.get('http://localhost:3000/v1/bookmarks')
+    const bookmarks = await axios.get('https://c-wander-api.herokuapp.com/v1/bookmarks')
     const mappedBookmarks = bookmarks.data.data.map(bookmark => bookmark.id)
     this.setState({ userBookmarks: mappedBookmarks })
   }
@@ -41,7 +40,7 @@ class SpecificTrail extends Component {
 
   bookMark = async () => {
     try {
-      let response = await axios.post('http://localhost:3000/v1/bookmarks', {
+     let response = await axios.post('https://c-wander-api.herokuapp.com/v1/bookmarks', {
         id: this.state.trail.id
       })
       this.setState({
@@ -60,10 +59,9 @@ class SpecificTrail extends Component {
 
   createLike = async () => {
     try {
-   let response = await axios.post('http://localhost:3000/v1/likes', { 
+   let response = await axios.post('https://c-wander-api.herokuapp.com/v1/likes', { 
         trail_id: this.state.trail.id
       })
-      debugger
       this.setState({
         likeCount: response.data.likes,
         likeStatus: true
@@ -75,7 +73,7 @@ class SpecificTrail extends Component {
 
   destroyLike = async id => {
     try {
-      const response = await axios.delete(`http://localhost:3000/v1/likes/${id}`)
+      const response = await axios.delete(`https://c-wander-api.herokuapp.com/v1/likes/${id}`)
       this.setState({
         likeCount: response.data.likes,
         likeStatus: false
@@ -101,7 +99,7 @@ class SpecificTrail extends Component {
         <>
           <Map 
             google={this.props.google} 
-            zoom={8}
+            zoom={10}
             style={style}
             initialCenter={{
               lat: trail.coordinates[0].latitude,
