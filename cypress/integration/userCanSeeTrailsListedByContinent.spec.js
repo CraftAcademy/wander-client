@@ -37,7 +37,6 @@ describe('User can see trails listed by continent', () => {
       response: 'fixture:user_can_view_list_of_trails_unsuccessfully.json',
       status: 400
     })
-    cy.visit('http://localhost:3001')
     cy.get('#asian-button').click()
     cy.get('#trail-list')
       .within(() => {

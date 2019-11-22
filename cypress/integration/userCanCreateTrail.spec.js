@@ -33,7 +33,7 @@ describe('User can create a trail', () => {
     })
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/v1/trails/1',
+      url: 'https://c-wander-api.herokuapp.com/v1/trails/1',
       response: 'fixture:successfully_view_created_trail.json',
       status: 200
     })
