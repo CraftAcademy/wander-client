@@ -76,6 +76,10 @@ const ProfilePage = ({ currentUser }) => {
                           <Card.Meta id={`city_${bookmark.id}`}>City: {bookmark.city}</Card.Meta>
                           <Card.Meta id={`country_${bookmark.id}`}>Country: {bookmark.country}</Card.Meta>
                           <Card.Meta id={`continent_${bookmark.id}`}>Continent: {bookmark.continent}</Card.Meta>
+                          <div id='like-container'>
+                            <Icon name='heart' color='red'/>
+                            {bookmark.likes}
+                          </div>
                         </Card.Content>
                         <Card.Content extra>
                           <Card.Meta id={`intensity_${bookmark.id}`}>Intensity Level: {bookmark.intensity}</Card.Meta>
