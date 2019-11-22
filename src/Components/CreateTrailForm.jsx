@@ -72,6 +72,7 @@ const CreateTrailForm = props => {
         </div>
         </Container>
         <br />
+        <Header textAlign='center' as='h3'>Map out your trail!</Header>
         <CreateMap 
           coordinates={coordinates}
           mapClicked={mapClicked}

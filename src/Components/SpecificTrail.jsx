@@ -155,7 +155,7 @@ class SpecificTrail extends Component {
           <Container textAlign='justified' id='specific-trail'>
             <Grid columns={2}>
               <Grid.Row>
-                <Grid.Column width='8'>
+                <Grid.Column width='7'>
                   <Image
                     id={`image_${trail.id}`}
                     src={trail.image}
@@ -183,7 +183,7 @@ class SpecificTrail extends Component {
                     <Header as='h3'>Good to know:</Header>
                     <p className='single-content' id={`extra_${trail.id}`}>{trail.extra}</p>
                   </Grid.Column>
-                  <Grid.Column width='2'>
+                  <Grid.Column width='3'>
                     <Table color='olive' celled collapsing>
                       <Table.Header>
                           <Table.HeaderCell colSpan='3'><h3>Trail Facts</h3></Table.HeaderCell>
