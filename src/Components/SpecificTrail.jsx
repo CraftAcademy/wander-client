@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { getSpecificTrail } from '../Modules/trailsData'
 import { Map, GoogleApiWrapper, Marker, Polyline } from 'google-maps-react'
-import { Container, Grid, Header, Divider, Image, Table, Label, Message, Icon, Feed, Popup } from 'semantic-ui-react'
+import { Container, Grid, Header, Divider, Image, Table, Label, Message, Icon, Popup, Item } from 'semantic-ui-react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 
@@ -70,7 +70,7 @@ class SpecificTrail extends Component {
       return error.response.data.error_message
     }
   }
-
+  
   destroyLike = async id => {
     try {
       const response = await axios.delete(`https://c-wander-api.herokuapp.com/v1/likes/${id}`)
@@ -84,7 +84,7 @@ class SpecificTrail extends Component {
   }
 
   render() {
-    let singleTrail, backButton, responseMessage, trailMap, errorMessage
+    let singleTrail, backButton, responseMessage, trailMap, errorMessage, likeButton
     const trail = this.state.trail
     const style = {
       width: '80%',
@@ -139,6 +139,12 @@ class SpecificTrail extends Component {
       errorMessage = <Message warning compact='true' id='warning-message'>{this.state.bookMarkErrorMessage}</Message>
     }
 
+    if (this.state.likeStatus) {
+      likeButton = <Icon name='heart' color='red' id='like-button'onClick={() => this.like(trail.id)}/>
+    } else {
+      likeButton = <Icon aria-hidden="true" name='like' id='like-button'onClick={() => this.like(trail.id)}/>
+    }
+
     if (trail) {
       singleTrail = (
         <>
@@ -149,30 +155,35 @@ class SpecificTrail extends Component {
           <Container textAlign='justified' id='specific-trail'>
             <Grid columns={2}>
               <Grid.Row>
-                <Grid.Column width='8'>
+                <Grid.Column width='7'>
                   <Image
                     id={`image_${trail.id}`}
                     src={trail.image}
                   />
-                  <Feed.Like id='like-button' color='red'>
-                    <Icon name='like' size='large' onClick={() => this.like(trail.id)}/><span id='like-counter'>{this.state.likeCount}</span>
-                  </Feed.Like>
                 </Grid.Column>
                 <Grid.Column width='6'>
                   <Header as='h2' id={`title_${trail.id}`}>
                     {trail.title} 
-                    {this.state.userBookmarks.includes(trail.id) || 
-                    <Popup trigger={ 
-                      <Icon id='bookmark' size='big' name='bookmark' onClick={this.bookMark}/> }>
-                      <Popup.Header>Bookmark me!</Popup.Header>
-                    </Popup>}
+                    <Item.Group>
+                      <Item>
+                        <Item.Content>
+                          {this.state.userBookmarks.includes(trail.id) || 
+                          <Popup trigger={ 
+                            <Icon id='bookmark' name='bookmark' onClick={this.bookMark}/> }>
+                            <Popup.Header>Bookmark me!</Popup.Header>
+                          </Popup>}
+                          {likeButton}
+                          <span id='like-counter'>{this.state.likeCount}</span>
+                        </Item.Content>
+                      </Item>
+                    </Item.Group>
                   </Header>
                   <Divider />
                  <p className='single-content' id={`description_${trail.id}`}> {trail.description}</p>
                     <Header as='h3'>Good to know:</Header>
                     <p className='single-content' id={`extra_${trail.id}`}>{trail.extra}</p>
                   </Grid.Column>
-                  <Grid.Column width='2'>
+                  <Grid.Column width='3'>
                     <Table color='olive' celled collapsing>
                       <Table.Header>
                           <Table.HeaderCell colSpan='3'><h3>Trail Facts</h3></Table.HeaderCell>
@@ -200,7 +211,7 @@ class SpecificTrail extends Component {
                         <Table.Cell>
                           <Header as='h4'>Duration:</Header>
                         </Table.Cell>
-                        <Table.Cell id={`duration_${trail.id}`}>{trail.duration} minutes</Table.Cell>
+                        <Table.Cell id={`duration_${trail.id}`}>{trail.duration} hours</Table.Cell>
                       </Table.Row>
                       <Table.Row>
                         <Table.Cell>
